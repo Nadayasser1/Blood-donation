@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation/Features/notification/presentation/views/notification_view.dart';
+import 'package:graduation/presentation/pages/profile_view.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../../../../../core/widgets/constants.dart';
-import '../../../../../profile/presentation/views/profile_view.dart';
-import 'home_view_body.dart';
+import '../widgets/home_view_body.dart';
+import 'notification_view.dart';
 
 
 class BottomNavbar extends StatefulWidget {

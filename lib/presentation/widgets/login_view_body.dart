@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:graduation/Features/Auth/presentation/views/login/widgets/login_options.dart';
 import 'package:graduation/core/utils/assets.dart';
 import '../../../../../../core/widgets/constants.dart';
 import '../../../../../../core/widgets/text_field.dart';
-import '../../../../../profile/presentation/views/profile_view.dart';
-import '../../forgetPassword/forget_passwor_view.dart';
-import '../../signup/sign_up.dart';
+import '../pages/forget_passwor_view.dart';
+import '../pages/sign_up.dart';
+import 'login_options.dart';
 
 
 class LogInViewbody extends StatelessWidget {

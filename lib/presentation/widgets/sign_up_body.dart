@@ -5,7 +5,7 @@ import '../../../../../../core/widgets/custom_buton.dart';
 import '../../../../../../core/widgets/data_entry_field.dart';
 import '../../../../../../core/widgets/text_field.dart';
 import '../../../../../../core/widgets/title_form_text.dart';
-import '../../login/widgets/login_options.dart';
+import 'login_options.dart';
 
 class SignUpBody extends StatelessWidget{
   const SignUpBody({super.key});

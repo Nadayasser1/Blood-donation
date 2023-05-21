@@ -1,6 +1,6 @@
 
-import 'package:graduation/Features/Auth/presentation/views/login/widgets/login_view_body.dart';
 import 'package:flutter/material.dart';
+import '../widgets/login_view_body.dart';
 
 
 class LogInView extends StatelessWidget {

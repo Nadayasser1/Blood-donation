@@ -1,8 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation/Features/onBoarding/presentation/views/widgets/page_items.dart';
-import '../../../../../core/utils/assets.dart';
+import 'package:graduation/presentation/widgets/page_items.dart';
 
 class AppPageView extends StatelessWidget{
   const AppPageView({super.key,@required this.pageController});

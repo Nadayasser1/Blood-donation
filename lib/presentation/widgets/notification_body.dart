@@ -2,7 +2,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/widgets/title_form_text.dart';
-import '../notification_view.dart';
 import 'custom_list_tile.dart';
 
 class NotificationBody extends StatelessWidget{

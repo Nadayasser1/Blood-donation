@@ -1,11 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:graduation/Features/onBoarding/presentation/views/widgets/page_view.dart';
+import 'package:graduation/presentation/widgets/page_view.dart';
 import '../../../../../core/widgets/constants.dart';
-import '../../../../Auth/presentation/views/login/login_view.dart';
+import '../pages/login_view.dart';
 import 'dot_indecator.dart';
 
 class OnBoardingBody extends StatefulWidget{

@@ -1,9 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:graduation/Features/profile/presentation/views/widgets/profile_buttons.dart';
-import 'package:graduation/Features/profile/presentation/views/widgets/user_cards.dart';
-import 'package:graduation/Features/profile/presentation/views/widgets/user_info.dart';
-
+import 'package:graduation/presentation/widgets/profile_buttons.dart';
+import 'package:graduation/presentation/widgets/user_cards.dart';
+import 'package:graduation/presentation/widgets/user_info.dart';
 import '../../../../../core/widgets/constants.dart';
 
 class ProfileViewbody extends StatelessWidget{
