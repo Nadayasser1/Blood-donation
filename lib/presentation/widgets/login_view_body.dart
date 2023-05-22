@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:graduation/core/utils/assets.dart';
 import '../../../../../../core/widgets/constants.dart';
-import '../../../../../../core/widgets/text_field.dart';
+import '../../core/widgets/custom_buttons.dart';
 import '../pages/forget_passwor_view.dart';
 import '../pages/sign_up.dart';
 import 'login_options.dart';

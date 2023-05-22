@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduation/presentation/widgets/sliding_image.dart';
-
 import '../pages/onboarding_viwe.dart';
+
 
 class SplashViewbody extends StatefulWidget {
   const SplashViewbody({Key? key}) : super(key: key);
@@ -21,7 +21,6 @@ class _SplashViewbodyState extends State<SplashViewbody> with SingleTickerProvid
     goToNextView();
 
   }
-
   @override
   void dispose() {
     super.dispose();
@@ -55,3 +54,5 @@ class _SplashViewbodyState extends State<SplashViewbody> with SingleTickerProvid
     });
   }
 }
+
+

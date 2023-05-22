@@ -26,7 +26,6 @@ class _BoState extends State<BottomNavbar> {
     ];
   }
 
-
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(

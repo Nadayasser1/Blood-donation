@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import '../../../../../../core/widgets/title_form_text.dart';
+import '../../../../../../core/widgets/custom_text.dart';
 
 class LoginItems extends StatelessWidget{
   const LoginItems({super.key});

@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../core/widgets/constants.dart';
-import '../../../../../../core/widgets/custom_buton.dart';
-import '../../../../../../core/widgets/data_entry_field.dart';
-import '../../../../../../core/widgets/text_field.dart';
-import '../../../../../../core/widgets/title_form_text.dart';
+import '../../../../../../core/widgets/custom_buttons.dart';
+import '../../../../../../core/widgets/custom_text.dart';
 import 'login_options.dart';
 
 class SignUpBody extends StatelessWidget{
@@ -17,7 +14,7 @@ class SignUpBody extends StatelessWidget{
       child: Column(
         children: [
           const SizedBox(height:20),
-          const Datafield(
+          const DataEntryfield(
             label: "Full Name",
             inputType: TextInputType.name,
             text: "Your name",
@@ -37,18 +34,18 @@ class SignUpBody extends StatelessWidget{
             ],
           ),
           const SizedBox(height: 10),
-          const Datafield(
+          const DataEntryfield(
             label: "Email",
             inputType: TextInputType.emailAddress,
             text: "Enter Your Email",
           ),
           const SizedBox(height: 5),
-          const Datafield(
+          const DataEntryfield(
             label: "Phone number",
             text: "Enter Your Phone number ",
           ),
           const SizedBox(height: 5),
-          const Datafield(
+          const DataEntryfield(
             label: "Password",
             text: "********",
           ),

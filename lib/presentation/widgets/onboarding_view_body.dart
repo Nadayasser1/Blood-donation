@@ -17,7 +17,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
 
   @override
   void initState() {
-    pageController=PageController(
+    pageController= PageController(
       initialPage: 0
     )..addListener(() {
       setState(() {
