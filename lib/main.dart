@@ -4,6 +4,7 @@ import 'package:graduation/presentation/pages/splash_view.dart';
 import 'core/widgets/constants.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const DonationApp());
 }
 
