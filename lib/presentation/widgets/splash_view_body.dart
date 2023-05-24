@@ -29,7 +29,8 @@ class _SplashViewbodyState extends State<SplashViewbody> with SingleTickerProvid
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return
+      Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
