@@ -10,7 +10,8 @@ import 'package:graduation/domain/entities/login.dart';
 class LoginUseCase extends BaseUseCase<Login,LoginParameters>{
   final BaseRepository baseRepository;
 
-  LoginUseCase({required this.baseRepository});
+
+  LoginUseCase( {required this.baseRepository});
   @override
   Future<Either<Failure, Login>> call(LoginParameters parameters) async{
 

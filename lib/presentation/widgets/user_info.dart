@@ -2,8 +2,9 @@
 import 'package:flutter/material.dart';
 
 class UserInfo extends StatelessWidget{
-  const UserInfo({super.key});
-
+  const UserInfo({super.key, this.label, this.text});
+  final String? label;
+  final String? text;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,45 +13,13 @@ class UserInfo extends StatelessWidget{
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text("Phone",
-              style: TextStyle(
+            children:[
+              Text(label!,
+              style: const TextStyle(
                 fontSize: 20
               ),),
-              Text("0101234567")
+              Text(text!)
             ],
-          ),
-          // Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: const [
-          //       Text("National ID",
-          //           style: TextStyle(
-          //               fontSize: 20
-          //           )),
-          //       Text("31746289375983")
-          //     ]
-          // ),
-          const Divider(thickness: 1,),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text("Gender",
-                    style: TextStyle(
-                        fontSize: 20
-                    )),
-                Text("Male")
-              ]
-          ),
-          const Divider(thickness: 1,),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text("Date of birth",
-                    style: TextStyle(
-                        fontSize: 20
-                    )),
-                Text("15/10/1985")
-              ]
           ),
         ],
       ),

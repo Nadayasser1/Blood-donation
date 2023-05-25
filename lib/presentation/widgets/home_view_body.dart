@@ -11,7 +11,7 @@ class HomeViewbody extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               margin: const EdgeInsets.only(top: 40),
               width:double.maxFinite,
               height: 50,

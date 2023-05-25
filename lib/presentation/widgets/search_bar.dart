@@ -15,6 +15,7 @@ class SearchBar extends SearchDelegate{
 
   @override
   Widget buildResults(BuildContext context) {
+    // ignore: null_check_always_fails
     return  null!;
   }
 

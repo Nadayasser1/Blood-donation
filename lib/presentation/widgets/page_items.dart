@@ -10,7 +10,7 @@ class PageItems extends StatelessWidget{
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 160,),
+        const SizedBox(height: 160,),
         SizedBox(
           height: 200,
             child: Image.asset(image!)),

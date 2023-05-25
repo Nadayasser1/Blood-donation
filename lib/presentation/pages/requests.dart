@@ -13,7 +13,7 @@ class YourRequests extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10,vertical: 70),
+        margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 70),
         child:Column(
 
           children: [
@@ -34,7 +34,7 @@ class YourRequests extends StatelessWidget{
                           fontWeight: FontWeight.bold,
                       fontSize: 25)),
                 ),
-                NavigationIcon()
+                const NavigationIcon()
               ],
             ),
             const Divider(thickness: 2,),

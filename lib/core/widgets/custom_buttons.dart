@@ -54,7 +54,6 @@ class DataEntryfield extends StatelessWidget{
         ),
         const SizedBox(height: 5,),
         CustomTextFormField(
-          inputType: inputType,
           text: text,
         )
 
@@ -66,29 +65,31 @@ class DataEntryfield extends StatelessWidget{
 
 
 class CustomTextFormField extends StatelessWidget {
-  final TextInputType? inputType;
   final Widget? suffexIcon;
-  final ValueSetter? onSaved;
-  final ValueSetter? onChanged;
-  final int? maxLines;
   final String? text;
-  const CustomTextFormField({
-    Key? key,
-    @required this.inputType,
-    this.suffexIcon,
-    @required this.onSaved,
-    this.onChanged,
-    this.maxLines, this.text,
-  }) : super(key: key);
+  bool? obscureText;
+  Function(String)? onChanged;
+
+   CustomTextFormField({Key? key,
+     this.obscureText =false,
+     this.suffexIcon,
+     this.onChanged,
+      this.text,}) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60,
       child: TextFormField(
-        keyboardType: inputType,
+        validator:(value) {
+          if(value!.isEmpty){
+            return "Enter your email/password";
+          }
+          return null;
+        },
+        obscureText: obscureText!,
         onChanged: onChanged,
-        onSaved: onSaved,
-        maxLines: maxLines,
         decoration: InputDecoration(
           hintText:text ,
           filled: true,
