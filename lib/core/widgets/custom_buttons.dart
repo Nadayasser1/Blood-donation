@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:graduation/core/widgets/custom_text.dart';
 import 'constants.dart';
 
@@ -67,6 +68,7 @@ class DataEntryfield extends StatelessWidget{
 class CustomTextFormField extends StatelessWidget {
   final Widget? suffexIcon;
   final String? text;
+  final String? message;
   bool? obscureText;
   Function(String)? onChanged;
 
@@ -74,7 +76,7 @@ class CustomTextFormField extends StatelessWidget {
      this.obscureText =false,
      this.suffexIcon,
      this.onChanged,
-      this.text,}) : super(key: key);
+      this.text, this.message,}) : super(key: key);
 
 
   @override
@@ -82,12 +84,14 @@ class CustomTextFormField extends StatelessWidget {
     return SizedBox(
       height: 60,
       child: TextFormField(
-        validator:(value) {
-          if(value!.isEmpty){
-            return "Enter your email/password";
-          }
-          return null;
-        },
+        validator: RequiredValidator(errorText: message!),
+
+        // validator:(value) {
+        //   if(value!.isEmpty){
+        //     return "Enter your email/password";
+        //   }
+        //   return null;
+        // },
         obscureText: obscureText!,
         onChanged: onChanged,
         decoration: InputDecoration(

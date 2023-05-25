@@ -59,6 +59,7 @@ class LogInView extends StatelessWidget {
                 const SizedBox(height: 10,),
 
                 CustomTextFormField(
+                  message: "enter your email",
                   onChanged: (value){
                     email = value;
                   },
@@ -68,8 +69,10 @@ class LogInView extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 CustomTextFormField(
+                  message: "enter your password",
                   onChanged: (value){
                     password = value;
+
                   },
                   obscureText: true,
                   text: "Password",
