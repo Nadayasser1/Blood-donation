@@ -31,14 +31,12 @@ class LogInView extends StatelessWidget {
         }
         else if (state is LoginSuccessState){
           Get.to(()=> const ProfileView() );
-          loading = false;
         }
         else if ( state is LoginErrorState){
           AwesomeSnackbarContent(
             title: 'Warning',
           message: "Something is wrong",
           contentType:ContentType.failure);
-          loading = false;
 
         }
       },
