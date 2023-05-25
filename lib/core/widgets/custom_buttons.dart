@@ -110,3 +110,60 @@ class CustomTextFormField extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+class TextField extends StatelessWidget {
+  final TextEditingController controller;
+  final TextInputType type;
+  final ValueChanged<String>? onSubmit;
+  final ValueChanged<String>? onChange;
+  final String? Function(String?)? validator;
+  final String label;
+  final IconData prefix;
+  final IconData? suffix;
+  final bool isPassword;
+  final void Function()? suffixPress;
+
+
+  const TextField({
+    required Key key,
+    required this.controller,
+    required this.type,
+    this.onSubmit,
+    this.onChange,
+    required this.validator,
+    required this.label,
+    required this.prefix,
+    this.suffix,
+    this.isPassword = false,
+    this.suffixPress,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller:controller,
+      keyboardType: type,
+      onChanged: onChange,
+      onFieldSubmitted: onSubmit,
+
+      validator: validator,
+      obscureText: isPassword,
+      decoration: InputDecoration(
+        labelText: label,
+        prefixIcon: Icon(prefix),
+        border: const OutlineInputBorder(),
+        suffixIcon: suffix !=null?IconButton(
+          onPressed:suffixPress,
+          icon: Icon(suffix),
+        ) :null ,
+      ),
+    );
+  }
+}
+
