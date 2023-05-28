@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 class TitleText extends StatelessWidget{
-  const TitleText({super.key, this.label});
+  const TitleText({super.key, this.label, this.color});
   final String? label;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return Text(label!,
-      style: const TextStyle(fontSize: 20),
-      textHeightBehavior:
+      style:  TextStyle(
+          color: color,
+          fontSize: 20),
+          textHeightBehavior:
       const TextHeightBehavior(
           applyHeightToFirstAscent: false),
       textAlign: TextAlign.center,
@@ -37,14 +40,21 @@ class SignOptionsText extends StatelessWidget{
 }
 
 class TopBarText extends StatelessWidget{
-  const TopBarText( {super.key, this.text});
-final String? text;
+
+  final String? text;
+  final Color color;
+
+  const TopBarText( {super.key,
+    this.text,
+    required this.color});
+
 
   @override
   Widget build(BuildContext context) {
     return Text(text!,
       style:
-      const TextStyle(fontSize: 28,
+       TextStyle(fontSize: 28,
+          color: color,
           fontWeight:
           FontWeight.bold),);
   }

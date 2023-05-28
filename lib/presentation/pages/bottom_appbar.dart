@@ -32,19 +32,19 @@ class _BoState extends State<BottomNavbar> {
         icon:const Icon(CupertinoIcons.person_alt_circle_fill),
         title: ("Profile"),
         activeColorPrimary: kPrimaryColor,
-        inactiveColorPrimary: iconColor,
+        inactiveColorPrimary: mainColor,
       ),
       PersistentBottomNavBarItem(
         icon:const Icon(CupertinoIcons.house_fill,),
         title: ("Home"),
         activeColorPrimary: kPrimaryColor,
-        inactiveColorPrimary: iconColor,
+        inactiveColorPrimary: mainColor,
       ),
       PersistentBottomNavBarItem(
         icon:const Icon(CupertinoIcons.bell_circle_fill,),
         title: ("Notification"),
         activeColorPrimary: kPrimaryColor,
-        inactiveColorPrimary: iconColor,
+        inactiveColorPrimary: mainColor,
       ),
     ];
   }

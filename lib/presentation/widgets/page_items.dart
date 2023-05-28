@@ -1,10 +1,15 @@
 
 import 'package:flutter/material.dart';
+import 'package:graduation/core/utils/assets.dart';
+import 'package:graduation/core/widgets/custom_text.dart';
+
+import '../../core/widgets/icons.dart';
 
 class PageItems extends StatelessWidget{
   const PageItems({super.key, this.title, this.image});
   final String? title;
   final String? image;
+
   
   @override
   Widget build(BuildContext context) {
@@ -21,6 +26,6 @@ class PageItems extends StatelessWidget{
       ],
     );
   }
-  
-  
+
 }
+

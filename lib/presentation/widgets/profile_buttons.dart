@@ -24,21 +24,21 @@ class EndButtons extends StatelessWidget{
                   style: TextStyle(fontSize: 20,
                       fontWeight: FontWeight.bold)),),
           ],),
-        ElevatedButton(onPressed:(){},
-            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),
-            child: const Text("Donation History",
-              style: TextStyle(fontSize: 20,
-                  fontWeight: FontWeight.bold),)),
-        Positioned(
-          left: 0,
-            right: 0,
-            child:
+        Container(
+          padding: const EdgeInsets.only(right: 0,left: 0),
+          child: ElevatedButton(onPressed:(){},
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),
+              child: const Text("Donation History",
+                style: TextStyle(fontSize: 20,
+                    fontWeight: FontWeight.bold),)),
+        ),
+
         ElevatedButton(onPressed:(){},
             style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),
             child: const Text("Requests",
               style: TextStyle(fontSize: 20,
                 fontWeight: FontWeight.bold,),))
-        )
+
 
       ],
     );

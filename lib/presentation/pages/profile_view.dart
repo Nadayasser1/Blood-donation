@@ -32,7 +32,7 @@ class ProfileView extends StatelessWidget{
                 ],),
                 IconButton(onPressed: (){},
                     icon:const Icon( Icons.edit,
-                      color:iconColor ,
+                      color:mainColor ,
                       size: 30,))
               ],
             ),

@@ -1,10 +1,9 @@
-
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/widgets/constants.dart';
 
 class CustomIndecator extends StatelessWidget{
-   const CustomIndecator({super.key, this.index,});
+    CustomIndecator({super.key, this.index,});
   final double? index ;
 
 
@@ -12,7 +11,7 @@ class CustomIndecator extends StatelessWidget{
   Widget build(BuildContext context) {
     return DotsIndicator(
         dotsCount: 3,
-        position: index! ,
+        position: index!,
         decorator: DotsDecorator(
           color: Colors.transparent,
           activeColor: kSecColor,
@@ -21,7 +20,6 @@ class CustomIndecator extends StatelessWidget{
           shape: const CircleBorder(side: BorderSide(color: kSecColor)),
           activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
         ),)
-
     ;
   }
 

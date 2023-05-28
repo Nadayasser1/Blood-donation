@@ -34,7 +34,9 @@ class YourRequests extends StatelessWidget{
                           fontWeight: FontWeight.bold,
                       fontSize: 25)),
                 ),
-                const NavigationIcon()
+                const NavigationIcon(
+                  icon: Icons.arrow_circle_right_outlined,
+                  color: Colors.black38,)
               ],
             ),
             const Divider(thickness: 2,),
@@ -50,7 +52,7 @@ class YourRequests extends StatelessWidget{
               leading:
               IconButton(onPressed: (){},
                   alignment: Alignment.topLeft,
-                  color: iconColor,
+                  color: mainColor,
                   iconSize: 30,
                   icon: const Icon(Icons.download_for_offline,)),
               trailing:const Icon(
@@ -65,7 +67,7 @@ class YourRequests extends StatelessWidget{
                 leading:
                 IconButton(onPressed: (){},
                     alignment: Alignment.topLeft,
-                    color: iconColor,
+                    color: mainColor,
                     iconSize: 30,
                     icon: const Icon(Icons.download_for_offline,)),
                 trailing:const Icon(
@@ -80,7 +82,7 @@ class YourRequests extends StatelessWidget{
                 leading:
                 IconButton(onPressed: (){},
                     alignment: Alignment.topLeft,
-                    color: iconColor,
+                    color: mainColor,
                     iconSize: 30,
                     icon: const Icon(Icons.download_for_offline,)),
                 trailing:const Icon(
@@ -95,7 +97,7 @@ class YourRequests extends StatelessWidget{
                 leading:
                 IconButton(onPressed: (){},
                     alignment: Alignment.topLeft,
-                    color: iconColor,
+                    color: mainColor,
                     iconSize: 30,
                     icon: const Icon(Icons.download_for_offline,)),
                 trailing:const Icon(
@@ -110,7 +112,7 @@ class YourRequests extends StatelessWidget{
                 leading:
                 IconButton(onPressed: (){},
                     alignment: Alignment.topLeft,
-                    color: iconColor,
+                    color: mainColor,
                     iconSize: 30,
                     icon: const Icon(Icons.download_for_offline,)),
                 trailing:const Icon(

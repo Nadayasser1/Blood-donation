@@ -71,11 +71,13 @@ class CustomTextFormField extends StatelessWidget {
   final String? message;
   bool? obscureText;
   Function(String)? onChanged;
+  Function(String)? onSubmitted;
 
    CustomTextFormField({Key? key,
      this.obscureText =false,
      this.suffexIcon,
      this.onChanged,
+     this.onSubmitted,
       this.text, this.message,}) : super(key: key);
 
 
@@ -85,15 +87,9 @@ class CustomTextFormField extends StatelessWidget {
       height: 60,
       child: TextFormField(
         validator: RequiredValidator(errorText: message!),
-
-        // validator:(value) {
-        //   if(value!.isEmpty){
-        //     return "Enter your email/password";
-        //   }
-        //   return null;
-        // },
         obscureText: obscureText!,
         onChanged: onChanged,
+        onFieldSubmitted: onSubmitted,
         decoration: InputDecoration(
           hintText:text ,
           filled: true,
@@ -117,52 +113,67 @@ class CustomTextFormField extends StatelessWidget {
 
 
 
-class TextField extends StatelessWidget {
-  final TextEditingController controller;
-  final TextInputType type;
+class CustomTextField extends StatelessWidget {
+  final TextEditingController? controller;
+  final TextInputType? type;
   final ValueChanged<String>? onSubmit;
   final ValueChanged<String>? onChange;
-  final String? Function(String?)? validator;
-  final String label;
-  final IconData prefix;
+  final String? Function(String?) validator;
+  final String? label;
+  final String? text;
+  final IconData? prefix;
   final IconData? suffix;
   final bool isPassword;
   final void Function()? suffixPress;
 
 
-  const TextField({
-    required Key key,
-    required this.controller,
-    required this.type,
+  const CustomTextField({
+     key,
+     this.controller,
+     this.type,
     this.onSubmit,
     this.onChange,
-    required this.validator,
-    required this.label,
-    required this.prefix,
+     required this.validator,
+    this.label,
+     this.prefix,
     this.suffix,
     this.isPassword = false,
-    this.suffixPress,
+    this.suffixPress, required this.text,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller:controller,
-      keyboardType: type,
-      onChanged: onChange,
-      onFieldSubmitted: onSubmit,
+        controller:controller,
+        keyboardType: type,
+        onChanged: onChange,
+        onFieldSubmitted: onSubmit,
+        validator: validator,
+        obscureText: isPassword,
+        decoration: InputDecoration(
+          labelText: label,
+          hintText: text ,
+          filled: true,
+          fillColor: kPrimaryColor,
+          prefixIcon: Icon(prefix),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(
+                color: Colors.black54,
+              )
+          ),
+            focusedBorder:  OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: const BorderSide(
+                color: kSecColor
+              )
+            ),
+          suffixIcon: suffix !=null?IconButton(
+            onPressed:suffixPress,
+            icon: Icon(suffix,),
+          ) :null ,
+        ),
 
-      validator: validator,
-      obscureText: isPassword,
-      decoration: InputDecoration(
-        labelText: label,
-        prefixIcon: Icon(prefix),
-        border: const OutlineInputBorder(),
-        suffixIcon: suffix !=null?IconButton(
-          onPressed:suffixPress,
-          icon: Icon(suffix),
-        ) :null ,
-      ),
     );
   }
 }

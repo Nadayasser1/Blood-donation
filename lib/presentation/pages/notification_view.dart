@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation/core/widgets/constants.dart';
 import '../../core/widgets/custom_text.dart';
 import '../widgets/custom_list_tile.dart';
 
@@ -13,7 +14,9 @@ class NotificationView extends StatelessWidget{
          const Positioned(
             top: 70,
             left: 25,
-            child: TopBarText(text: "Notifications",)
+            child: TopBarText(
+              text: "Notifications",
+            color: mainColor,)
         ),
         Positioned(
             top: 100,

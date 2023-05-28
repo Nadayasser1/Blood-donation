@@ -93,7 +93,7 @@ class YourDonations extends StatelessWidget{
                     leading:
                     IconButton(onPressed: (){},
                         alignment: Alignment.topLeft,
-                        color: iconColor,
+                        color: mainColor,
                         iconSize: 30,
                         icon: const Icon(Icons.download_for_offline,)),
                     trailing: const Text("Ibn Sina"),
@@ -105,7 +105,7 @@ class YourDonations extends StatelessWidget{
                     leading:
                     IconButton(onPressed: (){},
                         alignment: Alignment.topLeft,
-                        color: iconColor,
+                        color: mainColor,
                         iconSize: 30,
                         icon: const Icon(Icons.download_for_offline,)),
                     trailing: const Text("Ibn Sina"),
@@ -117,7 +117,7 @@ class YourDonations extends StatelessWidget{
                     leading:
                     IconButton(onPressed: (){},
                         alignment: Alignment.topLeft,
-                        color: iconColor,
+                        color: mainColor,
                         iconSize: 30,
                         icon: const Icon(Icons.download_for_offline,)),
                     trailing: const Text("Ibn Sina"),
@@ -129,7 +129,7 @@ class YourDonations extends StatelessWidget{
                     leading:
                     IconButton(onPressed: (){},
                         alignment: Alignment.topLeft,
-                        color: iconColor,
+                        color: mainColor,
                         iconSize: 30,
                         icon: const Icon(Icons.download_for_offline,)),
                     trailing: const Text("Ibn Sina"),
@@ -141,7 +141,7 @@ class YourDonations extends StatelessWidget{
                     leading:
                     IconButton(onPressed: (){},
                         alignment: Alignment.topLeft,
-                        color: iconColor,
+                        color: mainColor,
                         iconSize: 30,
                         icon: const Icon(Icons.download_for_offline,)),
                     trailing: const Text("Ibn Sina"),
