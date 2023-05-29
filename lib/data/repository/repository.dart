@@ -1,7 +1,7 @@
 
 
   import 'package:dartz/dartz.dart';
-import 'package:graduation/core/error/exception.dart';
+import 'package:graduation/core/error/error_handler.dart';
 import 'package:graduation/core/error/failure.dart';
 import 'package:graduation/data/data_source/remote_data_source/base_remote_data_source.dart';
 import 'package:graduation/domain/base_repository/base_repository.dart';
@@ -20,8 +20,8 @@ class Repository extends BaseRepository{
     try{
       final result= await baseRemoteDataSource.postLogin(parameters);
       return Right(result);
-    }on ServerException catch(failure){
-        return Left(ServerFailure(failure.errorModel.message));
+    }on ErrorHandler catch(error){
+        return Left(error.failure);
     }
   }
 

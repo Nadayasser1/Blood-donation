@@ -30,6 +30,8 @@ class LogInView extends StatelessWidget {
       listener: (context, state) {
         if(state is LoginSuccessState){
           Navigator.push(context, MaterialPageRoute(builder:(context)=>const ProfileView() ));
+        } else if(state is LoginErrorState){
+          print("kom hmada ${state.error}");
         }
 
       },
