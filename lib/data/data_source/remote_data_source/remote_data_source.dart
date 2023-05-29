@@ -8,13 +8,17 @@ import 'package:graduation/domain/use_cases/login_use_case.dart';
 class RemoteDataSource extends BaseRemoteDataSource{
 
   @override
-  Future<LoginModel> postLogin(LoginParameters parameters) async {
-    final response = await Dio().post("http://13.51.254.230:3000/login?email=${parameters.email}&password=${parameters.password}");
+  Future<LoginModel>  postLogin(LoginParameters parameters) async {
 
-    if (response.statusCode==200){
-      return LoginModel.fromJson(response.data);
-    }else{
-      throw ServerException(errorModel: ErrorModel.fromJson(response.data)); 
-    }
+      final response = await Dio().post("http://13.51.254.230:3000/login?email=${parameters.email}&password=${parameters.password}");
+
+      if (response.statusCode==200){
+        return LoginModel.fromJson(response.data);
+      }else{
+
+        throw ServerException(errorModel: ErrorModel.fromJson(response.data));
+      }
+
+
   }
 }

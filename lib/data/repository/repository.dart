@@ -16,11 +16,12 @@ class Repository extends BaseRepository{
   @override
   Future<Either<Failure, Login>> postLogin(LoginParameters parameters) async{
 
-    final result= await baseRemoteDataSource.postLogin(parameters);
+
     try{
+      final result= await baseRemoteDataSource.postLogin(parameters);
       return Right(result);
     }on ServerException catch(failure){
-      return left(ServerFailure(failure.errorModel.message));
+        return Left(ServerFailure(failure.errorModel.message));
     }
   }
 
