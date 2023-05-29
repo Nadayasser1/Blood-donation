@@ -5,8 +5,20 @@ import 'package:graduation/core/widgets/custom_text.dart';
 import 'constants.dart';
 
 class MainButton extends StatelessWidget{
-  const MainButton({super.key, this.text, this.onTap,});
+  const MainButton({
+  super.key,
+  this.text,
+  this.onTap,
+  this.onPressed,
+  this.onLongPress,
+  this.onHover,
+  this.onFocusChange,});
+
 final String? text;
+final VoidCallback? onPressed;
+final VoidCallback? onLongPress;
+final ValueChanged<bool>? onHover;
+final ValueChanged<bool>? onFocusChange;
 final VoidCallback? onTap;
 
 
