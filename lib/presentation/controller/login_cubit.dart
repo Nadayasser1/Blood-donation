@@ -16,13 +16,16 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> login(LoginParameters parameters) async{
     emit(LoginLoadingState());
+    print("login");
 
     final result = await loginUseCase(parameters);
+    print(result);
     result.fold((l){
       emit(LoginErrorState(
         l.message,
       ));
     }, (r) {
+      print("1");
       emit(LoginSuccessState(r));
     });
   }
