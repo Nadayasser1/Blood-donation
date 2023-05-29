@@ -34,7 +34,7 @@ class LogInView extends StatelessWidget {
         else if(state is LoginErrorState){
           AwesomeSnackbarContent(
               title: "Error!",
-              message: "something is wrong${state.error}",
+              message: state.error,
               contentType:ContentType.failure);
         }
 
