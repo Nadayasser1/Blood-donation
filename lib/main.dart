@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:graduation/core/bloc_observer/bloc_observer.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
 import 'package:graduation/presentation/pages/forget_password_view.dart';
+import 'package:graduation/presentation/pages/splash_view.dart';
 import 'core/widgets/constants.dart';
 import 'core/services/services_locator.dart';
 
@@ -27,8 +28,7 @@ class DonationApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light()
             .copyWith(scaffoldBackgroundColor: kPrimaryColor),
-        home: const ForgetPasswordView(
-        ),
+        home: const SplashView(),
 
       ),
     );

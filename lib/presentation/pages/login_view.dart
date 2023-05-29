@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,13 +30,15 @@ class LogInView extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if(state is LoginSuccessState){
-          Navigator.push(context, MaterialPageRoute(builder:(context)=>const ProfileView() ));
-        } else if(state is LoginErrorState){
-          print("kom hmada ${state.error}");
+          Get.to(()=>const ProfileView());}
+        else if(state is LoginErrorState){
+          AwesomeSnackbarContent(
+              title: "Error!",
+              message: "something is wrong${state.error}",
+              contentType:ContentType.failure);
         }
 
       },
-
       builder: (context, state) {
         return Scaffold(
             body:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NavigationIcon extends StatelessWidget{
-  const NavigationIcon({super.key});
+  const NavigationIcon({super.key, required IconData icon, required Color color});
 
 
   @override
