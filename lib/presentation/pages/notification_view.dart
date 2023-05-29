@@ -22,7 +22,7 @@ class NotificationView extends StatelessWidget{
             top: 100,
             child:
             ListView.separated(
-              itemCount: 10,
+              itemCount: 6,
               itemBuilder: (context,i){
                 return  const CustomListTile();
               },

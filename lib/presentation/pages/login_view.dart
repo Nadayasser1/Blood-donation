@@ -1,17 +1,16 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/utils/assets.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
-import 'package:graduation/presentation/pages/profile_view.dart';
 import 'package:graduation/presentation/pages/sign_up.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../core/widgets/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../controller/login_cubit.dart';
 import '../widgets/login_options.dart';
+import 'bottom_appbar.dart';
 import 'forget_password_view.dart';
 
 
@@ -30,12 +29,14 @@ class LogInView extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if(state is LoginSuccessState){
-          Get.to(()=>const ProfileView());}
+          Get.to(()=>const BottomNavbar());}
         else if(state is LoginErrorState){
-          AwesomeSnackbarContent(
-              title: "Error!",
-              message: "something is wrong${state.error}",
-              contentType:ContentType.failure);
+          ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+              content: Text(state.error),
+              backgroundColor: Colors.red,
+              shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+
+               ));
         }
 
       },
