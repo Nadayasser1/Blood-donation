@@ -1,4 +1,4 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -7,7 +7,6 @@ import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/presentation/pages/profile_view.dart';
 import 'package:graduation/presentation/pages/sign_up.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 import '../../core/widgets/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../controller/login_cubit.dart';
@@ -29,30 +28,20 @@ class LogInView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
-        if (state is LoginLoadingState) {
-          loading = true;
+        if(state is LoginSuccessState){
+          Navigator.push(context, MaterialPageRoute(builder:(context)=>const ProfileView() ));
+        } else if(state is LoginErrorState){
+          print("kom hmada ${state.error}");
         }
-        else if (state is LoginSuccessState) {
-          Get.to(() => const ProfileView());
-          loading = false;
-        }
-        else if (state is LoginErrorState) {
-          AwesomeSnackbarContent(
-              title: 'Warning',
-              message: "Something is wrong",
-              contentType: ContentType.failure);
-          loading = false;
-        }
+
       },
 
       builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: loading,
-          child: Scaffold(
-              body:
-              SingleChildScrollView(
-                physics: const FixedExtentScrollPhysics(),
-                padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+        return Scaffold(
+            body:
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
                 child: Form(
                   key: formState,
                   child: Column(
@@ -112,19 +101,23 @@ class LogInView extends StatelessWidget {
                             textAlign: TextAlign.left,)),
 
                       Center(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                if (formState.currentState!.validate()) {
-                                  BlocProvider.of<LoginCubit>(context).login(LoginParameters(email: emailController.text, password: passwordController.text))
-                                      ;
-                                }
-                              },
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      kSecColor)),
-                              child: const Text("Login",
-                                style: TextStyle(fontSize: 20,
-                                  fontWeight: FontWeight.bold,),)),
+                          child:ConditionalBuilder(
+                            condition: state is! LoginLoadingState,
+                            builder: (context)=>ElevatedButton(
+                                onPressed: () {
+                                  if (formState.currentState!.validate()) {
+                                    BlocProvider.of<LoginCubit>(context).login(LoginParameters(email: emailController.text, password: passwordController.text))
+                                    ;
+                                  }
+                                },
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        kSecColor)),
+                                child: const Text("Login",
+                                  style: TextStyle(fontSize: 20,
+                                    fontWeight: FontWeight.bold,),)),
+                            fallback: (context)=>const CircularProgressIndicator(),
+                          ),
                         ),
 
                       Center(
@@ -140,12 +133,13 @@ class LogInView extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
-                ,)
-          ),
+                ),
+              ),
+            )
         );
       },
     );
   }
 
 }
+
