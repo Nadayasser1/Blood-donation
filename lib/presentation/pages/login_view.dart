@@ -32,8 +32,9 @@ class LogInView extends StatelessWidget {
         if(state is LoginSuccessState){
           Get.to(()=>const BottomNavbar());}
         else if(state is LoginErrorState){
-          Toastmessage(context, (state.error), Colors.red);
+          Toastmessage(context, state.error, Colors.red);
         }
+
       },
       builder: (context, state) {
         return Scaffold(
@@ -57,7 +58,7 @@ class LogInView extends StatelessWidget {
                             if(value!.isEmpty){
                               return "please enter your email";
                             }
-                            return null!;
+                            return null;
                           },
                           prefix: MdiIcons.email,
                           label: "Email",
@@ -75,7 +76,7 @@ class LogInView extends StatelessWidget {
                             if(value!.isEmpty){
                               return "please enter your password";
                             }
-                            return null!;
+                            return null;
                           },
                           prefix: MdiIcons.key,
                           suffix: LoginCubit.get(context).suffixIcon,

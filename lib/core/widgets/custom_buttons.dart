@@ -128,12 +128,12 @@ class CustomTextFormField extends StatelessWidget {
 class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? type;
-  final ValueChanged<String> onSubmit;
+  final ValueChanged<String>? onSubmit;
   final ValueChanged<String>? onChange;
-  final String Function(String?) validator;
-  final String label;
-  final String text;
-  final IconData prefix;
+  final String? Function(String?) validator;
+  final String? label;
+  final String? text;
+  final IconData? prefix;
   final IconData? suffix;
   final bool isPassword;
   final void Function()? suffixPress;
