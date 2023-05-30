@@ -2,6 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:graduation/core/functions/toast_message.dart';
 import 'package:graduation/core/utils/assets.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/presentation/pages/sign_up.dart';
@@ -31,14 +32,8 @@ class LogInView extends StatelessWidget {
         if(state is LoginSuccessState){
           Get.to(()=>const BottomNavbar());}
         else if(state is LoginErrorState){
-          ScaffoldMessenger.of(context).showSnackBar( SnackBar(
-              content: Text(state.error),
-              backgroundColor: Colors.red,
-              shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-
-               ));
+          Toastmessage(context, (state.error), Colors.red);
         }
-
       },
       builder: (context, state) {
         return Scaffold(
@@ -62,7 +57,7 @@ class LogInView extends StatelessWidget {
                             if(value!.isEmpty){
                               return "please enter your email";
                             }
-                            return null;
+                            return null!;
                           },
                           prefix: MdiIcons.email,
                           label: "Email",
@@ -80,7 +75,7 @@ class LogInView extends StatelessWidget {
                             if(value!.isEmpty){
                               return "please enter your password";
                             }
-                            return null;
+                            return null!;
                           },
                           prefix: MdiIcons.key,
                           suffix: LoginCubit.get(context).suffixIcon,

@@ -56,9 +56,9 @@ class SignUpView extends StatelessWidget{
                 text: "********",
               ),
               const SizedBox(height: 5),
-              CustomTextFormField(
-                text: "Confirm Password",
-              ),
+              // CustomTextFormField(
+              //   text: "Confirm Password",
+              // ),
               const SizedBox(height: 5),
               ElevatedButton(onPressed:(){},
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),

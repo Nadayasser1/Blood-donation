@@ -20,14 +20,16 @@ class ForgetPasswordView extends StatelessWidget{
                  label: "Please enter your register email",
                ),
                CustomTextField(
+                 label: "ddd",
                  validator: (value){
                    if(value!.isEmpty){
                      return "please enter your email";
                    }
-                   return null;
+                   return null!;
                  },
                  text:"example@gmail.com" ,
-                 prefix: Icons.mail_outline,),
+                 prefix: Icons.mail_outline,
+                 onSubmit: (String value) {  },),
                const SizedBox(height: 20,),
                ElevatedButton(onPressed:(){},
                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),
