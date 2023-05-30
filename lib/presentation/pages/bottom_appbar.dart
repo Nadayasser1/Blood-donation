@@ -15,7 +15,7 @@ class BottomNavbar extends StatefulWidget {
 }
 
 class _BoState extends State<BottomNavbar> {
-  final _bottomNavbarController=PersistentTabController();
+  final _bottomNavbarController=PersistentTabController(initialIndex: 1);
 
   List<Widget> _buildScreens() {
     return [
@@ -33,18 +33,23 @@ class _BoState extends State<BottomNavbar> {
         title: ("Profile"),
         activeColorPrimary: kPrimaryColor,
         inactiveColorPrimary: mainColor,
+
       ),
       PersistentBottomNavBarItem(
         icon:const Icon(CupertinoIcons.house_fill,),
         title: ("Home"),
         activeColorPrimary: kPrimaryColor,
         inactiveColorPrimary: mainColor,
+        // activeColorSecondary: kSecColor,
+        // iconSize: 35,
+
       ),
       PersistentBottomNavBarItem(
         icon:const Icon(CupertinoIcons.bell_circle_fill,),
         title: ("Notification"),
         activeColorPrimary: kPrimaryColor,
         inactiveColorPrimary: mainColor,
+
       ),
     ];
   }
@@ -66,7 +71,7 @@ class _BoState extends State<BottomNavbar> {
         hideNavigationBarWhenKeyboardShows: true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
         decoration: NavBarDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          colorBehindNavBar: kSecColor,
+          colorBehindNavBar: kPrimaryColor,
         ),
         popAllScreensOnTapOfSelectedTab: true,
         popActionScreens: PopActionScreensType.all,
@@ -77,7 +82,7 @@ class _BoState extends State<BottomNavbar> {
         screenTransitionAnimation:const ScreenTransitionAnimation( // Screen transition animation on change of selected tab.
           animateTabTransition: true,
           curve: Curves.ease,
-          duration: Duration(milliseconds: 200),
+          duration: Duration(milliseconds:500),
         ),
         navBarStyle: NavBarStyle.style1, // Choose the nav bar style with this property.
       ),
