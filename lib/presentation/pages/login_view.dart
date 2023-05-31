@@ -78,7 +78,7 @@ class LogInView extends StatelessWidget {
                             }
                             return null;
                           },
-                          prefix: MdiIcons.key,
+                          prefix:Icons.key,
                           suffix: LoginCubit.get(context).suffixIcon,
                           suffixPress: BlocProvider.of<LoginCubit>(context).loginPasswordShow,
                           label: "Password",
@@ -122,7 +122,7 @@ class LogInView extends StatelessWidget {
 
                       Center(
                         child: TextButton(onPressed: () {
-                          Get.to(() => const SignUpView());
+                          Get.to(() =>  SignUpView());
                         },
                             style: const ButtonStyle(
                                 alignment: Alignment.centerLeft),

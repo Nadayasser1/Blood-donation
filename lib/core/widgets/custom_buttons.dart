@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
-import 'package:graduation/core/widgets/custom_text.dart';
 import 'constants.dart';
 
 class MainButton extends StatelessWidget{
@@ -27,7 +25,7 @@ final VoidCallback? onTap;
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 35,
+        height: 45,
         width: 90,
         decoration: BoxDecoration(
           color: CupertinoColors.systemGroupedBackground,
@@ -37,7 +35,7 @@ final VoidCallback? onTap;
           child: Text(
             text!,
             style:const TextStyle(
-              fontSize: 15,
+              fontSize: 20,
               color: kTextColor,
             ),
             textAlign: TextAlign.left,
@@ -49,76 +47,6 @@ final VoidCallback? onTap;
   }
 
 }
-
-class DataEntryfield extends StatelessWidget{
-  const DataEntryfield({super.key, this.label, this.text, this.inputType});
-  final String? label;
-  final String? text;
-  final TextInputType? inputType;
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TitleText(
-          label: label,
-        ),
-        const SizedBox(height: 5,),
-        CustomTextFormField(
-          text: text,
-        )
-
-      ],
-    );
-  }
-
-}
-
-
-class CustomTextFormField extends StatelessWidget {
-  final Widget? suffexIcon;
-  final String? text;
-  final String? message;
-  bool? obscureText;
-  Function(String)? onChanged;
-  Function(String)? onSubmitted;
-
-   CustomTextFormField({Key? key,
-     this.obscureText =false,
-     this.suffexIcon,
-     this.onChanged,
-     this.onSubmitted,
-      this.text, this.message,}) : super(key: key);
-
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
-      child: TextFormField(
-        validator: RequiredValidator(errorText: message!),
-        obscureText: obscureText!,
-        onChanged: onChanged,
-        onFieldSubmitted: onSubmitted,
-        decoration: InputDecoration(
-          hintText:text ,
-          filled: true,
-          fillColor: kPrimaryColor,
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
-                color: Colors.black54,
-              )),
-
-        ),
-
-      ),
-    );
-  }
-}
-
 
 
 
@@ -163,6 +91,7 @@ class CustomTextField extends StatelessWidget {
         validator: validator,
         obscureText: isPassword,
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.all(0),
           labelText: label,
           hintText: text ,
           filled: true,

@@ -10,15 +10,10 @@ class TitleText extends StatelessWidget{
     return Text(label!,
       style:  TextStyle(
           color: color,
-          fontSize: 20),
-          textHeightBehavior:
-      const TextHeightBehavior(
-          applyHeightToFirstAscent: false),
-      textAlign: TextAlign.center,
-    )
-    ;
-  }
+          fontSize: 20));
 
+
+  }
 }
 
 class SignOptionsText extends StatelessWidget{

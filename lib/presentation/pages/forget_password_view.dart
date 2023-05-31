@@ -25,7 +25,7 @@ class ForgetPasswordView extends StatelessWidget{
                    if(value!.isEmpty){
                      return "please enter your email";
                    }
-                   return null!;
+                   return null;
                  },
                  text:"example@gmail.com" ,
                  prefix: Icons.mail_outline,
