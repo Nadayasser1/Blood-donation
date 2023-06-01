@@ -91,7 +91,7 @@ class CustomTextField extends StatelessWidget {
         validator: validator,
         obscureText: isPassword,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(0),
+          contentPadding: const EdgeInsets.all(0),
           labelText: label,
           hintText: text ,
           filled: true,

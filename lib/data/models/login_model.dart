@@ -1,4 +1,4 @@
-import 'package:graduation/data/models/user_data_model.dart';
+import 'package:graduation/data/models/login_user_data_model.dart';
 import 'package:graduation/domain/entities/login.dart';
 
 class LoginModel extends Login {
@@ -8,6 +8,6 @@ class LoginModel extends Login {
 
   factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
         message: json["message"],
-        user: UserDataModel.fromJson(json["user"]),
+        user: LoginUserDataModel.fromJson(json["user"]),
       );
 }

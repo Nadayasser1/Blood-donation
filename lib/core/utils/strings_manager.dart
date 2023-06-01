@@ -1,3 +1,6 @@
+
+
+/// error messages
 class AppStrings {
   // error handler
   static const String success = "Success";

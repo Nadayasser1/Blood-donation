@@ -21,7 +21,8 @@ class SignUpView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-///dddddddddddddddddddddddd
+      
+
       body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 20),
@@ -69,7 +70,7 @@ class SignUpView extends StatelessWidget{
                     prefix: Icons.email,
                     type: TextInputType.emailAddress,
                     validator: (value){
-                      final emailCheck =RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                      final emailCheck =RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
                       if(value!.isEmpty){
                         return "Enter your email address";
                       }
