@@ -1,5 +1,5 @@
 part of 'login_cubit.dart';
-@immutable
+
 abstract class LoginState {}
 
 
@@ -9,9 +9,9 @@ class LoginLoadingState extends LoginState{
 }
 
 class LoginSuccessState extends LoginState{
-  final Login loginDat;
+  final Login loginData;
 
-  LoginSuccessState(this.loginDat);
+  LoginSuccessState(this.loginData);
 }
 
 class LoginErrorState extends LoginState{
