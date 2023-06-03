@@ -38,7 +38,12 @@ class RemoteDataSource extends BaseRemoteDataSource{
   @override
   Future<RegisterModel> postRegister(RegisterParameters parameters) async{
     try{
-      final response = await Dio().post(AppConstance.registerPath(id: parameters.id, name:  parameters.name, email:  parameters.email, password:  parameters.password, phone:  parameters.phone, gender:  parameters.gender));
+      BaseOptions options =  BaseOptions(
+          receiveDataWhenStatusError: true,
+          connectTimeout: const Duration(seconds: 60), // 60 seconds
+          receiveTimeout: const Duration(seconds: 60), // 60 seconds
+      );
+      final response = await Dio(options).post(AppConstance.registerPath(id: parameters.id, name:  parameters.name, email:  parameters.email, password:  parameters.password, phone:  parameters.phone, gender:  parameters.gender));
 
       if (response.statusCode==200){
         return RegisterModel.fromJson(response.data);
@@ -49,7 +54,7 @@ class RemoteDataSource extends BaseRemoteDataSource{
 
     }catch (error){
       if(error is DioError){
-
+        print(error);
         throw ErrorHandler.handle(error);
 
       }else{

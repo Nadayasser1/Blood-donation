@@ -1,4 +1,6 @@
 
+// ignore_for_file: constant_identifier_names
+
 import 'package:dio/dio.dart';
 import 'package:graduation/core/error/failure.dart';
 import 'package:graduation/core/utils/strings_manager.dart';
@@ -36,7 +38,7 @@ class ErrorHandler implements Exception {
     switch (error.type) {
       case DioErrorType.connectionTimeout:
         return DataSource.CONNECT_TIMEOUT
-            .getFailure(message: error.response!.data['message']);
+            .getFailure(message: error.response!=null? error.response!.data['message']:ResponseMessage.CONNECT_TIMEOUT);
       case DioErrorType.sendTimeout:
         return DataSource.SEND_TIMEOUT
             .getFailure(message: error.response!.data['message']);
@@ -110,7 +112,7 @@ extension DataSourceExtension on DataSource {
         );
       case DataSource.CONNECT_TIMEOUT:
         return Failure(
-          message ?? ResponseMessage.CONNECT_TIMEOUT,
+          message! ,
         );
       case DataSource.CANCEL:
         return Failure(
