@@ -50,8 +50,8 @@ class RemoteDataSource extends BaseRemoteDataSource{
     }catch (error){
       if(error is DioError){
 
-
         throw ErrorHandler.handle(error);
+
       }else{
         throw Exception();
       }

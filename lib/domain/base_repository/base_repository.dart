@@ -9,5 +9,6 @@ import '../use_cases/register_use_case.dart';
 abstract  class BaseRepository{
 
   Future<Either<Failure,Login>> postLogin(LoginParameters parameters);
+
   Future<Either<Failure,Register>> postRegister (RegisterParameters parameters);
 }

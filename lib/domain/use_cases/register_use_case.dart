@@ -24,9 +24,6 @@ class RegisterUseCase extends BaseUseCase<Register,RegisterParameters>{
 
 
 
-
-
-
 class RegisterParameters extends Equatable{
   final String id;
   final String name;
