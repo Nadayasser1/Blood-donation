@@ -18,6 +18,6 @@ class RegisterErrorState extends RegisterState {
   RegisterErrorState(this.error);
 }
 
-
+class RegisterPasswordState extends RegisterState {}
 
 

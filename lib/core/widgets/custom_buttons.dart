@@ -10,12 +10,13 @@ class MainButton extends StatelessWidget{
   this.onPressed,
   this.onLongPress,
   this.onHover,
-  this.onFocusChange,});
+  this.onFocusChange, this.onSelected, });
 
 final String? text;
 final VoidCallback? onPressed;
 final VoidCallback? onLongPress;
 final ValueChanged<bool>? onHover;
+final ValueChanged<bool>? onSelected;
 final ValueChanged<bool>? onFocusChange;
 final VoidCallback? onTap;
 
@@ -26,7 +27,7 @@ final VoidCallback? onTap;
       onTap: onTap,
       child: Container(
         height: 45,
-        width: 90,
+        width: 85,
         decoration: BoxDecoration(
           color: CupertinoColors.systemGroupedBackground,
           borderRadius: BorderRadius.circular(15),
@@ -35,7 +36,7 @@ final VoidCallback? onTap;
           child: Text(
             text!,
             style:const TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               color: kTextColor,
             ),
             textAlign: TextAlign.left,

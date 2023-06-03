@@ -1,5 +1,3 @@
-
-
 class AppConstance {
 
   static  const String baseUrl ="http://13.51.254.230:3000";

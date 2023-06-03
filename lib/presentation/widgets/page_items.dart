@@ -1,9 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:graduation/core/utils/assets.dart';
-import 'package:graduation/core/widgets/custom_text.dart';
-
-import '../../core/widgets/icons.dart';
 
 class PageItems extends StatelessWidget{
   const PageItems({super.key, this.title, this.image});

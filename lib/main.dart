@@ -3,16 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/bloc_observer/bloc_observer.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
-import 'package:graduation/presentation/pages/login_view.dart';
+import 'package:graduation/presentation/controller/register_cubit.dart';
 import 'package:graduation/presentation/pages/sign_up.dart';
-import 'package:graduation/presentation/pages/splash_view.dart';
 import 'core/widgets/constants.dart';
 import 'core/services/services_locator.dart';
 
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer=MyBlocObserver();
+  Bloc.observer = MyBlocObserver();
   ServicesLocator().init();
   runApp(const DonationApp());
 }
@@ -21,15 +20,22 @@ class DonationApp extends StatelessWidget {
   const DonationApp({super.key});
 
 
-   @override
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider<LoginCubit>(
-        create:(context)=> sl<LoginCubit>() ,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LoginCubit>(
+          create: (context) => sl<LoginCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<RegisterCubit>(),
+        ),
+      ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light()
             .copyWith(scaffoldBackgroundColor: kPrimaryColor),
-        home:  SignUpView(),
+        home: SignUpView(),
 
       ),
     );

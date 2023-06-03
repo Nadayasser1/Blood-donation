@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/constants.dart';
 
 class CustomIndecator extends StatelessWidget{
-    CustomIndecator({super.key, this.index,});
+    const CustomIndecator({super.key, this.index,});
   final double? index ;
 
 

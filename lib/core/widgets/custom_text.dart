@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 
 class TitleText extends StatelessWidget{
-  const TitleText({super.key, this.label, this.color});
+  const TitleText({super.key, this.label, this.color, this.size});
   final String? label;
   final Color? color;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
     return Text(label!,
       style:  TextStyle(
           color: color,
-          fontSize: 20));
+          fontSize: size));
 
 
   }
 }
+
 
 class SignOptionsText extends StatelessWidget{
   const SignOptionsText({super.key, this.title});

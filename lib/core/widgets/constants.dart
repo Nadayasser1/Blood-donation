@@ -8,6 +8,7 @@
  const kTranstionDuration = Duration(milliseconds: 250);
  const kGtSectraFine = 'GT Sectra Fine';
  const kTextColor = Colors.black54;
+ const hintTextColor = Colors.black45;
 
 
 
