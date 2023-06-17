@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:graduation/presentation/widgets/sliding_image.dart';
-import '../pages/onboarding_viwe.dart';
 
 class SplashView extends StatefulWidget {
    const SplashView({Key? key}) : super(key: key);
@@ -18,7 +16,7 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
   void initState() {
     super.initState();
     initSlidingAnimation();
-    goToNextView();
+    // goToNextView();
 
   }
   @override
@@ -50,11 +48,11 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
     animationController.forward();
   }
 
-  void goToNextView() {
-    Future.delayed(const Duration(seconds: 4),(){
-      Get.to(()=>const OnBoarding(),transition: Transition.rightToLeft);
-    });
-  }
+  // void goToNextView() {
+  //   Future.delayed(const Duration(seconds: 4),(){
+  //     Get.to(()=>const OnBoarding(),transition: Transition.rightToLeft);
+  //   });
+  // }
 
 }
 

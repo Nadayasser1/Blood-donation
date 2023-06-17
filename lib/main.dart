@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/bloc_observer/bloc_observer.dart';
-import 'package:graduation/data/data_source/remote_data_source/dio_helper.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
 import 'package:graduation/presentation/controller/register_cubit.dart';
-import 'core/widgets/constants.dart';
+import 'package:graduation/presentation/pages/sign_up.dart';
 import 'core/services/services_locator.dart';
-import 'presentation/pages/login_view.dart';
+import 'core/utils/constants.dart';
 
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   ServicesLocator().init();
-  DioHelper.init();
   runApp(const DonationApp());
 }
 
@@ -37,7 +35,7 @@ class DonationApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light()
             .copyWith(scaffoldBackgroundColor: kPrimaryColor),
-        home: LogInView(),
+        home: SignUpView(),
 
       ),
     );

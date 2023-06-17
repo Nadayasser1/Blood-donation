@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/utils/assets.dart';
-import '../../core/widgets/constants.dart';
+import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_text.dart';
 import '../../core/widgets/icons.dart';
 

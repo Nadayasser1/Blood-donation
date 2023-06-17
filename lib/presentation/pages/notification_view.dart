@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation/core/widgets/constants.dart';
+import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_text.dart';
 import '../widgets/custom_list_tile.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:graduation/core/widgets/constants.dart';
+import '../../core/utils/constants.dart';
 import '../widgets/profile_buttons.dart';
 import '../widgets/user_cards.dart';
 import '../widgets/user_info.dart';

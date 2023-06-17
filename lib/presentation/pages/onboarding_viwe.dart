@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../core/widgets/constants.dart';
+import '../../core/utils/constants.dart';
 import '../widgets/dot_indecator.dart';
 import '../widgets/page_view.dart';
 import 'login_view.dart';

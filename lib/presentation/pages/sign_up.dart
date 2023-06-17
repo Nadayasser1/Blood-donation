@@ -6,9 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/presentation/controller/register_cubit.dart';
 import 'package:graduation/presentation/pages/login_view.dart';
+import 'package:group_button/group_button.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../core/functions/toast_message.dart';
-import '../../core/widgets/constants.dart';
+import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../../core/widgets/custom_text.dart';
 import '../../domain/use_cases/register_use_case.dart';
@@ -25,7 +26,7 @@ class SignUpView extends StatelessWidget{
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var idController = TextEditingController();
- // var genderController;
+  var genderController;
    GlobalKey<FormState> formState = GlobalKey();
 
 
@@ -66,43 +67,27 @@ class SignUpView extends StatelessWidget{
                       }
                       return null;
                     },
-                      // onSubmit:(value){
-                      //   if(formState.currentState!.validate()){
-                      //     RegisterCubit.get(context).register(
-                      //         RegisterParameters(
-                      //             idController.text,
-                      //             nameController.text,
-                      //             emailController.text,
-                      //             passwordController.text,
-                      //             phoneController.text,
-                      //             genderController.text));
-                      //   } }
                   ),
 
                   const SizedBox(height:20),
-                  // Row(
-                  //
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children:  [
-                  //     const TitleText(
-                  //       size: 16,
-                  //       label: "Gender",
-                  //     ),
-                  //     GroupButton(
-                  //
-                  //       controller:genderController ,
-                  //         buttons: const ["Male","Female"],
-                  //        onSelected: (value, index, isSelected){})
-                  //     // MainButton(
-                  //     //   onTap: (){},
-                  //     //   text: "Male",
-                  //     // ),
-                  //     // MainButton(
-                  //     //   onTap: () {},
-                  //     //   text: "female",
-                  //     // ),
-                  //   ],
-                  // ),
+                  Row(
+
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children:  [
+                      const TitleText(
+                        size: 16,
+                        label: "Gender",
+                      ),
+                      GroupButton(
+                        options: GroupButtonOptions(
+                            selectedColor: kSecColor,
+                            borderRadius: BorderRadius.circular(10),
+                            buttonWidth: 90),
+                        controller:genderController ,
+                          buttons: const ["Male","Female"],
+                         onSelected: (value, index, isSelected){})
+                    ],
+                  ),
                   const SizedBox(height: 10),
                   const TitleText(
                     size: 16,
@@ -122,18 +107,6 @@ class SignUpView extends StatelessWidget{
                         return "Please enter a valid email";
                       }
                       return null;},
-                    // onSubmit:(value){
-                    //   if(formState.currentState!.validate()){
-                    //     RegisterCubit.get(context).register(
-                    //         RegisterParameters(
-                    //             idController.text,
-                    //             nameController.text,
-                    //             emailController.text,
-                    //             passwordController.text,
-                    //             phoneController.text,
-                    //             genderController.text));
-                    //   }
-                    // },
                     ),
                   const SizedBox(height: 10),
                   const TitleText(
@@ -156,18 +129,6 @@ class SignUpView extends StatelessWidget{
                         return 'Password must be at least 8 characters';}
 
                       return null;},
-                    // onSubmit:(value){
-                    //   if(formState.currentState!.validate()){
-                    //     RegisterCubit.get(context).register(
-                    //         RegisterParameters(
-                    //             idController.text,
-                    //             nameController.text,
-                    //             emailController.text,
-                    //             passwordController.text,
-                    //             phoneController.text,
-                    //             genderController.text));
-                    //   }
-                    // },
                   ),
                   const SizedBox(height: 10),
                   CustomTextField(
@@ -185,18 +146,6 @@ class SignUpView extends StatelessWidget{
                         return "password don't match";
                       }
                       return null;},
-                    // onSubmit:(value){
-                    //   if(formState.currentState!.validate()){
-                    //     RegisterCubit.get(context).register(
-                    //         RegisterParameters(
-                    //             idController.text,
-                    //             nameController.text,
-                    //             emailController.text,
-                    //             passwordController.text,
-                    //             phoneController.text,
-                    //             genderController.text));
-                    //   }
-                    //  },
                   ),
                   const SizedBox(height: 10),
                   const TitleText(
@@ -216,18 +165,6 @@ class SignUpView extends StatelessWidget{
                         return "Please enter a valid phone number";
                       }
                       return null;},
-                     // onSubmit: (value){
-                     //  if(formState.currentState!.validate()){
-                     //    RegisterCubit.get(context).register(
-                     //        RegisterParameters(
-                     //            idController.text,
-                     //            nameController.text,
-                     //            emailController.text,
-                     //            passwordController.text,
-                     //            phoneController.text,
-                     //            genderController.text));
-                     //  }
-                     // },
                   ),
                   const SizedBox(height: 10),
                   const TitleText(
@@ -249,18 +186,7 @@ class SignUpView extends StatelessWidget{
                       }
 
                       return null;},
-                     // onSubmit: (value){
-                     //  if(formState.currentState!.validate()){
-                     //    RegisterCubit.get(context).register(
-                     //        RegisterParameters(
-                     //            idController.text,
-                     //            nameController.text,
-                     //            emailController.text,
-                     //            passwordController.text,
-                     //            phoneController.text,
-                     //            genderController.text));
-                     //  }
-                     // },
+
                   ),
                   const SizedBox(height: 5),
                   Center(

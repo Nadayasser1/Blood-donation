@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/presentation/widgets/forgot_password_item.dart';
-import '../../core/widgets/constants.dart';
+import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
 
 class ForgetPasswordView extends StatelessWidget{

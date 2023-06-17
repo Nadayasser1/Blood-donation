@@ -9,7 +9,7 @@ import 'package:graduation/core/utils/assets.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/presentation/pages/sign_up.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import '../../core/widgets/constants.dart';
+import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../controller/login_cubit.dart';
 import '../widgets/login_options.dart';

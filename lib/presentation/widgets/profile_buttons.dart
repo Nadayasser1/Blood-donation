@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../../core/widgets/constants.dart';
+import '../../core/utils/constants.dart';
 
 class EndButtons extends StatelessWidget{
   const EndButtons({super.key});

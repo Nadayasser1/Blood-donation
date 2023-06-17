@@ -1,6 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/widgets/constants.dart';
+import '../../core/utils/constants.dart';
 
 class CustomIndecator extends StatelessWidget{
     const CustomIndecator({super.key, this.index,});

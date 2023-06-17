@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import '../../core/utils/constants.dart';
 
-import '../../../../../../core/widgets/constants.dart';
 
 
 class HomeCards extends StatelessWidget{

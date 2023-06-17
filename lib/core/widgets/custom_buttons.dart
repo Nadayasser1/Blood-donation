@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../utils/constants.dart';
 
 class MainButton extends StatelessWidget{
   const MainButton({
@@ -91,13 +91,14 @@ class CustomTextField extends StatelessWidget {
         onFieldSubmitted: onSubmit,
         validator: validator,
         obscureText: isPassword,
+        cursorColor: kSecColor,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(0),
           labelText: label,
           hintText: text ,
           filled: true,
           fillColor: kPrimaryColor,
-          prefixIcon: Icon(prefix),
+          prefixIcon: Icon(prefix, ),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(
