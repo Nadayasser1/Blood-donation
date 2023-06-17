@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:graduation/core/error/error_handler.dart';
 import 'package:graduation/data/data_source/remote_data_source/base_remote_data_source.dart';
+import 'package:graduation/data/data_source/remote_data_source/dio_helper.dart';
 import 'package:graduation/data/models/login_model.dart';
 import 'package:graduation/data/models/register_model.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
@@ -14,7 +15,7 @@ class RemoteDataSource extends BaseRemoteDataSource{
   Future<LoginModel>  postLogin(LoginParameters parameters) async {
 
       try{
-        final response = await Dio().post(AppConstance.loginPath(email: parameters.email, password: parameters.password));
+        final response = await DioHelper.postData(path: AppConstance.loginPath(email:parameters.email, password: parameters.password));
 
         if (response.statusCode==200){
           return LoginModel.fromJson(response.data);
@@ -38,12 +39,8 @@ class RemoteDataSource extends BaseRemoteDataSource{
   @override
   Future<RegisterModel> postRegister(RegisterParameters parameters) async{
     try{
-      BaseOptions options =  BaseOptions(
-          receiveDataWhenStatusError: true,
-          connectTimeout: const Duration(seconds: 60), // 60 seconds
-          receiveTimeout: const Duration(seconds: 60), // 60 seconds
-      );
-      final response = await Dio(options).post(AppConstance.registerPath(id: parameters.id, name:  parameters.name, email:  parameters.email, password:  parameters.password, phone:  parameters.phone, gender:  parameters.gender));
+
+      final response = await DioHelper.postData(path:AppConstance.registerPath(id: parameters.id, name:  parameters.name, email:  parameters.email, password:  parameters.password, phone:  parameters.phone, gender:  parameters.gender), );
 
       if (response.statusCode==200){
         return RegisterModel.fromJson(response.data);
@@ -54,7 +51,7 @@ class RemoteDataSource extends BaseRemoteDataSource{
 
     }catch (error){
       if(error is DioError){
-        print(error);
+
         throw ErrorHandler.handle(error);
 
       }else{
