@@ -38,7 +38,7 @@ class DonationApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light()
             .copyWith(scaffoldBackgroundColor: kPrimaryColor),
-        home:  const HomeView(),
+        home:   SignUpView(),
 
       ),
     );

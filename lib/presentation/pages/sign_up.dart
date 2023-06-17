@@ -122,22 +122,25 @@ class SignUpView extends StatelessWidget{
                     prefix: Icons.key,
                     type: TextInputType.visiblePassword,
                     validator: (value){
+                      final passCheck = RegExp(r'^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@\$#])[a-zA-Z\d@\$#]{8,}$');
                       if(value!.isEmpty){
                         return "Enter your Password";
                       }
                        else if (value.length < 8) {
                         return 'Password must be at least 8 characters';}
-
+                       else if (!passCheck.hasMatch(value)){
+                         return "Your password must be strong";
+                      }
                       return null;},
                   ),
                   const SizedBox(height: 10),
                   CustomTextField(
                     type:TextInputType.visiblePassword,
                     text: "Re-enter password",
-                    isPassword: RegisterCubit.get(context).isPassword,
+                    isPassword: RegisterCubit.get(context).reEnterPassword,
                     prefix: Icons.key,
-                    suffix: RegisterCubit.get(context).suffixIcon,
-                    suffixPress: BlocProvider.of<RegisterCubit>(context).registerPasswordShow,
+                    suffix: RegisterCubit.get(context).reSuffixIcon,
+                    suffixPress: BlocProvider.of<RegisterCubit>(context).reEnterPasswordShow,
                     validator: (value){
                       if(value!.isEmpty){
                         return "Re-enter your password";
