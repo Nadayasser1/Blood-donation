@@ -79,6 +79,7 @@ flutter:
      - assets/images/p3-removebg-preview.png
      - assets/images/logo2-removebg-preview.png
      - assets/images/images__3_-removebg-preview.png
+     - assets/images/avatar-removebg-preview.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

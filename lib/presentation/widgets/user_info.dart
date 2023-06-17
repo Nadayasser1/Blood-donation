@@ -16,9 +16,12 @@ class UserInfo extends StatelessWidget{
             children:[
               Text(label!,
               style: const TextStyle(
+                fontWeight: FontWeight.bold,
                 fontSize: 20
               ),),
-              Text(text!)
+              Text(text!,style: const TextStyle(
+                fontSize: 16
+              ),)
             ],
           ),
         ],
