@@ -27,7 +27,6 @@ class SignUpView extends StatelessWidget{
   var phoneController = TextEditingController();
   var idController = TextEditingController();
    final   genderController = GroupButtonController();
-    String? _gender ;
    GlobalKey<FormState> formState = GlobalKey();
 
 
@@ -88,16 +87,6 @@ class SignUpView extends StatelessWidget{
                         controller: genderController ,
                           buttons: const ["Male","Female"],
                          onSelected: (value,index, isSelected){
-                          _gender = value;
-                          if(value == "Male"){
-                            _gender = "1";
-                            // print(_gender);
-                          }
-                          else if(value == "Female"){
-                            _gender = "2";
-                            // print(_gender);
-
-                          }
                          })
                     ],
                   ),
@@ -171,7 +160,6 @@ class SignUpView extends StatelessWidget{
                   ),
                   CustomTextField(
                     text: "Enter your phone number",
-                    controller: phoneController,
                     prefix: Icons.phone,
                     type: TextInputType.number,
                     validator: (value){
@@ -213,13 +201,6 @@ class SignUpView extends StatelessWidget{
                       builder:((context) => ElevatedButton(
                           onPressed: (){
                             if(formState.currentState!.validate()){
-                              print(_gender);
-                              print(idController.text);
-                              print(nameController.text);
-                              print(emailController.text);
-                              print(passwordController.text);
-                              print( phoneController.text);
-
                               BlocProvider.of<RegisterCubit>(context).register(
                                   RegisterParameters(
                                       idController.text,
@@ -227,7 +208,7 @@ class SignUpView extends StatelessWidget{
                                       emailController.text,
                                       passwordController.text,
                                       phoneController.text,
-                                      "1",));
+                                      "1"));
                             }
                           },
                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),

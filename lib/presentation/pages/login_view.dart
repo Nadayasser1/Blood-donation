@@ -108,7 +108,7 @@ class LogInView extends StatelessWidget {
                             builder: (context)=>ElevatedButton(
                                 onPressed: () {
                                   if (formState.currentState!.validate()) {
-                                    BlocProvider.of<LoginCubit>(context).login(LoginParameters(email: emailController.text, password: passwordController.text))
+                                    BlocProvider.of<LoginCubit>(context).login(LoginParameters(email: emailController.text.trim(), password: passwordController.text))
                                     ;
                                   }
                                 },
