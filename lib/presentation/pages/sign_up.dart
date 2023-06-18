@@ -26,7 +26,7 @@ class SignUpView extends StatelessWidget{
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var idController = TextEditingController();
-  var genderController;
+   final   genderController = GroupButtonController();
    GlobalKey<FormState> formState = GlobalKey();
 
 
@@ -79,13 +79,15 @@ class SignUpView extends StatelessWidget{
                         label: "Gender",
                       ),
                       GroupButton(
+                        enableDeselect: true,
                         options: GroupButtonOptions(
                             selectedColor: kSecColor,
                             borderRadius: BorderRadius.circular(10),
                             buttonWidth: 90),
-                        controller:genderController ,
+                        controller: genderController ,
                           buttons: const ["Male","Female"],
-                         onSelected: (value, index, isSelected){})
+                         onSelected: (value,index, isSelected){
+                         })
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -99,11 +101,12 @@ class SignUpView extends StatelessWidget{
                     prefix: Icons.email,
                     type: TextInputType.emailAddress,
                     validator: (value){
-                      final emailCheck =RegExp(r'^[\w-]+@([\w-]+\.)+[\w-]{2,4}$');
+                      final trimmedEmail = value?.trim();
+                      final emailCheck =RegExp(r'^\s*[\w-]+@([\w-]+\.)+[\w-]{2,4}\s*$');
                       if(value!.isEmpty){
                         return "Enter your email address";
                       }
-                      else if(!emailCheck.hasMatch(value)){
+                      else if(!emailCheck.hasMatch(trimmedEmail!)){
                         return "Please enter a valid email";
                       }
                       return null;},
@@ -205,7 +208,7 @@ class SignUpView extends StatelessWidget{
                                       emailController.text,
                                       passwordController.text,
                                       phoneController.text,
-                                      "1"));
+                                      genderController.selectedIndex));
                             }
                           },
                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),
