@@ -208,7 +208,7 @@ class SignUpView extends StatelessWidget{
                                       emailController.text,
                                       passwordController.text,
                                       phoneController.text,
-                                      genderController.selectedIndex));
+                                      "1"));
                             }
                           },
                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),
