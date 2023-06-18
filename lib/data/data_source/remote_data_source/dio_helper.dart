@@ -5,7 +5,7 @@ import 'package:graduation/core/utils/app-constance.dart';
 
 class DioHelper{
 
-    static late  Dio dio;
+    static Dio dio=Dio();
     static init (){
       dio=Dio(
         BaseOptions(
