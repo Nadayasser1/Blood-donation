@@ -26,11 +26,9 @@ class RemoteDataSource extends BaseRemoteDataSource{
 
       }catch (error){
         if(error is DioError){
-          print(error);
           throw ErrorHandler.handle(error);
 
         }else{
-          print(error);
 
           throw Exception();
         }
@@ -42,7 +40,7 @@ class RemoteDataSource extends BaseRemoteDataSource{
   Future<RegisterModel> postRegister(RegisterParameters parameters) async{
     try{
 
-      final response = await DioHelper.postData(path:AppConstance.registerPath(id: parameters.id, name: parameters.name, email:parameters.email, password: parameters.password, phone: parameters.phone, gender: parameters.gender), );
+      final response = await DioHelper.postData(path:AppConstance.registerPath(id: parameters.id, name: parameters.name, email:parameters.email, password: parameters.password, phone: parameters.phone, gender: parameters.gender, birthdate: parameters.birthdate), );
 
       if (response.statusCode==200){
         return RegisterModel.fromJson(response.data);
@@ -53,8 +51,6 @@ class RemoteDataSource extends BaseRemoteDataSource{
 
     }catch (error){
       if(error is DioError){
-           print(error);
-           print(error.type) ;
          throw ErrorHandler.handle(error);
 
       }else{

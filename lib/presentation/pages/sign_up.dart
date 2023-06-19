@@ -215,6 +215,7 @@ class SignUpView extends StatelessWidget{
                                       passwordController.text,
                                       phoneController.text,
                                       _gender,
+                                    "2000/2/1",
                                       ));
                             }
                           },
