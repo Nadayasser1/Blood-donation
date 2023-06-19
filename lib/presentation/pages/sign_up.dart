@@ -25,7 +25,8 @@ class SignUpView extends StatelessWidget{
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var idController = TextEditingController();
-   final   genderController = GroupButtonController();
+  final   genderController = GroupButtonController();
+   String _gender="";
    GlobalKey<FormState> formState = GlobalKey();
 
 
@@ -86,6 +87,11 @@ class SignUpView extends StatelessWidget{
                         controller: genderController ,
                           buttons: const ["Male","Female"],
                          onSelected: (value,index, isSelected){
+                          if (value=="Male"){
+                            _gender="1";
+                          } else if (value=="Female"){
+                            _gender="2";
+                          }
                          })
                     ],
                   ),
@@ -199,6 +205,7 @@ class SignUpView extends StatelessWidget{
                       condition: state is! RegisterLoadingState,
                       builder:((context) => ElevatedButton(
                           onPressed: (){
+
                             if(formState.currentState!.validate()){
                               BlocProvider.of<RegisterCubit>(context).register(
                                   RegisterParameters(
@@ -207,7 +214,8 @@ class SignUpView extends StatelessWidget{
                                       emailController.text,
                                       passwordController.text,
                                       phoneController.text,
-                                      "1"));
+                                      _gender,
+                                      ));
                             }
                           },
                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),

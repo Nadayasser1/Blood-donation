@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import 'package:graduation/core/bloc_observer/bloc_observer.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
 import 'package:graduation/presentation/controller/register_cubit.dart';
-import 'package:graduation/presentation/pages/login_view.dart';
-import 'package:graduation/presentation/pages/request_form.dart';
-import 'package:graduation/presentation/pages/splash_view.dart';
+import 'package:graduation/presentation/pages/sign_up.dart';
 import 'core/services/services_locator.dart';
 import 'core/utils/constants.dart';
 
@@ -37,7 +35,7 @@ class DonationApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light()
             .copyWith(scaffoldBackgroundColor: kPrimaryColor),
-        home:     RequestForm(),
+        home:     SignUpView(),
 
       ),
     );

@@ -42,7 +42,7 @@ class RemoteDataSource extends BaseRemoteDataSource{
   Future<RegisterModel> postRegister(RegisterParameters parameters) async{
     try{
 
-      final response = await DioHelper.postData(path:AppConstance.registerPath(id: parameters.id, name: parameters.name, email:parameters.email, password:parameters.password, phone:parameters.phone, gender: parameters.gender), );
+      final response = await DioHelper.postData(path:AppConstance.registerPath(id: parameters.id, name: parameters.name, email:parameters.email, password: parameters.password, phone: parameters.phone, gender: parameters.gender), );
 
       if (response.statusCode==200){
         return RegisterModel.fromJson(response.data);
