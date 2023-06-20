@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:graduation/core/utils/routes.dart';
+import 'package:graduation/presentation/pages/bottom_appbar.dart';
 
 import '../../presentation/pages/home_view.dart';
 import '../../presentation/pages/login_view.dart';
@@ -21,6 +22,8 @@ Route<dynamic>? generateRoute (RouteSettings routeSettings){
       return CupertinoPageRoute(builder: (_) => SignUpView());
     case Routes.home:
       return CupertinoPageRoute(builder: (_) => const HomeView());
+    case Routes.bottomNavbar:
+      return CupertinoPageRoute(builder: (_) => const BottomNavbar());
     default:
       return CupertinoPageRoute(builder: (_) => const SplashView());
   }

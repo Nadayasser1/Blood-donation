@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:graduation/presentation/widgets/sliding_image.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
@@ -56,7 +57,7 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
       final AppPreferences appPreferences=sl<AppPreferences>();
       if(await appPreferences.isOnBoardingScreenViewed()){
         if(await appPreferences.isUserLoggedIn()){
-          Navigator.of(context).pushReplacementNamed(Routes.home);
+          Navigator.of(context).pushReplacementNamed(Routes.bottomNavbar);
         }else{
           Navigator.of(context).pushReplacementNamed(Routes.login);
         }

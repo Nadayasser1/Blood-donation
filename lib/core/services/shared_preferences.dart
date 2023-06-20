@@ -23,8 +23,8 @@ class AppPreferences {
     _sharedPreferences.remove(PREFS_KEY_TOKEN);
   }
 
-  Future<void> setIsUserLoggedIn() async {
-    _sharedPreferences.setBool(PREFS_KEY_IS_DOCTOR_LOGGED_IN, true);
+  Future<void> setIsUserLoggedIn(bool login) async {
+    _sharedPreferences.setBool(PREFS_KEY_IS_DOCTOR_LOGGED_IN, login);
   }
 
   Future<bool> isUserLoggedIn() async {

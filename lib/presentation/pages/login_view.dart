@@ -34,7 +34,7 @@ class LogInView extends StatelessWidget {
       listener: (context, state) {
         if(state is LoginSuccessState){
           final AppPreferences appPreferences=sl<AppPreferences>();
-          appPreferences.setIsUserLoggedIn();
+          appPreferences.setIsUserLoggedIn(true);
           appPreferences.setToken(state.loginData.user.id);
           Navigator.of(context).pushReplacementNamed(Routes.home);
         }

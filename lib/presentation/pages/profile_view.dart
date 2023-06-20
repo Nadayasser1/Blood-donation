@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/utils/assets.dart';
+import 'package:graduation/core/utils/routes.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
@@ -32,7 +33,10 @@ class ProfileView extends StatelessWidget{
                 backgroundImage: const AssetImage(AssetsData.avatar)
               ) ,
               trailing:  IconButton(onPressed: ()async{
+               await appPreferences.setIsUserLoggedIn(false);
                await appPreferences.getOut();
+               print(appPreferences.getToken());
+               Navigator.of(context).pushReplacementNamed(Routes.login);
               },
                   icon:const Icon( Icons.edit,
                     color:mainColor ,
