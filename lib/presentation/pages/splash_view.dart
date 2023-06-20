@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduation/presentation/widgets/sliding_image.dart';
 
-import 'onboarding_viwe.dart';
+import 'onBoarding_view.dart';
 
 class SplashView extends StatefulWidget {
    const SplashView({Key? key}) : super(key: key);

@@ -4,15 +4,18 @@ import 'package:get/get.dart';
 import 'package:graduation/core/bloc_observer/bloc_observer.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
 import 'package:graduation/presentation/controller/register_cubit.dart';
-import 'package:graduation/presentation/pages/sign_up.dart';
 import 'core/services/services_locator.dart';
+import 'core/services/shared_preferences.dart';
 import 'core/utils/constants.dart';
+import 'core/utils/router.dart';
+import 'core/utils/routes.dart';
 
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   ServicesLocator().init();
+  CacheHelper.init();
   runApp(const DonationApp());
 }
 
@@ -35,7 +38,8 @@ class DonationApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light()
             .copyWith(scaffoldBackgroundColor: kPrimaryColor),
-        home:     SignUpView(),
+        initialRoute: Routes.splash,
+        onGenerateRoute: generateRoute,
 
       ),
     );
