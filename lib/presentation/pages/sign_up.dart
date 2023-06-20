@@ -8,12 +8,14 @@ import 'package:graduation/presentation/pages/login_view.dart';
 import 'package:group_button/group_button.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../core/functions/toast_message.dart';
+import '../../core/services/services_locator.dart';
+import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
+import '../../core/utils/routes.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../../core/widgets/custom_text.dart';
 import '../../domain/use_cases/register_use_case.dart';
 import '../widgets/login_options.dart';
-import 'bottom_appbar.dart';
 
 
 class SignUpView extends StatelessWidget{
@@ -35,7 +37,10 @@ class SignUpView extends StatelessWidget{
     return BlocConsumer<RegisterCubit, RegisterState>(
      listener: (context, state) {
        if(state is RegisterSuccessState){
-         Get.to(()=>const BottomNavbar());
+         final AppPreferences appPreferences=sl<AppPreferences>();
+         appPreferences.setToken(state.registerData.userInfo.id);
+         Navigator.of(context).pushReplacementNamed(Routes.home);
+
        }
        if(state is RegisterErrorState){
          Toastmessage(context, state.error, Colors.red);

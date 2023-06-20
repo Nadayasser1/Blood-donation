@@ -1,42 +1,49 @@
 
-
-
-
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CacheHelper {
+const String PREFS_KEY_LANG = "PREFS_KEY_LANG";
+const String PREFS_KEY_TOKEN = "PREFS_KEY_TOKEN";
+const String PREFS_KEY_ON_BOARDING_SCREEN = "PREFS_KEY_ON_BOARDING_SCREEN";
+const String PREFS_KEY_IS_DOCTOR_LOGGED_IN = "PREFS_KEY_IS_DOCTOR_LOGGED_IN";
+const String PREFS_KEY_IS_PATIENT_LOGGED_IN = "PREFS_KEY_IS_PATIENT_LOGGED_IN";
 
-  static SharedPreferences? sharedPreferences;
+class AppPreferences {
+  final SharedPreferences _sharedPreferences;
+  AppPreferences(this._sharedPreferences);
 
-  static init()async
-  {
-    sharedPreferences=await SharedPreferences.getInstance() ;
+  Future<void> setToken(String token) async {
+    _sharedPreferences.setString(PREFS_KEY_TOKEN, token);
   }
 
-  static Future<bool> saveData ({
-    required String key,
-    required dynamic value,
-  })async
-  {
-    if(value is String) return await sharedPreferences!.setString(key, value);
-    if(value is int) return await sharedPreferences!.setInt(key, value);
-    if(value is bool) return await sharedPreferences!.setBool(key, value);
-
-    return await sharedPreferences!.setDouble(key, value);
-
+  Future<String> getToken() async {
+    return _sharedPreferences.getString(PREFS_KEY_TOKEN) ?? "NO TOKEN SAVED";
   }
 
-  static dynamic getData({
-    required String key,
-  })
-  {
-    return sharedPreferences!.get(key);
+  Future<void>getOut()async{
+    _sharedPreferences.remove(PREFS_KEY_TOKEN);
   }
 
-  static Future<bool> removeData(  String key,
-      )async
-  {
-    return await sharedPreferences!.remove(key);
+  Future<void> setIsUserLoggedIn() async {
+    _sharedPreferences.setBool(PREFS_KEY_IS_DOCTOR_LOGGED_IN, true);
   }
 
+  Future<bool> isUserLoggedIn() async {
+    return _sharedPreferences.getBool(PREFS_KEY_IS_DOCTOR_LOGGED_IN) ?? false;
+  }
+
+  // Future<void> setIsPatientLoggedIn() async {
+  //   _sharedPreferences.setBool(PREFS_KEY_IS_PATIENT_LOGGED_IN, true);
+  // }
+  //
+  // Future<bool> isPatientLoggedIn() async {
+  //   return _sharedPreferences.getBool(PREFS_KEY_IS_PATIENT_LOGGED_IN) ?? false;
+  // }
+
+  Future<void> setOnBoardingScreenViewed() async {
+    _sharedPreferences.setBool(PREFS_KEY_ON_BOARDING_SCREEN, true);
+  }
+
+  Future<bool> isOnBoardingScreenViewed() async {
+    return _sharedPreferences.getBool(PREFS_KEY_ON_BOARDING_SCREEN)??false;
+    }
 }

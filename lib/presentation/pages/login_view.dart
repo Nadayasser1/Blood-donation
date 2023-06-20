@@ -7,13 +7,14 @@ import 'package:get/get.dart';
 import 'package:graduation/core/functions/toast_message.dart';
 import 'package:graduation/core/utils/assets.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
-import 'package:graduation/presentation/pages/sign_up.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import '../../core/services/services_locator.dart';
+import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
+import '../../core/utils/routes.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../controller/login_cubit.dart';
 import '../widgets/login_options.dart';
-import 'bottom_appbar.dart';
 import 'forget_password_view.dart';
 
 
@@ -32,7 +33,11 @@ class LogInView extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if(state is LoginSuccessState){
-          Get.to(()=>const BottomNavbar());}
+          final AppPreferences appPreferences=sl<AppPreferences>();
+          appPreferences.setIsUserLoggedIn();
+          appPreferences.setToken(state.loginData.user.id);
+          Navigator.of(context).pushReplacementNamed(Routes.home);
+        }
         else if(state is LoginErrorState){
           Toastmessage(context, state.error, Colors.red);
         }
@@ -124,7 +129,7 @@ class LogInView extends StatelessWidget {
 
                       Center(
                         child: TextButton(onPressed: () {
-                          Get.to(() =>  SignUpView());
+                          Navigator.of(context).pushNamed(Routes.signUp);
                         },
                             style: const ButtonStyle(
                                 alignment: Alignment.centerLeft),

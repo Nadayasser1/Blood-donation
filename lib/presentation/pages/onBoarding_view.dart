@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:graduation/core/services/shared_preferences.dart';
+import '../../core/services/services_locator.dart';
 import '../../core/utils/constants.dart';
 import '../../core/utils/routes.dart';
 import '../widgets/dot_indecator.dart';
 import '../widgets/page_view.dart';
-import 'login_view.dart';
 
 class OnBoarding extends StatefulWidget{
   const OnBoarding({super.key});
@@ -76,9 +75,9 @@ class _OnBoardingState extends State<OnBoarding> {
                       duration: const Duration(milliseconds:100),
                       curve: Curves.bounceIn);
                 } else{
-                  CacheHelper.saveData(key: "onBoarding", value: "pass");
+                  final AppPreferences appPreferences=sl<AppPreferences>();
+                  appPreferences.setOnBoardingScreenViewed();
                   Navigator.of(context).pushReplacementNamed(Routes.login);
-                  Get.to(()=> LogInView());
                 }
               },
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/utils/assets.dart';
+import '../../core/services/services_locator.dart';
+import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
 import '../widgets/user_cards.dart';
 import '../widgets/user_info.dart';
@@ -9,6 +11,7 @@ class ProfileView extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    final AppPreferences appPreferences=sl<AppPreferences>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
@@ -28,12 +31,14 @@ class ProfileView extends StatelessWidget{
                   foregroundColor: Colors.red.withOpacity(0.5),
                 backgroundImage: const AssetImage(AssetsData.avatar)
               ) ,
-              trailing:  IconButton(onPressed: (){},
+              trailing:  IconButton(onPressed: ()async{
+               await appPreferences.getOut();
+              },
                   icon:const Icon( Icons.edit,
                     color:mainColor ,
                     size: 30,)),
             ),
-            SizedBox(height: 30,),
+           const SizedBox(height: 30,),
             const UserInfo(
               label: "Email",
               text: "HeshamMohsen@gmail.com",
