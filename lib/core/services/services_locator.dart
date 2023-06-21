@@ -6,6 +6,7 @@ import 'package:graduation/data/repository/repository.dart';
 import 'package:graduation/domain/base_repository/base_repository.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/domain/use_cases/register_use_case.dart';
+import 'package:graduation/domain/use_cases/user_profile_use_case.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
 import 'package:graduation/presentation/controller/register_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -35,6 +36,8 @@ class ServicesLocator {
     ///Use Cases
     sl.registerLazySingleton(() => LoginUseCase(baseRepository: sl()));
     sl.registerLazySingleton(() => RegisterUseCase(baseRepository: sl()));
+    sl.registerLazySingleton(() => UserProfileUseCase(baseRepository: sl()));
+
 
 
     ///Repository

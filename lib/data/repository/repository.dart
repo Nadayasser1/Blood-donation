@@ -7,8 +7,10 @@ import 'package:graduation/data/data_source/remote_data_source/base_remote_data_
 import 'package:graduation/domain/base_repository/base_repository.dart';
 import 'package:graduation/domain/entities/login.dart';
 import 'package:graduation/domain/entities/register.dart';
+import 'package:graduation/domain/entities/user_profile.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/domain/use_cases/register_use_case.dart';
+import 'package:graduation/domain/use_cases/user_profile_use_case.dart';
 
 class Repository extends BaseRepository{
   final BaseRemoteDataSource baseRemoteDataSource ;
@@ -34,6 +36,21 @@ class Repository extends BaseRepository{
       return Right(result);
     }on ErrorHandler catch(error){
       return Left(error.failure);
+    }
+  }
+
+  @override
+  Future<Either<Failure, UserProfile>> getProfileData(UserProfileParameters parameters) async{
+
+    try{
+
+      final result =await baseRemoteDataSource.getProfileData(parameters);
+      return Right(result);
+
+    }on ErrorHandler catch(error){
+
+      return Left(error.failure);
+
     }
   }
 

@@ -7,8 +7,6 @@ import 'package:graduation/presentation/controller/register_cubit.dart';
 import 'package:graduation/presentation/pages/splash_view.dart';
 import 'core/services/services_locator.dart';
 import 'core/utils/constants.dart';
-import 'core/utils/router.dart';
-import 'core/utils/routes.dart';
 
 
 void main() {
@@ -39,7 +37,7 @@ class DonationApp extends StatelessWidget {
             .copyWith(scaffoldBackgroundColor: kPrimaryColor),
         // initialRoute: Routes.splash,
         // onGenerateRoute: generateRoute,
-        home: SplashView(),
+        home:const SplashView(),
 
       ),
     );

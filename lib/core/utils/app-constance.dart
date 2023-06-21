@@ -8,4 +8,6 @@ class AppConstance {
 
   static  String registerPath({required String id ,required String name ,required String email ,required String password ,required String phone,required String gender,required String birthdate}) =>"$baseUrl/register?id=$id&name=$name&email=$email&password=$password&phone=$phone&gender=$gender&birthdate=$birthdate";
 
+
+  static String userProfilePath ({required String id})=>"$baseUrl/profile?id=$id";
 }

@@ -7,11 +7,11 @@ import 'package:get/get.dart';
 import 'package:graduation/core/functions/toast_message.dart';
 import 'package:graduation/core/utils/assets.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
+import 'package:graduation/presentation/pages/sign_up.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
-import '../../core/utils/routes.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../controller/login_cubit.dart';
 import '../widgets/login_options.dart';
@@ -22,7 +22,6 @@ import 'forget_password_view.dart';
 class LogInView extends StatelessWidget {
   LogInView({super.key,});
 
-  bool loading = false;
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
 
@@ -132,7 +131,7 @@ class LogInView extends StatelessWidget {
 
                       Center(
                         child: TextButton(onPressed: () {
-                          Navigator.of(context).pushNamed(Routes.signUp);
+                          Get.to(()=>  SignUpView(),);
                         },
                             style: const ButtonStyle(
                                 alignment: Alignment.centerLeft),
