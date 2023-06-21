@@ -15,7 +15,7 @@ class HomeViewbody extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 margin: const EdgeInsets.only(top: 40),
                 width:double.maxFinite,
-                height: 50,
+                height: MediaQuery.of(context).size.height *0.07,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                     color:Color.fromARGB(20, 0, 0, 0)),

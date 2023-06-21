@@ -15,6 +15,7 @@ import '../../core/utils/routes.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../controller/login_cubit.dart';
 import '../widgets/login_options.dart';
+import 'bottom_appbar.dart';
 import 'forget_password_view.dart';
 
 
@@ -36,7 +37,8 @@ class LogInView extends StatelessWidget {
           final AppPreferences appPreferences=sl<AppPreferences>();
           appPreferences.setIsUserLoggedIn(true);
           appPreferences.setToken(state.loginData.user.id);
-          Navigator.of(context).pushReplacementNamed(Routes.home);
+          Get.off(()=> const BottomNavbar());
+          //Navigator.of(context).pushReplacementNamed(Routes.home);
         }
         else if(state is LoginErrorState){
           Toastmessage(context, state.error, Colors.red);
@@ -48,16 +50,18 @@ class LogInView extends StatelessWidget {
             body:
             SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20),
                 child: Form(
                   key: formState,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset(AssetsData.logo, fit: BoxFit.fill),
+                      SizedBox(height: MediaQuery.of(context).size.height *0.15),
+                      SizedBox.square(dimension: 250,
+                          child:Image.asset(AssetsData.logo, fit: BoxFit.fill)),
+                      SizedBox(height: MediaQuery.of(context).size.height *0.05),
                       const LoginItems(),
-                      const SizedBox(height: 10,),
-                      const SizedBox(height: 20),
+                      SizedBox(height: MediaQuery.of(context).size.height *0.02),
                       CustomTextField(
                           type: TextInputType.emailAddress,
                           controller: emailController,
@@ -74,8 +78,7 @@ class LogInView extends StatelessWidget {
                             if(formState.currentState!.validate()){
                              LoginCubit.get(context).login(LoginParameters(email: emailController.text, password: passwordController.text));
                           } }),
-                      const SizedBox(height: 20),
-
+                      SizedBox(height: MediaQuery.of(context).size.height *0.02),
                       CustomTextField(
                           type: TextInputType.visiblePassword,
                           controller: passwordController,
@@ -142,8 +145,8 @@ class LogInView extends StatelessWidget {
                   ),
                 ),
               ),
-            )
-        );
+
+            ) );
       },
     );
   }

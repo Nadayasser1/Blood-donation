@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:graduation/core/services/shared_preferences.dart';
+import 'package:graduation/presentation/pages/login_view.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/utils/constants.dart';
-import '../../core/utils/routes.dart';
 import '../widgets/dot_indecator.dart';
 import '../widgets/page_view.dart';
 
@@ -77,7 +78,8 @@ class _OnBoardingState extends State<OnBoarding> {
                 } else{
                   final AppPreferences appPreferences=sl<AppPreferences>();
                   appPreferences.setOnBoardingScreenViewed();
-                  Navigator.of(context).pushReplacementNamed(Routes.login);
+                  Get.off(()=>  LogInView(),transition: Transition.rightToLeft);
+                  // Navigator.of(context).pushReplacementNamed(Routes.login);
                 }
               },
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),

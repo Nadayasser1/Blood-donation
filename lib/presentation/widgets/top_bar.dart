@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation/core/widgets/custom_text.dart';
 
@@ -13,7 +12,7 @@ class CustomTopBar extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.all(0),
       leading: TopBarText(text: title, color: Colors.black,),
       trailing: IconButton(
         icon: Icon(

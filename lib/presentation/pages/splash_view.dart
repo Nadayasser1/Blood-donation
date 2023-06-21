@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:graduation/presentation/pages/login_view.dart';
 import 'package:graduation/presentation/widgets/sliding_image.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
-import '../../core/utils/routes.dart';
+import 'bottom_appbar.dart';
+import 'onBoarding_view.dart';
 
 class SplashView extends StatefulWidget {
    const SplashView({Key? key}) : super(key: key);
@@ -57,16 +59,20 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
       final AppPreferences appPreferences=sl<AppPreferences>();
       if(await appPreferences.isOnBoardingScreenViewed()){
         if(await appPreferences.isUserLoggedIn()){
-          Navigator.of(context).pushReplacementNamed(Routes.bottomNavbar);
+          Get.off(()=> const BottomNavbar(),transition: Transition.rightToLeft);
+          // Navigator.of(context).pushReplacementNamed(Routes.bottomNavbar);
         }else{
-          Navigator.of(context).pushReplacementNamed(Routes.login);
+          Get.off(()=>  LogInView(),transition: Transition.rightToLeft);
+          // Navigator.of(context).pushReplacementNamed(Routes.login);
         }
-      }else{
-        Navigator.of(context).pushReplacementNamed(Routes.onBoarding);
+      }else {
+        Get.off(()=> const OnBoarding(),transition: Transition.rightToLeft);
+      }
+    // Navigator.of(context).pushReplacementNamed(Routes.onBoarding);
       }
 
      // Get.to(()=> const OnBoarding(),transition: Transition.rightToLeft);
-    });
+    );
   }
 
 }

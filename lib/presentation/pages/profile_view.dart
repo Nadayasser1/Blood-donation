@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:graduation/core/utils/assets.dart';
-import 'package:graduation/core/utils/routes.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
 import '../widgets/user_cards.dart';
 import '../widgets/user_info.dart';
+import 'login_view.dart';
 
 class ProfileView extends StatelessWidget{
   const ProfileView({super.key});
@@ -25,24 +26,29 @@ class ProfileView extends StatelessWidget{
               title:const Text("Hesham Mohsen",
                   style:TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 22)),
+                      fontSize: 20)),
               leading:  CircleAvatar(
                 maxRadius: 25,
                   backgroundColor: Colors.transparent,
                   foregroundColor: Colors.red.withOpacity(0.5),
                 backgroundImage: const AssetImage(AssetsData.avatar)
               ) ,
-              trailing:  IconButton(onPressed: ()async{
+              trailing:  TextButton(onPressed: ()async{
                await appPreferences.setIsUserLoggedIn(false);
                await appPreferences.getOut();
                print(appPreferences.getToken());
-               Navigator.of(context).pushReplacementNamed(Routes.login);
+               Get.off(()=>  LogInView());
+               //Navigator.of(context).pushReplacementNamed(Routes.login);
               },
-                  icon:const Icon( Icons.edit,
-                    color:mainColor ,
-                    size: 30,)),
+                child: const Text("Log Out",
+                style: TextStyle(
+                  color: Colors.blueAccent,
+                  fontWeight: FontWeight.bold
+                )),
+              ),
             ),
-           const SizedBox(height: 30,),
+            SizedBox(
+             height: MediaQuery.of(context).size.height * 0.03),
             const UserInfo(
               label: "Email",
               text: "HeshamMohsen@gmail.com",
@@ -68,9 +74,8 @@ class ProfileView extends StatelessWidget{
               text: "15/10/1985",
             ),
 
-            const SizedBox(height: 25),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             const ProfileCards(),
-            const SizedBox(height: 50),
           ],
         ),),
     )

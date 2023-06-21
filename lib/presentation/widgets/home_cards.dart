@@ -17,8 +17,8 @@ class HomeCards extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                width: 130,
-                height: 130,
+                width: MediaQuery.of(context).size.width *0.4,
+                height: MediaQuery.of(context).size.height *0.18,
                 decoration:  BoxDecoration(
                     color: cardsColor,
                     borderRadius: BorderRadius.circular(20)),
@@ -36,8 +36,8 @@ class HomeCards extends StatelessWidget{
                   ],
                 ),),
               Container(
-                width: 130,
-                height: 130,
+                width: MediaQuery.of(context).size.width *0.4,
+                height: MediaQuery.of(context).size.height *0.18,
                 decoration:  BoxDecoration(
                     color: cardsColor,
                     borderRadius: BorderRadius.circular(20)),
@@ -59,15 +59,14 @@ class HomeCards extends StatelessWidget{
             ],
           ),
           const SizedBox(
-
             height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                width: 130,
-                height: 130,
+                width: MediaQuery.of(context).size.width *0.4,
+                height: MediaQuery.of(context).size.height *0.18,
                 decoration:  BoxDecoration(
                     color: cardsColor,
                     borderRadius: BorderRadius.circular(20)),
@@ -85,8 +84,8 @@ class HomeCards extends StatelessWidget{
                   ],
                 ),),
               Container(
-                width: 130,
-                height: 130,
+                width: MediaQuery.of(context).size.width *0.4,
+                height: MediaQuery.of(context).size.height *0.18,
                 decoration:  BoxDecoration(
                     color: cardsColor,
                     borderRadius: BorderRadius.circular(20)),
@@ -114,8 +113,8 @@ class HomeCards extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                width: 130,
-                height: 130,
+                width: MediaQuery.of(context).size.width *0.4,
+                height: MediaQuery.of(context).size.height *0.18,
                 decoration:  BoxDecoration(
                     color: cardsColor,
                     borderRadius: BorderRadius.circular(20)),
@@ -134,8 +133,8 @@ class HomeCards extends StatelessWidget{
                   ],
                 ),),
               Container(
-                width: 130,
-                height: 130,
+                width: MediaQuery.of(context).size.width *0.4,
+                height: MediaQuery.of(context).size.height *0.18,
                 decoration:  BoxDecoration(
                     color: cardsColor,
                     borderRadius: BorderRadius.circular(20)),
