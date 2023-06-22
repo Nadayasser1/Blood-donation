@@ -1,6 +1,4 @@
 // ignore_for_file: must_be_immutable
-
-import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/widgets/date_picker.dart';
@@ -17,8 +15,7 @@ class RequestForm extends StatelessWidget {
   var nameController = TextEditingController();
   var unitNumberController = TextEditingController();
   var idController = TextEditingController();
-  // String _typ = "";
-  // DateTime _date = DateTime.now();
+  var dateController = TextEditingController();
 
   GlobalKey<FormState> formState = GlobalKey();
 
@@ -153,7 +150,9 @@ class RequestForm extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.4,
                           child:
-                          const CustomDatePicker()
+                           CustomDatePicker(
+                            controller: dateController,
+                          )
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.4,

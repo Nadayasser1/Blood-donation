@@ -27,7 +27,8 @@ class SignUpView extends StatelessWidget{
   var nameController = TextEditingController();
   var phoneController = TextEditingController();
   var idController = TextEditingController();
-  final   genderController = GroupButtonController();
+  var dateController = TextEditingController();
+   final   genderController = GroupButtonController();
    String _gender="";
    GlobalKey<FormState> formState = GlobalKey();
 
@@ -107,7 +108,9 @@ class SignUpView extends StatelessWidget{
                     size: 16,
                     label: "Date of Birth",
                   ),
-                  const CustomDatePicker(),
+                   CustomDatePicker(
+                    controller: dateController,
+                  ),
 
                   const SizedBox(height: 10),
                   const TitleText(
@@ -178,6 +181,7 @@ class SignUpView extends StatelessWidget{
                     label: "Phone number",
                   ),
                   CustomTextField(
+                    controller: phoneController,
                     text: "Enter your phone number",
                     prefix: Icons.phone,
                     type: TextInputType.number,
@@ -229,7 +233,7 @@ class SignUpView extends StatelessWidget{
                                       passwordController.text,
                                       phoneController.text,
                                       _gender,
-                                    "2000/2/1",
+                                    dateController.text,
                                       ));
                             }
                           },

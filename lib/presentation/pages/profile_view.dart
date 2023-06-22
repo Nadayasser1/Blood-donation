@@ -30,6 +30,7 @@ class ProfileView extends StatelessWidget {
           print(state.profileData.userProfileData.email);
           // final AppPreferences appPreferences=sl<AppPreferences>();
           // appPreferences.setToken(state.profileData.userProfileData.id);
+          print(state.profileData.userProfileData.email);
 
         }
         else if(state is ProfileErrorState){

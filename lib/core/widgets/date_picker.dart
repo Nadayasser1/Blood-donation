@@ -6,15 +6,18 @@ import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
 class CustomDatePicker extends StatelessWidget{
-  const CustomDatePicker({super.key});
+  const CustomDatePicker({super.key, required this.controller,});
+
+  final TextEditingController controller;
+
 
 
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return DateTimePicker(
-      initialValue: '',
+      controller: controller,
+      initialValue: null,
       decoration: InputDecoration(
         hintText: "yy/mm/dd",
         contentPadding: const EdgeInsets.all(0),
@@ -37,7 +40,6 @@ class CustomDatePicker extends StatelessWidget{
         }
         return null;
       },
-      onSaved: (val) => print(val),
     )
     ;
   }
