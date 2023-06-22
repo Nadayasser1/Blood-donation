@@ -11,11 +11,11 @@ import '../../core/functions/toast_message.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
-import '../../core/utils/routes.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../../core/widgets/custom_text.dart';
 import '../../core/widgets/date_picker.dart';
 import '../../domain/use_cases/register_use_case.dart';
+import 'bottom_appbar.dart';
 
 
 class SignUpView extends StatelessWidget{
@@ -39,8 +39,8 @@ class SignUpView extends StatelessWidget{
        if(state is RegisterSuccessState){
          final AppPreferences appPreferences=sl<AppPreferences>();
          appPreferences.setToken(state.registerData.userInfo.id);
-         Navigator.of(context).pushReplacementNamed(Routes.home);
-
+         appPreferences.setIsUserLoggedIn(true);
+         Get.off(()=> const BottomNavbar());
        }
        if(state is RegisterErrorState){
          Toastmessage(context, state.error, Colors.red);

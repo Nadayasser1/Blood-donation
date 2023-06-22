@@ -67,7 +67,8 @@ class RemoteDataSource extends BaseRemoteDataSource{
     try{
 
       final response =await DioHelper.postData(path: AppConstance.userProfilePath(id: parameters.id));
-
+      print("11111");
+      print(response);
       if(response.statusCode==200){
         return UserProfileModel.fromJason(response.data);
       }else{
@@ -78,6 +79,7 @@ class RemoteDataSource extends BaseRemoteDataSource{
       if(error is DioError){
         throw ErrorHandler.handle(error);
       }else{
+        print(error);
         throw Exception();
       }
     }
