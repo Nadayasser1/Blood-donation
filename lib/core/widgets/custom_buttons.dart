@@ -60,8 +60,10 @@ class CustomTextField extends StatelessWidget {
   final IconData? suffix;
   final bool isPassword;
   final void Function()? suffixPress;
+  final GestureTapCallback? onTap;
 
-  const CustomTextField({
+
+   const CustomTextField({
     key,
     this.controller,
     this.type,
@@ -73,7 +75,7 @@ class CustomTextField extends StatelessWidget {
     this.suffix,
     this.isPassword = false,
     this.suffixPress,
-    required this.text,
+    required this.text, this.onTap,
   }) : super(key: key);
 
   @override
@@ -88,7 +90,8 @@ class CustomTextField extends StatelessWidget {
         validator: validator,
         obscureText: isPassword,
         cursorColor: kSecColor,
-        decoration: InputDecoration(
+        decoration:
+        InputDecoration(
           contentPadding: const EdgeInsets.all(0),
           labelText: label,
           hintText: text,
@@ -101,7 +104,8 @@ class CustomTextField extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(
                 color: Colors.black54,
-              )),
+              )
+          ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(color: kSecColor)),

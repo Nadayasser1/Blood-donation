@@ -8,6 +8,7 @@ import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/domain/use_cases/register_use_case.dart';
 import 'package:graduation/domain/use_cases/user_profile_use_case.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
+import 'package:graduation/presentation/controller/profile_cubit.dart';
 import 'package:graduation/presentation/controller/register_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,6 +32,9 @@ class ServicesLocator {
     sl.registerFactory(()=> LoginCubit( loginUseCase: sl()));
 
     sl.registerFactory(() => RegisterCubit(registerUseCase: sl()));
+
+    sl.registerFactory(()=> ProfileCubit(profileUseCase: sl()));
+
 
 
     ///Use Cases

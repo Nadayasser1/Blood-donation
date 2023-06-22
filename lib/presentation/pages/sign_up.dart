@@ -14,8 +14,8 @@ import '../../core/utils/constants.dart';
 import '../../core/utils/routes.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../../core/widgets/custom_text.dart';
+import '../../core/widgets/date_picker.dart';
 import '../../domain/use_cases/register_use_case.dart';
-import '../widgets/login_options.dart';
 
 
 class SignUpView extends StatelessWidget{
@@ -84,8 +84,10 @@ class SignUpView extends StatelessWidget{
                         label: "Gender",
                       ),
                       GroupButton(
+
                         enableDeselect: true,
                         options: GroupButtonOptions(
+                            unselectedBorderColor: kSecColor,
                             selectedColor: kSecColor,
                             borderRadius: BorderRadius.circular(10),
                             buttonWidth: 90),
@@ -100,6 +102,13 @@ class SignUpView extends StatelessWidget{
                          })
                     ],
                   ),
+                  const SizedBox(height: 10),
+                  const TitleText(
+                    size: 16,
+                    label: "Date of Birth",
+                  ),
+                  const CustomDatePicker(),
+
                   const SizedBox(height: 10),
                   const TitleText(
                     size: 16,
@@ -244,8 +253,8 @@ class SignUpView extends StatelessWidget{
                       ],
                     ),
 
-                  const Divider(thickness: 2,color: kSecColor,),
-                  const LoginItems(),
+                  // const Divider(thickness: 2,color: kSecColor,),
+                  // const LoginItems(),
 
                 ],
               ),

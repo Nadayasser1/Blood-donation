@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../../../../../../core/widgets/icons.dart';
 import '../../core/utils/constants.dart';
+import '../widgets/top_bar.dart';
+import 'bottom_appbar.dart';
 
 
 class YourRequests extends StatelessWidget{
@@ -15,27 +19,13 @@ class YourRequests extends StatelessWidget{
         child:Column(
 
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      color: kSecColor,
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  width: 210,
-                  height: 60,
-                  alignment: Alignment.center,
-                  child: const Text("Your Requests",
-                      style: TextStyle(
-                          color: kPrimaryColor,
-                          fontWeight: FontWeight.bold,
-                      fontSize: 25)),
-                ),
-                const NavigationIcon(
-                  icon: Icons.arrow_circle_right_outlined,
-                  color: Colors.black38,)
-              ],
+            CustomTopBar(
+              title: "Request Form",
+              icon: Icons.arrow_circle_right_outlined,
+              onPressed: () {
+                Get.to(() => const BottomNavbar());
+              },
+              iconColor: Colors.black38,
             ),
             const Divider(thickness: 2,),
             const ListTile(

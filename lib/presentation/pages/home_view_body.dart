@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_cards.dart';
+import '../widgets/home_cards.dart';
 
 class HomeViewbody extends StatelessWidget {
   const HomeViewbody({super.key});

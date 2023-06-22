@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:graduation/presentation/pages/donate_now_view.dart';
+import 'package:graduation/presentation/pages/donation_history.dart';
+import 'package:graduation/presentation/pages/hospitals_view.dart';
+import 'package:graduation/presentation/pages/request_form.dart';
+import 'package:graduation/presentation/pages/requests.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../core/utils/constants.dart';
 
@@ -28,7 +35,9 @@ class HomeCards extends StatelessWidget{
                     const Icon(Icons.handshake,
                       size: 50,
                       color: kPrimaryColor,),
-                    TextButton(onPressed: (){}, child:const Text("Donate",
+                    TextButton(onPressed: (){
+                      Get.to(()=>  const DonateNowView());
+                    }, child:const Text("Donate",
                       style: TextStyle(
                           color: kPrimaryColor,
                           fontWeight: FontWeight.bold,
@@ -47,7 +56,9 @@ class HomeCards extends StatelessWidget{
                     const Icon(Icons.person_search_rounded,
                       size: 50,
                       color: kPrimaryColor,),
-                    TextButton(onPressed: (){}, child:const Text("Find Blood",
+                    TextButton(onPressed: (){
+                      Get.to(()=>   RequestForm());
+                    }, child:const Text("Find Blood",
                       textAlign:TextAlign.center,
                       style: TextStyle(
                           color: kPrimaryColor,
@@ -76,7 +87,9 @@ class HomeCards extends StatelessWidget{
                     const Icon(MdiIcons.hospitalBuilding,
                       size: 50,
                       color: kPrimaryColor,),
-                    TextButton(onPressed: (){}, child:const Text("Hospitals",
+                    TextButton(onPressed: (){
+                      Get.to(()=>  const HospitalsView());
+                    }, child:const Text("Hospitals",
                       style: TextStyle(
                           color: kPrimaryColor,
                           fontWeight: FontWeight.bold,
@@ -124,7 +137,9 @@ class HomeCards extends StatelessWidget{
                     const Icon(Icons.document_scanner,
                       size: 50,
                       color: kPrimaryColor,),
-                    TextButton(onPressed: (){}, child:const Text("Donation Reports",
+                    TextButton(onPressed: (){
+                      Get.to(()=>  const YourDonations());
+                    }, child:const Text("Donation Reports",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: kPrimaryColor,
@@ -144,7 +159,9 @@ class HomeCards extends StatelessWidget{
                     const Icon(Icons.assignment,
                       size: 50,
                       color: kPrimaryColor,),
-                    TextButton(onPressed: (){}, child:const Text("Your Requests",
+                    TextButton(onPressed: (){
+                      Get.to(()=>  const YourRequests());
+                    }, child:const Text("Your Requests",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: kPrimaryColor,

@@ -26,7 +26,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     });
   }
 
-  bool isPassword=true;
+  bool isPassword= true;
   IconData  suffixIcon= Icons.remove_red_eye_outlined;
 
 
@@ -46,6 +46,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     reSuffixIcon= reEnterPassword?Icons.remove_red_eye_outlined:Icons.visibility_off_outlined ;
     emit(RegisterPasswordState());
   }
+
 
 
 }

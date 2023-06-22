@@ -2,22 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CustomListTile extends StatelessWidget{
-  const CustomListTile({super.key});
+  const CustomListTile({super.key,
+    required this.title,
+    required this.icon,
+    required this.subtitle,
+     this.trailing});
+
+  final String title;
+  final Widget? icon;
+  final String subtitle;
+  final Widget? trailing;
+
   
   
   @override
   Widget build(BuildContext context) {
-    return  const ListTile(
-      title: Text("Raslan hospital need A-",
-        style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold),),
-      leading: Icon(MdiIcons.hospitalBuilding,
-        size: 40,
-        color: Colors.black,),
-      subtitle: Text("If you have time you can help"),
-      
-      
+    return   SizedBox(
+      width: MediaQuery.of(context).size.width *1,
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(0),
+        title: Text(title,
+          style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold),),
+        subtitle: Text(subtitle),
+        leading: icon,
+        trailing: trailing,
+
+
+      ),
     );
   }
   

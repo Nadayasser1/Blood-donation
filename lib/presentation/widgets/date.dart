@@ -3,6 +3,8 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 //
+// import '../../core/widgets/custom_buttons.dart';
+//
 // class DateOfBirth extends StatefulWidget{
 //   const DateOfBirth({super.key});
 //
@@ -46,15 +48,21 @@
 //
 //
 //         const SizedBox(height: 16.0),
-//         ElevatedButton(
-//           onPressed: () {
-//             if (_selectedDate != null) {
-//               // Process the selected date of birth
-//               print('Date of Birth: $_selectedDate');
-//             }
-//           },
-//           child: const Text('Submit'),
+//         CustomTextField(
+//           validator: (value) {},
+//           text: "yy/mm/dd",
+//           prefix: Icons.calendar_month_outlined,
 //         ),
+//
+//         // ElevatedButton(
+//         //   onPressed: () {
+//         //     if (_selectedDate != null) {
+//         //       // Process the selected date of birth
+//         //       print('Date of Birth: $_selectedDate');
+//         //     }
+//         //   },
+//         //   child: const Text('Submit'),
+//         // ),
 //       ],
 //
 //     );

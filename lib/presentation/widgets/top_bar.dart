@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:graduation/core/widgets/custom_text.dart';
 
 class CustomTopBar extends StatelessWidget{
-  const CustomTopBar({super.key, required this.title, this.onPressed, this.icon, required this.iconColor});
+  const CustomTopBar({super.key,  this.title, this.onPressed, this.icon,  this.iconColor});
 
-  final String title ;
+  final String? title ;
   final VoidCallback? onPressed;
   final IconData? icon;
-  final Color iconColor;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {

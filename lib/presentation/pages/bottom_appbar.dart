@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation/presentation/pages/profile_view.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../core/utils/constants.dart';
-import '../widgets/home_view_body.dart';
+import 'home_view_body.dart';
 import 'notification_view.dart';
 
 
@@ -19,7 +19,7 @@ class _BoState extends State<BottomNavbar> {
 
   List<Widget> _buildScreens() {
     return [
-      const ProfileView(),
+       ProfileView(),
       const HomeViewbody(),
       const NotificationView (),
 

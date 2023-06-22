@@ -1,7 +1,9 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:graduation/core/widgets/date_picker.dart';
 import 'package:group_button/group_button.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../core/utils/constants.dart';
@@ -150,15 +152,13 @@ class RequestForm extends StatelessWidget {
                       children: [
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.4,
-                          child: CustomTextField(
-                            validator: (value) {},
-                            text: "yy/mm/dd",
-                            prefix: Icons.calendar_month_outlined,
-                          ),
+                          child:
+                          const CustomDatePicker()
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.4,
                           child: CustomTextField(
+                            type: TextInputType.number,
                             controller: unitNumberController,
                             validator: (value) {
                               if(value!.isEmpty){

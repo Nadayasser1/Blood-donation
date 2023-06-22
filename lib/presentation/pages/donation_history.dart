@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:graduation/presentation/widgets/custom_list_tile.dart';
 
 import '../../core/utils/constants.dart';
+import '../widgets/top_bar.dart';
+import 'bottom_appbar.dart';
 
 
 class YourDonations extends StatelessWidget{
@@ -10,20 +15,16 @@ class YourDonations extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50,horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 70,horizontal: 20),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text("Your Donation",
-                  style: TextStyle(
-                    fontSize: 30,fontWeight:
-                    FontWeight.bold)),
-                IconButton(onPressed: (){}, icon: const Icon(
-                   Icons.arrow_back,
-                   size: 30,))
-              ],
+            CustomTopBar(
+              title: "Your donations",
+              icon: Icons.arrow_circle_right_outlined,
+              onPressed: () {
+                Get.to(() => const BottomNavbar());
+              },
+              iconColor: Colors.black38,
             ),
             Container(
               margin: const EdgeInsets.only(top: 20),
@@ -86,18 +87,14 @@ class YourDonations extends StatelessWidget{
                     leading: Text("Report",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),
                     trailing: Text("Place",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),
                   ),
-                  ListTile(
-                    style: ListTileStyle.list,
-                    title: const Text("18/2/2023",textAlign: TextAlign.center) ,
-                    subtitle: const Text("18:23",textAlign: TextAlign.center,),
-                    leading:
-                    IconButton(onPressed: (){},
-                        alignment: Alignment.topLeft,
-                        color: mainColor,
-                        iconSize: 30,
-                        icon: const Icon(Icons.download_for_offline,)),
-                    trailing: const Text("Ibn Sina"),
-                  ),
+
+                  // CustomListTile(
+                  //   title: ,
+                  //   subtitle: ,
+                  //   icon: ,
+                  //   trailing: ,
+                  // )
+
                   ListTile(
                     style: ListTileStyle.list,
                     title: const Text("18/2/2023",textAlign: TextAlign.center) ,
