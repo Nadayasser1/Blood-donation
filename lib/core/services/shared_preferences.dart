@@ -15,7 +15,7 @@ class AppPreferences {
     _sharedPreferences.setString(PREFS_KEY_TOKEN, token);
   }
 
-  Future<String> getToken() async {
+  String getToken()  {
     return _sharedPreferences.getString(PREFS_KEY_TOKEN) ?? "NO TOKEN SAVED";
   }
 

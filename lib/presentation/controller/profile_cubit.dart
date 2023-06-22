@@ -10,7 +10,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   final UserProfileUseCase profileUseCase;
   static ProfileCubit get(context)=>BlocProvider.of(context);
 
-  Future<void> profile(UserProfileParameters parameters) async{
+  Future<void> getProfile(UserProfileParameters parameters) async{
     emit(ProfileLoadingState());
 
     final result = await profileUseCase(parameters);
