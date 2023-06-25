@@ -1,6 +1,4 @@
 // ignore_for_file: must_be_immutable
-
-import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/widgets/date_picker.dart';
@@ -17,8 +15,7 @@ class RequestForm extends StatelessWidget {
   var nameController = TextEditingController();
   var unitNumberController = TextEditingController();
   var idController = TextEditingController();
-  // String _typ = "";
-  // DateTime _date = DateTime.now();
+  var dateController = TextEditingController();
 
   GlobalKey<FormState> formState = GlobalKey();
 
@@ -102,28 +99,14 @@ class RequestForm extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.7,
-                          child: CustomTextField(
-                            validator: (value) {
-                              if(value!.isEmpty){
-                                return"please enter the reason";
-                              }
-                              return null;
-                            },
-                            text: "Write the Reason",
-                          ),
-                        ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.text_snippet,
-                              size: 35,
-                              color: iconColor ,))
-                      ],
+                    CustomTextField(
+                      validator: (value) {
+                        if(value!.isEmpty){
+                          return"please enter the reason";
+                        }
+                        return null;
+                      },
+                      text: "",
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
@@ -153,7 +136,9 @@ class RequestForm extends StatelessWidget {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.4,
                           child:
-                          const CustomDatePicker()
+                           CustomDatePicker(
+                            controller: dateController,
+                          )
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * 0.4,
@@ -182,21 +167,23 @@ class RequestForm extends StatelessWidget {
                      SizedBox(
                       height: MediaQuery.of(context).size.height *0.02,
                     ),
-                    GroupButton(
-                        options: GroupButtonOptions(
-                            borderRadius: BorderRadius.circular(10),
-                            selectedColor: kSecColor,
-                            unselectedBorderColor: kSecColor),
-                        buttons: const [
-                          "O",
-                          "O-",
-                          "A",
-                          "A-",
-                          "B",
-                          "B-",
-                          "AB",
-                          "AB-"
-                        ]),
+                    Center(
+                      child: GroupButton(
+                          options: GroupButtonOptions(
+                              borderRadius: BorderRadius.circular(10),
+                              selectedColor: kSecColor,
+                              unselectedBorderColor: kSecColor),
+                          buttons: const [
+                            "O",
+                            "O-",
+                            "A",
+                            "A-",
+                            "B",
+                            "B-",
+                            "AB",
+                            "AB-"
+                          ]),
+                    ),
                      SizedBox(
                       height: MediaQuery.of(context).size.height * 0.05,
                     ),

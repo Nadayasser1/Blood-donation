@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +30,7 @@ class ProfileView extends StatelessWidget {
           print(state.profileData.userProfileData.email);
           // final AppPreferences appPreferences=sl<AppPreferences>();
           // appPreferences.setToken(state.profileData.userProfileData.id);
+          print(state.profileData.userProfileData.email);
 
         }
         else if(state is ProfileErrorState){

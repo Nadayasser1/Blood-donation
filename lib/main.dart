@@ -40,7 +40,7 @@ class DonationApp extends StatelessWidget {
             .copyWith(scaffoldBackgroundColor: kPrimaryColor),
         // initialRoute: Routes.splash,
         // onGenerateRoute: generateRoute,
-        home:  const  SplashView(),
+        home:    const SplashView(),
 
       ),
     );

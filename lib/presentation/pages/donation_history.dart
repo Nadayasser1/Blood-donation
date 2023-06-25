@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:graduation/presentation/widgets/custom_list_tile.dart';
-
 import '../../core/utils/constants.dart';
 import '../widgets/top_bar.dart';
 import 'bottom_appbar.dart';
