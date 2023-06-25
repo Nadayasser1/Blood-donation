@@ -1,7 +1,9 @@
 import 'package:graduation/data/models/add_request_model.dart';
+import 'package:graduation/data/models/get_requests_model.dart';
 import 'package:graduation/data/models/login_model.dart';
 import 'package:graduation/data/models/register_model.dart';
 import 'package:graduation/domain/use_cases/add_request_use_case.dart';
+import 'package:graduation/domain/use_cases/get_request_use_case.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/domain/use_cases/register_use_case.dart';
 
@@ -18,6 +20,9 @@ abstract class BaseRemoteDataSource {
   Future<UserProfileModel> getProfileData(UserProfileParameters parameters);
 
   Future<AddRequestModel> addRequest(AddRequestParameters parameters);
+
+  Future<GetRequestsModel> getRequests (GetRequestParameters parameters);
+
 
 
 

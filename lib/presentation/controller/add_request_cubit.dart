@@ -6,7 +6,7 @@ import '../../domain/use_cases/add_request_use_case.dart';
 part 'add_request_state.dart';
 
 class AddRequestCubit extends Cubit<AddRequestState> {
-  AddRequestCubit(this.addRequestUseCase) : super(AddRequestInitial());
+  AddRequestCubit({required this.addRequestUseCase}) : super(AddRequestInitial());
 
   static AddRequestCubit get(context)=>BlocProvider.of(context);
 

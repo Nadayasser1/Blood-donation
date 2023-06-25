@@ -22,4 +22,7 @@ class AppConstance {
     return "$baseUrl/transactions?PhoneNumber=$phone&HumanName=$name&TransTypeId=2&HumanID=$id&BirthDate=$birthDate&UnitNumber=$unitNumber&BloodType=$bloodType&Notes=$reason";
 
   }
+
+  static String getRequestsPath ({required String id})=>"$baseUrl/getTransactions?HumanID=$id&TransTypeId=2";
+
 }
