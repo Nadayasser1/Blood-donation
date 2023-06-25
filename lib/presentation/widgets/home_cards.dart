@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:graduation/presentation/pages/donate_now_view.dart';
 import 'package:graduation/presentation/pages/donation_history.dart';
 import 'package:graduation/presentation/pages/hospitals_view.dart';
@@ -88,7 +87,7 @@ class HomeCards extends StatelessWidget{
                       size: 50,
                       color: kPrimaryColor,),
                     TextButton(onPressed: (){
-                      Get.to(()=>  const HospitalsView());
+                      // Get.to(()=>  const HospitalsView());
                     }, child:const Text("Hospitals",
                       style: TextStyle(
                           color: kPrimaryColor,

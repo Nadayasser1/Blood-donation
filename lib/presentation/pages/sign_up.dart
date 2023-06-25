@@ -85,14 +85,13 @@ class SignUpView extends StatelessWidget{
                         label: "Gender",
                       ),
                       GroupButton(
-
-                        enableDeselect: true,
+                          controller: genderController ,
+                          enableDeselect: true,
                         options: GroupButtonOptions(
                             unselectedBorderColor: kSecColor,
                             selectedColor: kSecColor,
                             borderRadius: BorderRadius.circular(10),
                             buttonWidth: 90),
-                        controller: genderController ,
                           buttons: const ["Male","Female"],
                          onSelected: (value,index, isSelected){
                           if (value=="Male"){

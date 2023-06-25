@@ -2,7 +2,6 @@
 
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
-
 import '../utils/constants.dart';
 
 class CustomDatePicker extends StatelessWidget{
@@ -16,6 +15,8 @@ class CustomDatePicker extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return DateTimePicker(
+      cursorColor: kSecColor,
+
       controller: controller,
       initialValue: null,
       decoration: InputDecoration(
