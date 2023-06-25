@@ -10,4 +10,16 @@ class AppConstance {
 
 
   static String userProfilePath ({required String id})=>"$baseUrl/profile?id=$id";
+
+  static String addRequestPath({
+    required name,
+    required id,
+    required phone,
+    required birthDate,
+    required unitNumber,
+    required bloodType,
+    required  reason, }){
+    return "$baseUrl/transactions?PhoneNumber=$phone&HumanName=$name&TransTypeId=2&HumanID=$id&BirthDate=$birthDate&UnitNumber=$unitNumber&BloodType=$bloodType&Notes=$reason";
+
+  }
 }

@@ -2,9 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:graduation/core/error/error_handler.dart';
 import 'package:graduation/data/data_source/remote_data_source/base_remote_data_source.dart';
 import 'package:graduation/data/data_source/remote_data_source/dio_helper.dart';
+import 'package:graduation/data/models/add_request_model.dart';
 import 'package:graduation/data/models/login_model.dart';
 import 'package:graduation/data/models/register_model.dart';
 import 'package:graduation/data/models/user_profile_model.dart';
+import 'package:graduation/domain/use_cases/add_request_use_case.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/domain/use_cases/register_use_case.dart';
 import 'package:graduation/core//utils/app-constance.dart';
@@ -67,8 +69,6 @@ class RemoteDataSource extends BaseRemoteDataSource{
     try{
 
       final response =await DioHelper.postData(path: AppConstance.userProfilePath(id: parameters.id));
-      print("11111");
-      print(response);
       if(response.statusCode==200){
         return UserProfileModel.fromJason(response.data);
       }else{
@@ -79,9 +79,27 @@ class RemoteDataSource extends BaseRemoteDataSource{
       if(error is DioError){
         throw ErrorHandler.handle(error);
       }else{
-        print(error);
         throw Exception();
       }
+    }
+  }
+
+  @override
+  Future<AddRequestModel> addRequest(AddRequestParameters parameters) async{
+    try{
+      final response = await DioHelper.postData(path: AppConstance.addRequestPath(name: parameters.name, id: parameters.id, phone: parameters.phone, birthDate: parameters.birthDate, unitNumber: parameters.unitNumber, bloodType: parameters.bloodType, reason: parameters.reason));
+      if(response.statusCode==201){
+        return AddRequestModel.fromJson(response.data);
+      }else{
+        throw Exception();
+      }
+    }catch(error){
+      if(error is DioError){
+        throw ErrorHandler.handle(error);
+      }else{
+        throw Exception();
+      }
+
     }
   }
 }
