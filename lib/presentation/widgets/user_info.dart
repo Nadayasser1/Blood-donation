@@ -58,7 +58,7 @@ class StatusInfo extends StatelessWidget{
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:[
-          Text(statusLabel,style: TextStyle(fontWeight: FontWeight.bold),),
+          Text(statusLabel,style:const TextStyle(fontWeight: FontWeight.bold),),
           Center(
             child: StatusText(
               text: statusText,
