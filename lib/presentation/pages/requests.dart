@@ -68,7 +68,7 @@ class YourRequests extends StatelessWidget {
             ),
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return Scaffold(appBar:AppBar(),body: const Center(child: CircularProgressIndicator()));
         }
       },
     );

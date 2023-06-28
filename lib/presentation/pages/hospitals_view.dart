@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/utils/constants.dart';
+import 'package:graduation/presentation/pages/donation_form.dart';
 import 'package:graduation/presentation/widgets/top_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../widgets/blood_ratio.dart';
@@ -99,7 +100,9 @@ class HospitalsView extends StatelessWidget{
             SizedBox(height: MediaQuery.of(context).size.height *0.05,),
             Center(
               child: ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Get.to(()=> const DonationForm());
+                  },
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),
                   child: const Text("Donate",
                     style: TextStyle(fontSize: 20,
@@ -110,7 +113,6 @@ class HospitalsView extends StatelessWidget{
           ],
         ),
       ),
-
 
     );
   }
