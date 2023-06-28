@@ -20,7 +20,9 @@ class CustomDatePicker extends StatelessWidget{
       controller: controller,
       initialValue: null,
       decoration: InputDecoration(
-        hintText: "yy/mm/dd",
+        hintText: "dd/mm/yy",
+        filled: true,
+        fillColor: kPrimaryColor,
         contentPadding: const EdgeInsets.all(0),
         prefixIcon: const Icon(Icons.calendar_month_outlined),
         border:OutlineInputBorder(

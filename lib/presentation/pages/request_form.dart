@@ -1,34 +1,59 @@
 // ignore_for_file: must_be_immutable
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/widgets/date_picker.dart';
+import 'package:graduation/domain/use_cases/add_request_use_case.dart';
 import 'package:group_button/group_button.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import '../../core/functions/toast_message.dart';
+import '../../core/services/services_locator.dart';
+import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../../core/widgets/custom_text.dart';
+import '../controller/add_request_cubit.dart';
 import '../widgets/top_bar.dart';
 import 'bottom_appbar.dart';
 
 class RequestForm extends StatelessWidget {
   RequestForm({super.key});
-  var nameController = TextEditingController();
+  var patientNameController = TextEditingController();
   var unitNumberController = TextEditingController();
-  var idController = TextEditingController();
   var dateController = TextEditingController();
-
+  var reasonController = TextEditingController();
+  var phoneController = TextEditingController();
   GlobalKey<FormState> formState = GlobalKey();
+  String _bloodType= "";
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SingleChildScrollView(
+    final AppPreferences appPreferences=sl<AppPreferences>();
+    final String id= appPreferences.getToken();
+    return BlocConsumer<AddRequestCubit, AddRequestState>(
+    listener: (context, state) {
+      if(state is AddRequestSuccessState){
+        Toastmessage(context, "Accepted request");
+        Get.offAll(()=> const BottomNavbar());
+      }
+      else if(state is AddRequestErrorState){
+        Toastmessage(context, state.error);
+      }
 
+    },
+    builder: (context, state) {
+      return Scaffold(
+        appBar: AppBar(
+
+        ),
+        body: SingleChildScrollView(
            child: Padding(
-             padding: const EdgeInsets.symmetric(vertical: 70,horizontal: 20.0),
+             padding: const EdgeInsets.symmetric(horizontal: 10),
              child: Form(
                key: formState,
                  child: Column(
+                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomTopBar(
@@ -51,7 +76,7 @@ class RequestForm extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     CustomTextField(
-                      controller:nameController ,
+                      controller:patientNameController ,
                       type: TextInputType.name,
                       text: "Full name",
                       prefix: Icons.person,
@@ -66,7 +91,7 @@ class RequestForm extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     const TitleText(
-                      label: "Patient National Id",
+                      label: "Phone",
                       size: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -74,19 +99,19 @@ class RequestForm extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     CustomTextField(
-                      controller: idController,
+                      controller: phoneController,
+                      text: "Enter your phone number",
+                      prefix: Icons.phone,
                       type: TextInputType.number,
-                      text: "******",
-                      prefix: MdiIcons.cardAccountDetails,
-                      validator: (value) {
-                        final idCheck = RegExp(r'^[0-9]{14}$');
-                        if (value!.isEmpty) {
-                          return "Please enter patient national id";
-                        } else if (!idCheck.hasMatch(value)) {
-                          return 'Please enter valid Id';
+                      validator: (value){
+                        final phoneCheck = RegExp(r'^[0-9]{11}$');
+                        if(value!.isEmpty){
+                          return "enter your phone number";
                         }
-                        return null;
-                      },
+                        else if (!phoneCheck.hasMatch(value)){
+                          return "Please enter a valid phone number";
+                        }
+                        return null;},
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
@@ -100,6 +125,7 @@ class RequestForm extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.01,
                     ),
                     CustomTextField(
+                      controller: reasonController,
                       validator: (value) {
                         if(value!.isEmpty){
                           return"please enter the reason";
@@ -165,7 +191,7 @@ class RequestForm extends StatelessWidget {
                       size: 18,
                     ),
                      SizedBox(
-                      height: MediaQuery.of(context).size.height *0.02,
+                      height: MediaQuery.of(context).size.height *0.01,
                     ),
                     Center(
                       child: GroupButton(
@@ -173,36 +199,71 @@ class RequestForm extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                               selectedColor: kSecColor,
                               unselectedBorderColor: kSecColor),
-                          buttons: const [
-                            "O",
-                            "O-",
-                            "A",
-                            "A-",
-                            "B",
-                            "B-",
-                            "AB",
-                            "AB-"
+                          onSelected: (value, index, isSelected) {
+                            if (value=="O+"){
+                              _bloodType = "O%2B";}
+
+                            else if (value=="O-"){
+                              _bloodType ="O-";}
+
+                            else if (value=="A+"){
+                              _bloodType ="A%2B";}
+
+                            else if (value=="A-"){
+                              _bloodType="A-";}
+
+                            else if (value=="B+"){
+                              _bloodType="B%2B";}
+
+                            else if (value=="B-"){
+                              _bloodType ="B-";}
+
+                            else if (value=="AB+"){
+                              _bloodType ="AB%2B";}
+
+                            else if (value=="AB-"){
+                              _bloodType ="AB-";}
+                          },
+                          buttons: const ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"
                           ]),
                     ),
                      SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
+                      height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     Center(
-                      child: ElevatedButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(kSecColor)),
-                          child: const Text(
-                            "Submit request",
-                            style: TextStyle(fontSize: 20),
-                          )),
+                      child: ConditionalBuilder(
+                        condition: state is! AddRequestLoadingState,
+                        builder:(context) =>  ElevatedButton(
+                            onPressed: () {
+                              if(formState.currentState!.validate()){
+                                BlocProvider.of<AddRequestCubit>(context).addRequest(
+                                    AddRequestParameters(
+                                        name: patientNameController.text,
+                                        id: id,
+                                        phone: phoneController.text,
+                                        birthDate: dateController.text,
+                                        unitNumber: unitNumberController.text,
+                                        bloodType: _bloodType ,
+                                        reason: reasonController.text));
+                              }
+                            },
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(kSecColor)),
+                            child: const Text(
+                              "Submit request",
+                              style: TextStyle(fontSize: 20),
+                            )),
+                        fallback: (context)=>const CircularProgressIndicator(),
+                      ),
                     )
                   ],
           ),
                ),
              ),
            ),
-        )
+        );
+  },
+)
     ;
   }
 }

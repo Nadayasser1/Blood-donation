@@ -1,86 +1,87 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../../core/utils/constants.dart';
+import '../widgets/question_form.dart';
+import '../widgets/top_bar.dart';
+import 'bottom_appbar.dart';
 
-class DonationForm extends StatefulWidget {
+
+
+class DonationForm extends StatelessWidget {
   const DonationForm({super.key});
 
 
-  @override
-  State<StatefulWidget> createState() {
-    return DonationState();
-  }
-
-}
-
-class DonationState extends State<DonationForm>{
-
-  bool yes = false;
-  bool no = false;
-  bool fr = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
+      appBar: AppBar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50,horizontal:5),
-        child: ListView(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: kSecColor,
-                          borderRadius: BorderRadius.circular(20)
-                      ),
-                      width: 210,
-                      height: 60,
-                      alignment: Alignment.center,
-                      child: const Text("Donation Form",
-                          style: TextStyle(
-                              color: kPrimaryColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25)),
-                    ),
-                    IconButton(onPressed: (){},
-                        icon: const Icon(
-                          Icons.arrow_circle_right_outlined,
-                          size: 45,
-                          color: Colors.black38,))
-                  ],
-                ),
-                const Divider(thickness: 2),
-                Container(
-                  height: 60,
-                  decoration: const BoxDecoration(
-                      color: cardsColor,
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text("1. Are you taking any antibiotics?"),
-                      SizedBox.square(
-                        child: Row(
-                          children: [
-                            const Text("Yes"),
-                            Checkbox(value: yes, onChanged: (val){}),
-                            const Text("No"),
-                            Checkbox(value: no, onChanged: (val){}),
-
-                          ],
-                        ),
-                      )
-
-                    ],
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomTopBar(
+              title: "Donation Form",
+              icon: Icons.arrow_circle_right_outlined,
+              onPressed: () {
+                Get.to(() => const BottomNavbar());
+              },
+              iconColor: Colors.black38,),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).padding.vertical * 0.1),
+                children:  [
+                  const QuestionForm(
+                    question: '1. Are you taking any antibiotics?',
                   ),
-                ),
-              ],
+                  const Divider(thickness: 1,),
+                  const QuestionForm(
+                    question: '2. Are you having any fever during \n the past 3 weeks?',
+                  ),
+                  const Divider(thickness: 1,),
+                  const QuestionForm(
+                    question: '3. For the past 72 hours,have you \n taken anymedication?',
+                  ),
+                  const Divider(thickness: 1,),
+                  const QuestionForm(
+                    question: '4. Have you ever received insulin/ \n diabetic medication?',
+                  ),
+                  const Divider(thickness: 1,),
+                  const QuestionForm(
+                    question: '5. Do you have any chronic \n diseases?',
+                  ),
+                  const Divider(thickness: 1,),
+                  const QuestionForm(
+                    question: '6. Have you donated blood during \n the past 3 months?',
+                  ),
+                  const Divider(thickness: 1,),
+                  const QuestionForm(
+                    question: '7. Are you pregnant or breast \nfeeding? (for females only)',
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                        style:  const ButtonStyle(backgroundColor: MaterialStatePropertyAll(kSecColor)),
+                        onPressed: (){
+                          Get.to(() => const DonationForm());
+                        },
+                        child:const Text("Submit") ),
+                  ),
+
+
+
+                ],
+              ),
             ),
+          ],
+        ),
 
-
-      )
+      ),
     );
   }
+
 }
+

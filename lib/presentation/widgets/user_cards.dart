@@ -12,60 +12,52 @@ class ProfileCards extends StatelessWidget{
       margin: const EdgeInsets.only(top: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            width: 100,
-            height: 100,
-            decoration: const BoxDecoration(
-                color: cardsColor,
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                Icon(MdiIcons.bloodBag,size: 50,),
-                Text("live Saved"),
-                Text("30")
-              ],
-            ),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            decoration: const BoxDecoration(
-                color: cardsColor,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                Icon(Icons.bloodtype,size: 50,),
-                Text("Blood Type"),
-                Text("A-")
-              ],
-            ),
-
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            decoration: const BoxDecoration(
-                color: cardsColor,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                Icon(Icons.calendar_month,size: 50,),
-                Text("Last Donation"),
-                Text("24/5/2022")
-              ],
-            ),
-
-          )
+        children: const [
+          Cards(
+              cardIcon: MdiIcons.bloodBag,
+              text: "Live saved",
+              date: "10"),
+          Cards(
+              cardIcon: Icons.bloodtype,
+              text: "Blood type",
+              date: "A-"),
+          Cards(
+              cardIcon: Icons.calendar_month_outlined,
+              text: "Last Donation",
+              date: "24/5/2023"),
 
         ],
       ),
-    )
- 
-
-;
+    );
 }}
-  
+
+class Cards extends StatelessWidget{
+  const Cards({super.key, required this.cardIcon, required this.text, required this.date});
+
+  final IconData cardIcon;
+  final String text;
+  final String date;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return  Container(
+      width: 100,
+      height: 100,
+      decoration: const BoxDecoration(
+          color: cardsColor,
+          borderRadius: BorderRadius.all(Radius.circular(10))),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children:  [
+          Icon(cardIcon,size: 50,color: Colors.white,),
+          Text(text,style: const TextStyle(color: Colors.white)),
+          Text(date,style: const TextStyle(color: Colors.white),)
+        ],
+      ),
+    )
+    ;
+  }
+
+
+}

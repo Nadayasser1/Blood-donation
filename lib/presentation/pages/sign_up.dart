@@ -28,7 +28,6 @@ class SignUpView extends StatelessWidget{
   var phoneController = TextEditingController();
   var idController = TextEditingController();
   var dateController = TextEditingController();
-   final   genderController = GroupButtonController();
    String _gender="";
    GlobalKey<FormState> formState = GlobalKey();
 
@@ -44,7 +43,7 @@ class SignUpView extends StatelessWidget{
          Get.off(()=> const BottomNavbar());
        }
        if(state is RegisterErrorState){
-         Toastmessage(context, state.error, Colors.red);
+         Toastmessage(context, state.error,);
        }
       },
       builder: (context, state) {
@@ -77,7 +76,6 @@ class SignUpView extends StatelessWidget{
 
                   const SizedBox(height:20),
                   Row(
-
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children:  [
                       const TitleText(
@@ -85,8 +83,8 @@ class SignUpView extends StatelessWidget{
                         label: "Gender",
                       ),
                       GroupButton(
-                          controller: genderController ,
-                          enableDeselect: true,
+                          maxSelected: 1,
+                        enableDeselect: false,
                         options: GroupButtonOptions(
                             unselectedBorderColor: kSecColor,
                             selectedColor: kSecColor,
@@ -94,11 +92,10 @@ class SignUpView extends StatelessWidget{
                             buttonWidth: 90),
                           buttons: const ["Male","Female"],
                          onSelected: (value,index, isSelected){
-                          if (value=="Male"){
-                            _gender="1";
-                          } else if (value=="Female"){
-                            _gender="2";
-                          }
+                           if (value=="Male"){
+                            _gender="1";}
+                          else if (value=="Female"){
+                            _gender="2";}
                          })
                     ],
                   ),
@@ -220,9 +217,9 @@ class SignUpView extends StatelessWidget{
                   Center(
                     child: ConditionalBuilder(
                       condition: state is! RegisterLoadingState,
-                      builder:((context) => ElevatedButton(
+                      builder:((context) =>
+                          ElevatedButton(
                           onPressed: (){
-
                             if(formState.currentState!.validate()){
                               BlocProvider.of<RegisterCubit>(context).register(
                                   RegisterParameters(
@@ -239,7 +236,9 @@ class SignUpView extends StatelessWidget{
                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kSecColor)),
                           child: const Text("Sign Up",
                              style: TextStyle(fontSize: 20,
-                              fontWeight: FontWeight.bold,),))),
+                              fontWeight: FontWeight.bold,),
+                          ))
+                      ),
                       fallback: (context)=>const CircularProgressIndicator(),
 
                     ),

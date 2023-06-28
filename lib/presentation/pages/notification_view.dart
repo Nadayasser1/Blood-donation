@@ -9,8 +9,9 @@ class NotificationView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 60,horizontal: 20),
+      appBar: AppBar(),
+      body: Container(
+        margin : const EdgeInsets.symmetric(horizontal: 10),
         child:
         Column(
           children: [

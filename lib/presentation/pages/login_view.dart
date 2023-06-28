@@ -40,7 +40,7 @@ class LogInView extends StatelessWidget {
           //Navigator.of(context).pushReplacementNamed(Routes.home);
         }
         else if(state is LoginErrorState){
-          Toastmessage(context, state.error, Colors.red);
+          Toastmessage(context, state.error,);
         }
 
       },

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/bloc_observer/bloc_observer.dart';
+import 'package:graduation/presentation/controller/add_request_cubit.dart';
+import 'package:graduation/presentation/controller/get_requests_cubit.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
 import 'package:graduation/presentation/controller/profile_cubit.dart';
 import 'package:graduation/presentation/controller/register_cubit.dart';
@@ -26,20 +28,27 @@ class DonationApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LoginCubit>(
-          create: (context) => sl<LoginCubit>(),
-        ),
+          create: (context) => sl<LoginCubit>(),),
         BlocProvider(
-          create: (context) => sl<RegisterCubit>(),
-        ),
+          create: (context) => sl<RegisterCubit>(),),
         BlocProvider(
-            create: (context) => sl<ProfileCubit>())
+            create: (context) => sl<ProfileCubit>()),
+        BlocProvider(
+            create: (context) => sl<AddRequestCubit>()),
+        BlocProvider(
+            create: (context) => sl<GetRequestsCubit>() )
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light()
-            .copyWith(scaffoldBackgroundColor: kPrimaryColor),
-        // initialRoute: Routes.splash,
-        // onGenerateRoute: generateRoute,
+            .copyWith(
+            scaffoldBackgroundColor: kPrimaryColor,
+            appBarTheme: const AppBarTheme(
+              backgroundColor: kPrimaryColor,
+              elevation: 0,
+
+
+            )),
         home:    const SplashView(),
 
       ),

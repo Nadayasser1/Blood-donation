@@ -87,7 +87,7 @@ class HomeCards extends StatelessWidget{
                       size: 50,
                       color: kPrimaryColor,),
                     TextButton(onPressed: (){
-                      // Get.to(()=>  const HospitalsView());
+                      Get.to(()=>  const HospitalsView());
                     }, child:const Text("Hospitals",
                       style: TextStyle(
                           color: kPrimaryColor,

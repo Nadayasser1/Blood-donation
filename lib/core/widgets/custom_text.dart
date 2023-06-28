@@ -70,19 +70,19 @@ class StatusText extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-          height: MediaQuery.of(context).size.height * 0.05,
-          width: double.maxFinite,
+          height: MediaQuery.of(context).size.height * 0.03,
+          width: MediaQuery.of(context).size.width * 0.15,
           decoration: BoxDecoration(
               color: color,
               borderRadius: BorderRadius.circular(5)
           ),
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           child:
            Text( text,
             textAlign: TextAlign.center,
             style: const TextStyle(
+              fontSize: 10,
               fontWeight: FontWeight.bold,
-              fontSize: 20,
               color: Colors.white,
             ),
           )

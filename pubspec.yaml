@@ -46,6 +46,7 @@ dependencies:
   group_button: ^5.0.0
   shared_preferences: ^2.1.2
   date_time_picker: ^2.1.0
+  percent_indicator: ^4.2.3
 
 
 

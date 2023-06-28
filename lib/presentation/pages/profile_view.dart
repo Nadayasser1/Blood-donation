@@ -15,8 +15,7 @@ import '../widgets/user_info.dart';
 import 'login_view.dart';
 
 class ProfileView extends StatelessWidget {
-   ProfileView({super.key});
-  bool isLoading = false;
+   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context)  {
@@ -28,26 +27,20 @@ class ProfileView extends StatelessWidget {
       listener: (context, state) {
         if(state is ProfileSuccessState){
           print(state.profileData.userProfileData.email);
-          // final AppPreferences appPreferences=sl<AppPreferences>();
-          // appPreferences.setToken(state.profileData.userProfileData.id);
-          print(state.profileData.userProfileData.email);
-
+          // print(state.profileData.userProfileData.email);
         }
         else if(state is ProfileErrorState){
-          Toastmessage(context, state.error, Colors.red);
+          Toastmessage(context, state.error);
         }
 
       },
 
      builder: (context, state) {
-
         if(state is ProfileSuccessState){
           return Scaffold(
-            appBar: AppBar(
-                backgroundColor: kPrimaryColor,
-                elevation: 0),
+            appBar: AppBar(),
             body:  Container(
-              margin: const EdgeInsets.all(10),
+              margin: const EdgeInsets.symmetric(horizontal: 5),
               child: Column(
                 children: [
                   ListTile(
@@ -78,43 +71,50 @@ class ProfileView extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.03),
                    UserInfo(
                     label: "Email",
+                    labelSize: 20,
                     text: state.profileData.userProfileData.email,
+                     textSize: 16,
                   ),
                   const Divider(thickness: 1,),
                    UserInfo(
                     label: "Phone",
+                    labelSize: 20,
                     text: state.profileData.userProfileData.phone,
+                     textSize: 16,
                   ),
                   const Divider(thickness: 1,),
                    UserInfo(
                     label: "National ID",
+                    labelSize: 20,
                     text: state.profileData.userProfileData.id,
+                     textSize: 16,
                   ),
                   const Divider(thickness: 1,),
                    UserInfo(
                     label: "Gender",
+                    labelSize: 20,
                     text: state.profileData.userProfileData.gender,
+                     textSize: 16,
                   ),
                   const Divider(thickness: 1,),
                    UserInfo(
                     label: "Date of birth",
+                    labelSize: 20,
                     text: state.profileData.userProfileData.birthdate,
+                     textSize: 16,
                   ),
 
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                   const ProfileCards(),
                 ],
               ),),);
-        }else{
-          return const Center(child: CircularProgressIndicator());
         }
+
+        else{ return const Center(child: CircularProgressIndicator());}
 
       },
 
-    )
-
-
-    ;
+    );
   }
   
 }

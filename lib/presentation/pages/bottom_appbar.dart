@@ -19,7 +19,7 @@ class _BoState extends State<BottomNavbar> {
 
   List<Widget> _buildScreens() {
     return [
-       ProfileView(),
+       const ProfileView(),
       const HomeViewbody(),
       const NotificationView (),
 

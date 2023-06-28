@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:graduation/core/functions/toast_message.dart';
+import 'package:graduation/presentation/controller/get_requests_cubit.dart';
 import 'package:graduation/presentation/widgets/user_info.dart';
-import '../../core/utils/constants.dart';
-import '../../core/widgets/custom_text.dart';
+import '../../core/services/services_locator.dart';
+import '../../core/services/shared_preferences.dart';
+import '../../domain/use_cases/get_request_use_case.dart';
 import '../widgets/top_bar.dart';
 import 'bottom_appbar.dart';
 
@@ -13,11 +17,27 @@ class YourRequests extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 70),
-        child:Column(
+    final AppPreferences appPreferences=sl<AppPreferences>();
+    final String id= appPreferences.getToken();
+    BlocProvider.of<GetRequestsCubit>(context).getRequests((GetRequestParameters(id: id )));
 
+    return BlocConsumer<GetRequestsCubit, GetRequestsState>(
+    listener: (context, state) {
+      if(state is GetRequestSuccessState){
+        print(state.getRequestData.requestData[0].branchName);
+      }
+      else if(state is GetRequestErrorState){
+        Toastmessage(context, state.error);
+      }
+    },
+    builder: (context, state) {
+
+      if(state is GetRequestSuccessState){
+     return Scaffold(
+       appBar: AppBar(),
+      body: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        child:Column(
           children: [
             CustomTopBar(
               title: "Request Form",
@@ -35,40 +55,41 @@ class YourRequests extends StatelessWidget{
                   Container(
                     margin: const EdgeInsets.all(5),
                     width: double.maxFinite,
-                    height: MediaQuery.of(context).size.height *0.3,
+                    height: MediaQuery.of(context).size.height *0.25,
                     child: Column(
                       crossAxisAlignment:CrossAxisAlignment.start,
                       children: [
-                        const UserInfo(
+                           UserInfo(
                           label: "Branch name:",
-                          text: "Ibn Sina Hospital",
+                          text: state.getRequestData.requestData[0].branchName
                         ),
-                        const UserInfo(
+                         UserInfo(
                           label: "Patient name:",
-                          text: "Hesham mohsen",
+                          text: state.getRequestData.requestData[1].patientName
                         ),
-                        const UserInfo(
-                          label: "Patient id:",
-                          text: "12345678910",
+                         UserInfo(
+                          label: "Phone:",
+                          text: state.getRequestData.requestData[2].phoneNumber
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           mainAxisSize:MainAxisSize.max ,
-                          children: [
-                            const UserInfo(
+                          children:  [
+                            UserInfo(
                                 label: "Blood type:",
-                                text: "  B+",
+                                text: state.getRequestData.requestData[4].bloodType
                              ),
-                            const UserInfo(
+                            UserInfo(
                                 label: "Units:",
-                                text: "  3    ",
+                                text: state.getRequestData.requestData[3].unitNumber.toString()
                             ),
                           ],
-
                         ),
-                        StatusText(
-                          text: "Accepted",
-                         color: Colors.green,)
+                         StatusInfo(
+                          statusLabel: "Status:",
+                          statusText: state.getRequestData.requestData[5].accepted,
+                          statusColor: Colors.green,
+                        )
 
                       ],
                     ),
@@ -77,7 +98,7 @@ class YourRequests extends StatelessWidget{
                   Container(
                     margin: const EdgeInsets.all(5),
                     width: double.maxFinite,
-                    height: MediaQuery.of(context).size.height *0.3,
+                    height: MediaQuery.of(context).size.height *0.22,
                     child: Column(
                       crossAxisAlignment:CrossAxisAlignment.start,
                       children: [
@@ -89,89 +110,38 @@ class YourRequests extends StatelessWidget{
                           label: "Patient name:",
                           text: "Hesham mohsen",
                         ),
-                        const UserInfo(
-                          label: "Patient id:",
-                          text: "12345678910",
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           mainAxisSize:MainAxisSize.max ,
-                          children: [
-                            const UserInfo(
+                          children: const [
+                            UserInfo(
                               label: "Blood type:",
                               text: "  B+",
                             ),
-                            const UserInfo(
+                            UserInfo(
                               label: "Units:",
                               text: "  3    ",
                             ),
                           ],
 
                         ),
-                        const StatusText(
-                          text: "Canceled",
-                          color: Colors.red,)
-
+                        const StatusInfo(
+                          statusLabel: "Status:",
+                          statusText: "Canceled",
+                          statusColor: Colors.red,
+                        )
                       ],
                     ),
                   ) ,
                   const Divider(thickness: 1,),
-                  Container(
-                    margin: const EdgeInsets.all(5),
-                    width: double.maxFinite,
-                    height: MediaQuery.of(context).size.height *0.3,
-                    child: Column(
-                      crossAxisAlignment:CrossAxisAlignment.start,
-                      children: [
-                        const UserInfo(
-                          label: "Branch name:",
-                          text: "Ibn Sina Hospital",
-                        ),
-                        const UserInfo(
-                          label: "Patient name:",
-                          text: "Hesham mohsen",
-                        ),
-                        const UserInfo(
-                          label: "Patient id:",
-                          text: "12345678910",
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize:MainAxisSize.max ,
-                          children: [
-                            const UserInfo(
-                              label: "Blood type:",
-                              text: "  B+",
-                            ),
-                            const UserInfo(
-                              label: "Units:",
-                              text: "  3    ",
-                            ),
-                          ],
-
-                        ),
-                        StatusText(
-                          text: "Accepted",
-                          color: Colors.green,)
-
-                      ],
-                    ),
-                  ) ,
-
-
-
-
-
-
-
-
                 ],
-              ),
-
-            )
-          ],
+              ),)],
         ),
       ),
+      );
+      }
+      else{          return const Center(child: CircularProgressIndicator());}
+     },
     );
   }
 
