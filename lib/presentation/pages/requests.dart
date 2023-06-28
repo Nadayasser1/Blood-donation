@@ -18,6 +18,7 @@ class YourRequests extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppPreferences appPreferences = sl<AppPreferences>();
     final String id = appPreferences.getToken();
+    print(id);
     BlocProvider.of<GetRequestsCubit>(context)
         .getRequests((GetRequestParameters(id: id)));
 
@@ -26,6 +27,7 @@ class YourRequests extends StatelessWidget {
         if (state is GetRequestSuccessState) {
           print(state.getRequestData.requestData[0].branchName);
         } else if (state is GetRequestErrorState) {
+          print(state.error);
           Toastmessage(context, state.error);
         }
       },
@@ -106,8 +108,7 @@ Widget buildItem(GetRequestsData data, context) {
         ),
         StatusInfo(
           statusLabel: "Status:",
-          statusText: data.accepted,
-          statusColor: Colors.green,
+          state: data.accepted,
         )
       ],
     ),

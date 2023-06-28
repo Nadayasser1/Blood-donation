@@ -44,15 +44,23 @@ class UserInfo extends StatelessWidget{
 }
 
 class StatusInfo extends StatelessWidget{
-  const StatusInfo({super.key, required this.statusLabel, required this.statusText, required this.statusColor});
+  const StatusInfo({super.key, required this.statusLabel, required this.state});
   final String statusLabel;
-  final String statusText;
-  final Color  statusColor;
-
-
-
+  final String state;
   @override
   Widget build(BuildContext context) {
+    final String statusText;
+    final Color color;
+    if(state=="0"){
+       statusText="pending";
+       color =Colors.amber;
+    }else if(state=="1"){
+       statusText="Accepted";
+       color =Colors.green;
+    }else{
+       statusText="rejected";
+       color =Colors.red;
+    }
     return Container(
       margin: const EdgeInsets.all(10),
       child: Row(
@@ -62,7 +70,7 @@ class StatusInfo extends StatelessWidget{
           Center(
             child: StatusText(
               text: statusText,
-              color: statusColor,),
+              color: color,),
           ),
         ],
       ),
