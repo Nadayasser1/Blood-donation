@@ -1,7 +1,7 @@
 
 
+import 'package:graduation/data/models/get_requests_data_model.dart';
 import 'package:graduation/domain/entities/get_request.dart';
-import 'package:graduation/domain/entities/get_request_data.dart';
 
 class GetRequestsModel extends GetRequest{
 
@@ -10,6 +10,7 @@ class GetRequestsModel extends GetRequest{
 
  factory GetRequestsModel.fromJson(Map<String,dynamic>json)=>GetRequestsModel(
      message: json["message"],
-     requestData: List<GetRequestsData>.from(json["result"].map((e)=>e)),
+     requestData: List<GetRequestsDataModel>.from(json["result"].map((x)=>GetRequestsDataModel.fromJson(x)),
+ ),
  );
 }
