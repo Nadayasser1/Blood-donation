@@ -25,14 +25,15 @@ class YourRequests extends StatelessWidget {
     return BlocConsumer<GetRequestsCubit, GetRequestsState>(
       listener: (context, state) {
         if (state is GetRequestSuccessState) {
-          print(state.getRequestData.requestData[0].branchName);
         } else if (state is GetRequestErrorState) {
           print(state.error);
           Toastmessage(context, state.error);
         }
       },
       builder: (context, state) {
-        if (state is GetRequestSuccessState) {
+        if (state is GetRequestLoadingState) {
+          return Scaffold(appBar:AppBar(),body: const Center(child: CircularProgressIndicator())); 
+        } else if (state is GetRequestSuccessState){
           return Scaffold(
             appBar: AppBar(),
             body: Container(
@@ -54,7 +55,7 @@ class YourRequests extends StatelessWidget {
                     child: ListView.separated(
                       padding: EdgeInsets.symmetric(
                           vertical:
-                              MediaQuery.of(context).padding.vertical * 0.1),
+                          MediaQuery.of(context).padding.vertical * 0.1),
                       itemBuilder: (BuildContext context, int index)=>buildItem(state.getRequestData.requestData[index],context),
                       separatorBuilder: (BuildContext context, int index)=>const Divider(
                         thickness: 1,
@@ -67,8 +68,8 @@ class YourRequests extends StatelessWidget {
               ),
             ),
           );
-        } else {
-          return Scaffold(appBar:AppBar(),body: const Center(child: CircularProgressIndicator()));
+        }else{
+          return Scaffold(appBar:AppBar(),body: const Center(child: Text("There is no requests..yet")));
         }
       },
     );
