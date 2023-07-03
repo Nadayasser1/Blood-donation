@@ -25,4 +25,20 @@ class AppConstance {
 
   static String getRequestsPath ({required String id})=>"$baseUrl/getTransactions?HumanID=$id&TransTypeId=2";
 
+
+
+  static String sendQuestionsPath ({
+    required String q1,
+    required String q2,
+    required String q3,
+    required String q4,
+    required String q5,
+    required String q6,
+    required String q7,
+    required String q8,
+
+  }){
+    return "$baseUrl/questionResponse?Q1=$q1&Q2=$q2&Q3=$q3&Q4=$q4&Q5=$q5&Q6=$q6&Q7=$q7&Q8=$q8";
+  }
+
 }

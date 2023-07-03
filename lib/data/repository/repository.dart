@@ -8,12 +8,14 @@ import 'package:graduation/domain/base_repository/base_repository.dart';
 import 'package:graduation/domain/entities/add_request.dart';
 import 'package:graduation/domain/entities/get_request.dart';
 import 'package:graduation/domain/entities/login.dart';
+import 'package:graduation/domain/entities/questions_form.dart';
 import 'package:graduation/domain/entities/register.dart';
 import 'package:graduation/domain/entities/user_profile.dart';
 import 'package:graduation/domain/use_cases/add_request_use_case.dart';
 import 'package:graduation/domain/use_cases/get_request_use_case.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/domain/use_cases/register_use_case.dart';
+import 'package:graduation/domain/use_cases/send_questions_use_case.dart';
 import 'package:graduation/domain/use_cases/user_profile_use_case.dart';
 
 class Repository extends BaseRepository{
@@ -76,6 +78,16 @@ class Repository extends BaseRepository{
   }on ErrorHandler catch(error){
     return Left(error.failure);
   }
+  }
+
+  @override
+  Future<Either<Failure, QuestionsForm>> sendQuestions(SendQuestionsParameters parameters)async {
+   try{
+     final result =await baseRemoteDataSource.sendQuestions(parameters);
+     return Right(result);
+   }on ErrorHandler catch(error){
+     return Left(error.failure);
+   }
   }
 
   }
