@@ -6,7 +6,7 @@ part 'send_questions_state.dart';
 
 class SendQuestionsCubit extends Cubit<SendQuestionsState> {
   SendQuestionsCubit({required this.sendQuestionsUseCase}) : super(SendQuestionsInitial());
-
+  static SendQuestionsCubit get(context)=>BlocProvider.of(context);
   final SendQuestionsUseCase sendQuestionsUseCase ;
 
 

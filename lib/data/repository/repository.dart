@@ -5,12 +5,14 @@ import 'package:graduation/core/error/error_handler.dart';
 import 'package:graduation/core/error/failure.dart';
 import 'package:graduation/data/data_source/remote_data_source/base_remote_data_source.dart';
 import 'package:graduation/domain/base_repository/base_repository.dart';
+import 'package:graduation/domain/entities/add_donation.dart';
 import 'package:graduation/domain/entities/add_request.dart';
 import 'package:graduation/domain/entities/get_request.dart';
 import 'package:graduation/domain/entities/login.dart';
 import 'package:graduation/domain/entities/questions_form.dart';
 import 'package:graduation/domain/entities/register.dart';
 import 'package:graduation/domain/entities/user_profile.dart';
+import 'package:graduation/domain/use_cases/add_donation_use_case.dart';
 import 'package:graduation/domain/use_cases/add_request_use_case.dart';
 import 'package:graduation/domain/use_cases/get_request_use_case.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
@@ -87,6 +89,16 @@ class Repository extends BaseRepository{
      return Right(result);
    }on ErrorHandler catch(error){
      return Left(error.failure);
+   }
+  }
+
+  @override
+  Future<Either<Failure, AddDonation>> addDonation(AddDonationParameters parameters) async{
+   try{
+     final result= await baseRemoteDataSource.addDonation(parameters);
+     return Right(result);
+   }on ErrorHandler catch(error){
+    return Left(error.failure);
    }
   }
 

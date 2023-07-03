@@ -41,4 +41,15 @@ class AppConstance {
     return "$baseUrl/questionResponse?Q1=$q1&Q2=$q2&Q3=$q3&Q4=$q4&Q5=$q5&Q6=$q6&Q7=$q7&Q8=$q8";
   }
 
+  static String addDonationPath({
+    required String name,
+    required String id,
+    required String phone,
+    required String birthData,
+    required String  donationDate,
+    required String  branchName,
+    required String  bloodType,
+}){
+    return "$baseUrl/transactions?PhoneNumber=$phone&HumanName=$name&TransTypeId=1&HumanID=$id&BirthDate=$birthData&UnitNumber=1&BloodType=$bloodType&Notes=None&DonationDate=$donationDate&BranchName=$branchName";
+  }
 }

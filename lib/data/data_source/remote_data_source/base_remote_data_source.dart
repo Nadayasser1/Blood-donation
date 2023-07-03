@@ -1,8 +1,10 @@
+import 'package:graduation/data/models/add_donation_model.dart';
 import 'package:graduation/data/models/add_request_model.dart';
 import 'package:graduation/data/models/get_requests_model.dart';
 import 'package:graduation/data/models/login_model.dart';
 import 'package:graduation/data/models/register_model.dart';
 import 'package:graduation/data/models/send_questions_model.dart';
+import 'package:graduation/domain/use_cases/add_donation_use_case.dart';
 import 'package:graduation/domain/use_cases/add_request_use_case.dart';
 import 'package:graduation/domain/use_cases/get_request_use_case.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
@@ -26,6 +28,9 @@ abstract class BaseRemoteDataSource {
   Future<GetRequestsModel> getRequests (GetRequestParameters parameters);
 
   Future<SendQuestionsModel> sendQuestions (SendQuestionsParameters parameters );
+
+  Future<AddDonationModel> addDonation (AddDonationParameters parameters );
+
 
 
 

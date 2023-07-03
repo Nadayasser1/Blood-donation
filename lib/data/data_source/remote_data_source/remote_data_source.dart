@@ -2,12 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:graduation/core/error/error_handler.dart';
 import 'package:graduation/data/data_source/remote_data_source/base_remote_data_source.dart';
 import 'package:graduation/data/data_source/remote_data_source/dio_helper.dart';
+import 'package:graduation/data/models/add_donation_model.dart';
 import 'package:graduation/data/models/add_request_model.dart';
 import 'package:graduation/data/models/get_requests_model.dart';
 import 'package:graduation/data/models/login_model.dart';
 import 'package:graduation/data/models/register_model.dart';
 import 'package:graduation/data/models/send_questions_model.dart';
 import 'package:graduation/data/models/user_profile_model.dart';
+import 'package:graduation/domain/use_cases/add_donation_use_case.dart';
 import 'package:graduation/domain/use_cases/add_request_use_case.dart';
 import 'package:graduation/domain/use_cases/get_request_use_case.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
@@ -142,6 +144,24 @@ class RemoteDataSource extends BaseRemoteDataSource{
         throw Exception();
       }
     }
+  }
+
+  @override
+  Future<AddDonationModel> addDonation(AddDonationParameters parameters) async{
+   try{
+     final response =await DioHelper.postData(path: AppConstance.addDonationPath(name: parameters.name, id: parameters.id, phone: parameters.phone, birthData: parameters.birthData, donationDate: parameters.donationDate, branchName: parameters.branchName, bloodType: parameters.bloodType));
+     if(response.statusCode==201){
+       return AddDonationModel.fromJson(response.data);
+     }else{
+       throw Exception();
+     }
+   }catch(error){
+     if(error is DioError){
+       throw ErrorHandler.handle(error);
+     }else{
+       throw Exception();
+     }
+   }
   }
 }
 
