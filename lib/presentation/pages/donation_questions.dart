@@ -23,7 +23,7 @@ class DonationQuestions extends StatelessWidget {
   String _question5="";
   String _question6="";
   String _question7="";
-   String _question8="";
+  String _question8="";
 
 
    @override
@@ -31,7 +31,19 @@ class DonationQuestions extends StatelessWidget {
      return BlocConsumer<SendQuestionsCubit, SendQuestionsState>(
       listener: (context, state) {
         if(state is SendQuestionsSuccessState){
-          // print("ggggggggggggggggggg");
+          print(state.message);
+          Get.to(()=> DonationForm());
+        }  else if(state is SendQuestionsErrorState) {
+          showDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (BuildContext context) {
+                return  CustomAlertDialog(
+                  title: "Unfortunately, You can't donate blood",
+                  content: state.error,
+
+                );
+              });
         }
       },
       builder: (context, state) {
@@ -62,10 +74,10 @@ class DonationQuestions extends StatelessWidget {
                         question: '1. Are you under 18 years old?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
-                            _question1 = "No";
+                            _question1 = "no";
                           }
                           else {
-                            _question1 = "Yes";
+                            _question1 = "yes";
                           }
                         },
                       ),
@@ -74,10 +86,10 @@ class DonationQuestions extends StatelessWidget {
                         question: '2. Are you taking any antibiotics?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
-                            _question2 = "No";
+                            _question2 = "no";
                           }
                           else {
-                            _question2 = "Yes";
+                            _question2 = "yes";
                           }
                         },
                       ),
@@ -86,10 +98,10 @@ class DonationQuestions extends StatelessWidget {
                         question: '3. Are you having any fever during \n the past 3 weeks?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
-                            _question3 = "No";
+                            _question3 = "no";
                           }
                           else {
-                            _question3 = "Yes";
+                            _question3 = "yes";
                           }
                         },
                       ),
@@ -98,10 +110,10 @@ class DonationQuestions extends StatelessWidget {
                         question: '4. For the past 72 hours,have you \n taken anymedication?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
-                            _question4 = "No";
+                            _question4 = "no";
                           }
                           else {
-                            _question4 = "Yes";
+                            _question4 = "yes";
                           }
                         },
                       ),
@@ -110,10 +122,10 @@ class DonationQuestions extends StatelessWidget {
                         question: '5. Have you ever received insulin/ \n diabetic medication?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
-                            _question5 = "No";
+                            _question5 = "no";
                           }
                           else {
-                            _question5 = "Yes";
+                            _question5 = "yes";
                           }
                         },
                       ),
@@ -122,10 +134,10 @@ class DonationQuestions extends StatelessWidget {
                         question: '6. Do you have any chronic \n diseases?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
-                            _question6 = "No";
+                            _question6 = "no";
                           }
                           else {
-                            _question6 = "Yes";
+                            _question6 = "yes";
                           }
                         },
                       ),
@@ -134,10 +146,10 @@ class DonationQuestions extends StatelessWidget {
                         question: '7. Have you donated blood during \n the past 3 months?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
-                            _question7 = "No";
+                            _question7 = "no";
                           }
                           else {
-                            _question7 = "Yes";
+                            _question7 = "yes";
                           }
                         },
                       ),
@@ -146,10 +158,10 @@ class DonationQuestions extends StatelessWidget {
                         question: '8. Are you pregnant or breast \nfeeding? (for females only)',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
-                            _question8 = "No";
+                            _question8 = "no";
                           }
                           else {
-                            _question8 = "Yes";
+                            _question8 = "yes";
                           }
                         },
                       ),
@@ -161,8 +173,16 @@ class DonationQuestions extends StatelessWidget {
                                   backgroundColor: MaterialStatePropertyAll(
                                       kSecColor)),
                               onPressed: () {
-                                if(state is SendQuestionsSuccessState){
-                                  BlocProvider.of<SendQuestionsCubit>(context).sendQuestions(SendQuestionsParameters(
+                                print(_question1);
+                                print(_question2);
+                                print(_question3);
+                                print(_question4);
+                                print(_question5);
+                                print(_question6);
+                                print(_question7);
+                                print(_question8);
+
+                                BlocProvider.of<SendQuestionsCubit>(context).sendQuestions(SendQuestionsParameters(
                                       q1: _question1,
                                       q2: _question2,
                                       q3: _question3,
@@ -171,20 +191,6 @@ class DonationQuestions extends StatelessWidget {
                                       q6: _question6,
                                       q7: _question7,
                                       q8: _question8));
-                                  Get.to(()=> DonationForm());
-                                }
-                                else if(state is SendQuestionsErrorState) {
-                                   showDialog(
-                                      barrierDismissible: false,
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return  CustomAlertDialog(
-                                          title: "Unfortunately, You can't donate blood",
-                                          content: state.error,
-
-                                        );
-                                      });
-                                }
                               },
                               child: const Text("Submit"))),
                           fallback: (context)=>const CircularProgressIndicator() ,
