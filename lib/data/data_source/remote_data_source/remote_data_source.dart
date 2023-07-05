@@ -4,6 +4,7 @@ import 'package:graduation/data/data_source/remote_data_source/base_remote_data_
 import 'package:graduation/data/data_source/remote_data_source/dio_helper.dart';
 import 'package:graduation/data/models/add_donation_model.dart';
 import 'package:graduation/data/models/add_request_model.dart';
+import 'package:graduation/data/models/get_donations_model.dart';
 import 'package:graduation/data/models/get_requests_model.dart';
 import 'package:graduation/data/models/login_model.dart';
 import 'package:graduation/data/models/register_model.dart';
@@ -11,6 +12,7 @@ import 'package:graduation/data/models/send_questions_model.dart';
 import 'package:graduation/data/models/user_profile_model.dart';
 import 'package:graduation/domain/use_cases/add_donation_use_case.dart';
 import 'package:graduation/domain/use_cases/add_request_use_case.dart';
+import 'package:graduation/domain/use_cases/get_donation_use_case.dart';
 import 'package:graduation/domain/use_cases/get_request_use_case.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/domain/use_cases/register_use_case.dart';
@@ -100,12 +102,9 @@ class RemoteDataSource extends BaseRemoteDataSource{
         throw Exception();
       }
     }catch(error){
-      print(error);
       if(error is DioError){
         throw ErrorHandler.handle(error);
       }else{
-        print(error);
-
         throw Exception();
       }
 
@@ -165,6 +164,24 @@ class RemoteDataSource extends BaseRemoteDataSource{
        throw Exception();
      }
    }
+  }
+
+  @override
+  Future<GetDonationsModel> getDonations(GetDonationsParameters parameters) async{
+    try{
+      final response =await DioHelper.postData(path: AppConstance.getDonationsPath(id: parameters.id));
+      if(response.statusCode==200){
+        return GetDonationsModel.fromJson(response.data);
+      }else{
+        throw Exception();
+      }
+    }catch(error){
+      if(error is DioError){
+        throw ErrorHandler.handle(error);
+      }else{
+        throw Exception();
+      }
+    }
   }
 }
 

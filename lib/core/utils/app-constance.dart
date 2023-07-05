@@ -52,4 +52,7 @@ class AppConstance {
 }){
     return "$baseUrl/transactions?PhoneNumber=$phone&HumanName=$name&TransTypeId=1&HumanID=$id&BirthDate=$birthData&UnitNumber=1&BloodType=$bloodType&Notes=None&DonationDate=$donationDate&BranchName=$branchName";
   }
+
+  static String getDonationsPath({required String id})=>"$baseUrl/getTransactions?HumanID=$id&TransTypeId=1";
+
 }

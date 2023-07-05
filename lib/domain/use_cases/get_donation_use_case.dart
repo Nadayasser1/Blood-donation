@@ -24,11 +24,6 @@ class GetDonationsUseCase extends BaseUseCase<GetDonations,GetDonationsParameter
 
 
 
-
-
-
-
-
 class GetDonationsParameters extends Equatable{
   final String id;
 
