@@ -15,8 +15,8 @@ class CustomDatePicker extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return DateTimePicker(
-      cursorColor: kSecColor,
 
+      cursorColor: kSecColor,
       controller: controller,
       initialValue: null,
       decoration: InputDecoration(
@@ -33,7 +33,7 @@ class CustomDatePicker extends StatelessWidget{
         ),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: kSecColor)),
+            borderSide:  const BorderSide(color: kSecColor,)),
       ),
       firstDate: DateTime(1900),
       lastDate: DateTime(2100),

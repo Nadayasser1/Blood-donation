@@ -46,6 +46,8 @@ class LogInView extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
+          appBar: (AppBar(elevation: 0,automaticallyImplyLeading: false,)
+          ),
             body:
             SingleChildScrollView(
               child: Padding(
@@ -54,11 +56,12 @@ class LogInView extends StatelessWidget {
                   key: formState,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SizedBox(height: MediaQuery.of(context).size.height *0.15),
-                      SizedBox.square(dimension: 250,
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.35,
+                          width: MediaQuery.of(context).size.width *0.9,
                           child:Image.asset(AssetsData.logo, fit: BoxFit.fill)),
-                      SizedBox(height: MediaQuery.of(context).size.height *0.05),
                       const LoginItems(),
                       SizedBox(height: MediaQuery.of(context).size.height *0.02),
                       CustomTextField(
@@ -115,7 +118,9 @@ class LogInView extends StatelessWidget {
                             builder: (context)=>ElevatedButton(
                                 onPressed: () {
                                   if (formState.currentState!.validate()) {
-                                    BlocProvider.of<LoginCubit>(context).login(LoginParameters(email: emailController.text.trim(), password: passwordController.text))
+                                    BlocProvider.of<LoginCubit>(context).login(LoginParameters(
+                                        email: emailController.text.trim(),
+                                        password: passwordController.text))
                                     ;
                                   }
                                 },

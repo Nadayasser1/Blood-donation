@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:graduation/presentation/pages/donate_now_view.dart';
 import 'package:graduation/presentation/pages/donation_history.dart';
-import 'package:graduation/presentation/pages/hospitals_view.dart';
 import 'package:graduation/presentation/pages/request_form.dart';
 import 'package:graduation/presentation/pages/requests.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../core/utils/constants.dart';
+import '../pages/donation_questions.dart';
+import '../pages/hospitals_view.dart';
 
 
 
@@ -35,7 +35,7 @@ class HomeCards extends StatelessWidget{
                       size: 50,
                       color: kPrimaryColor,),
                     TextButton(onPressed: (){
-                      Get.to(()=>  const DonateNowView());
+                      Get.to(()=>   DonationQuestions());
                     }, child:const Text("Donate",
                       style: TextStyle(
                           color: kPrimaryColor,

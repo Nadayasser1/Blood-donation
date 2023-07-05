@@ -6,9 +6,10 @@ import '../../core/utils/constants.dart';
 
 
 class QuestionForm extends StatelessWidget{
-  const QuestionForm({super.key, required this.question,});
+  const QuestionForm({super.key, required this.question, required this.onSelected,});
 
   final String question;
+  final Function(String value,int index, bool isSelected) onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class QuestionForm extends StatelessWidget{
                     borderRadius: BorderRadius.circular(10),
                     selectedColor: kSecColor,
                     unselectedBorderColor: kSecColor),
-                onSelected: (value, index, isSelected) {},
+                onSelected: onSelected,
               )
             ],
           ),

@@ -9,15 +9,13 @@ class NotificationView extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Notifications"),
+        automaticallyImplyLeading:false,
+      ),
       body: Container(
         margin : const EdgeInsets.symmetric(horizontal: 10),
-        child:
-        Column(
-          children: [
-            const CustomTopBar(
-              title: "Notifications",),
-            SizedBox(
+        child: SizedBox(
               height: MediaQuery.of(context).size.height *0.65,
               child: ListView.separated(
                   scrollDirection: Axis.vertical,
@@ -35,8 +33,8 @@ class NotificationView extends StatelessWidget{
                   itemCount: 6),
             )
 
-          ],
-        ),
+
+
       ),
 
 

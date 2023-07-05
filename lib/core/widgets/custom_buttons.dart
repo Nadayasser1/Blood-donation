@@ -90,8 +90,7 @@ class CustomTextField extends StatelessWidget {
         validator: validator,
         obscureText: isPassword,
         cursorColor: kSecColor,
-        decoration:
-        InputDecoration(
+        decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(0),
           labelText: label,
           hintText: text,
@@ -109,8 +108,7 @@ class CustomTextField extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(color: kSecColor)),
-          suffixIcon: suffix != null
-              ? IconButton(
+          suffixIcon: suffix != null? IconButton(
                   onPressed: suffixPress,
                   icon: Icon(
                     suffix,
@@ -121,4 +119,20 @@ class CustomTextField extends StatelessWidget {
       ),
     );
   }
+}
+
+
+class CustomDropDownFormField extends StatelessWidget{
+  const CustomDropDownFormField({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+
+
+    );
+  }
+
+
 }

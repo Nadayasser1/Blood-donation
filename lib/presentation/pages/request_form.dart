@@ -13,7 +13,6 @@ import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../../core/widgets/custom_text.dart';
 import '../controller/add_request_cubit.dart';
-import '../widgets/top_bar.dart';
 import 'bottom_appbar.dart';
 
 class RequestForm extends StatelessWidget {
@@ -43,9 +42,16 @@ class RequestForm extends StatelessWidget {
 
     },
     builder: (context, state) {
-      return Scaffold(
+      return
+        Scaffold(
         appBar: AppBar(
-
+          title: const Text("Request Form"),
+          leading: IconButton(
+              onPressed: (){
+                Get.to(() => const BottomNavbar() );
+              },
+              icon:const Icon(Icons.arrow_circle_left_outlined)),
+          automaticallyImplyLeading:false,
         ),
         body: SingleChildScrollView(
            child: Padding(
@@ -56,14 +62,6 @@ class RequestForm extends StatelessWidget {
                    mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomTopBar(
-                      title: "Request Form",
-                      icon: Icons.arrow_circle_right_outlined,
-                      onPressed: () {
-                        Get.to(() => const BottomNavbar());
-                      },
-                      iconColor: Colors.black38,
-                    ),
                      SizedBox(
                       height: MediaQuery.of(context).size.height * 0.05,
                     ),

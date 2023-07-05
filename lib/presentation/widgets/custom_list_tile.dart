@@ -22,7 +22,7 @@ class CustomListTile extends StatelessWidget{
         contentPadding: const EdgeInsets.all(0),
         title: Text(title,
           style: const TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.bold),),
         subtitle: Text(subtitle),
         leading: icon,

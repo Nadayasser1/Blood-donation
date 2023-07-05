@@ -37,7 +37,10 @@ class ProfileView extends StatelessWidget {
      builder: (context, state) {
         if(state is ProfileSuccessState){
           return Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+              elevation: 0,
+              toolbarHeight: MediaQuery.of(context).size.height *0.02,
+            ),
             body:  Container(
               margin: const EdgeInsets.symmetric(horizontal: 5),
               child: Column(

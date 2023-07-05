@@ -11,16 +11,21 @@ class CustomTopBar extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: const EdgeInsets.all(0),
-      leading: TopBarText(text: title, color: Colors.black,),
-      trailing: IconButton(
-        icon: Icon(
-          icon,
-          size: 45,
-          color: iconColor,
+    return Column(
+      children: [
+        ListTile(
+          contentPadding: const EdgeInsets.all(0),
+          leading: TopBarText(text: title, color: Colors.black,),
+          trailing: IconButton(
+            icon: Icon(
+              icon,
+              size: 45,
+              color: iconColor,
+            ),
+          onPressed:onPressed,),
         ),
-      onPressed:onPressed,),
+        const Divider(thickness: 1,)
+      ],
     );
   }
 
