@@ -1,12 +1,14 @@
 
 
   import 'package:dartz/dartz.dart';
+import 'package:graduation/core/base_use_case/base_use_case.dart';
 import 'package:graduation/core/error/error_handler.dart';
 import 'package:graduation/core/error/failure.dart';
 import 'package:graduation/data/data_source/remote_data_source/base_remote_data_source.dart';
 import 'package:graduation/domain/base_repository/base_repository.dart';
 import 'package:graduation/domain/entities/add_donation.dart';
 import 'package:graduation/domain/entities/add_request.dart';
+import 'package:graduation/domain/entities/get-branches.dart';
 import 'package:graduation/domain/entities/get_donations.dart';
 import 'package:graduation/domain/entities/get_request.dart';
 import 'package:graduation/domain/entities/login.dart';
@@ -113,6 +115,21 @@ class Repository extends BaseRepository{
      return Left(error.failure);
    }
   }
+
+  @override
+  Future<Either<Failure, GetBranches>> getBranches(NoParameters parameters)async {
+
+    try{
+      final result =await baseRemoteDataSource.getBranches(parameters);
+      return Right(result);
+    }on ErrorHandler catch(error){
+      return Left(error.failure);
+    }
+
+  }
+
+
+
 
   }
 

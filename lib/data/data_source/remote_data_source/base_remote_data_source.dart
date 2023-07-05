@@ -1,5 +1,7 @@
+import 'package:graduation/core/base_use_case/base_use_case.dart';
 import 'package:graduation/data/models/add_donation_model.dart';
 import 'package:graduation/data/models/add_request_model.dart';
+import 'package:graduation/data/models/get_branches_model.dart';
 import 'package:graduation/data/models/get_donations_model.dart';
 import 'package:graduation/data/models/get_requests_model.dart';
 import 'package:graduation/data/models/login_model.dart';
@@ -34,6 +36,9 @@ abstract class BaseRemoteDataSource {
   Future<AddDonationModel> addDonation (AddDonationParameters parameters );
 
   Future<GetDonationsModel> getDonations (GetDonationsParameters parameters);
+
+  Future<GetBranchesModel> getBranches (NoParameters parameters);
+
 
 
 

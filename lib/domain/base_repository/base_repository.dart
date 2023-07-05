@@ -1,7 +1,9 @@
 import 'package:dartz/dartz.dart';
+import 'package:graduation/core/base_use_case/base_use_case.dart';
 import 'package:graduation/core/error/failure.dart';
 import 'package:graduation/domain/entities/add_donation.dart';
 import 'package:graduation/domain/entities/add_request.dart';
+import 'package:graduation/domain/entities/get-branches.dart';
 import 'package:graduation/domain/entities/get_donations.dart';
 import 'package:graduation/domain/entities/get_request.dart';
 import 'package:graduation/domain/entities/login.dart';
@@ -35,6 +37,8 @@ abstract  class BaseRepository{
   Future<Either<Failure,AddDonation>> addDonation (AddDonationParameters parameters );
 
   Future<Either<Failure,GetDonations>> getDonations (GetDonationsParameters parameters);
+
+  Future<Either<Failure,GetBranches>> getBranches (NoParameters parameters);
 
 
 

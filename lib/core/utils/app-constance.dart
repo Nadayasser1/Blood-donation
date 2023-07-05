@@ -55,4 +55,7 @@ class AppConstance {
 
   static String getDonationsPath({required String id})=>"$baseUrl/getTransactions?HumanID=$id&TransTypeId=1";
 
+  static String getBranchesPath()=>"$baseUrl/getBranches";
+
+
 }

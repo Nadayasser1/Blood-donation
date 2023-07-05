@@ -5,6 +5,7 @@ import 'package:graduation/data/data_source/remote_data_source/remote_data_sourc
 import 'package:graduation/data/repository/repository.dart';
 import 'package:graduation/domain/base_repository/base_repository.dart';
 import 'package:graduation/domain/use_cases/add_donation_use_case.dart';
+import 'package:graduation/domain/use_cases/get_branches_use_case.dart';
 import 'package:graduation/domain/use_cases/get_request_use_case.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/domain/use_cases/register_use_case.dart';
@@ -12,6 +13,7 @@ import 'package:graduation/domain/use_cases/send_questions_use_case.dart';
 import 'package:graduation/domain/use_cases/user_profile_use_case.dart';
 import 'package:graduation/presentation/controller/add_donation_cubit.dart';
 import 'package:graduation/presentation/controller/add_request_cubit.dart';
+import 'package:graduation/presentation/controller/get_branches_cubit.dart';
 import 'package:graduation/presentation/controller/get_requests_cubit.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
 import 'package:graduation/presentation/controller/profile_cubit.dart';
@@ -52,6 +54,9 @@ class ServicesLocator {
 
     sl.registerFactory(()=> SendQuestionsCubit( sendQuestionsUseCase: sl() ));
 
+    sl.registerFactory(()=> GetBranchesCubit(getBranchesUseCase: sl()  ));
+
+
 
 
 
@@ -66,6 +71,9 @@ class ServicesLocator {
     sl.registerLazySingleton(() => GetRequestUseCase(baseRepository: sl())) ;
     sl.registerLazySingleton(() => AddDonationUseCase(baseRepository: sl())) ;
     sl.registerLazySingleton(() => SendQuestionsUseCase(baseRepository: sl())) ;
+    sl.registerLazySingleton(() => GetBranchesUseCase(baseRepository: sl())) ;
+
+
 
 
 
