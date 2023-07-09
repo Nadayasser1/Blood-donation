@@ -6,9 +6,15 @@ import 'package:graduation/domain/entities/donations.dart';
 class GetDonations extends Equatable{
 
   final String message ;
+  final int count ;
+  final String bloodType;
+  final String lastDonation;
   final List<Donations> donations;
 
  const GetDonations({
+    required this.count,
+    required  this.bloodType,
+    required  this.lastDonation,
     required this.message,
     required this.donations,
   });
