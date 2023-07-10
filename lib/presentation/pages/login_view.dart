@@ -13,8 +13,8 @@ import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
+import '../../core/widgets/custom_progress_indecator.dart';
 import '../controller/login_cubit.dart';
-import '../widgets/login_options.dart';
 import 'bottom_appbar.dart';
 import 'forget_password_view.dart';
 
@@ -58,12 +58,30 @@ class LogInView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.35,
-                          width: MediaQuery.of(context).size.width *0.9,
-                          child:Image.asset(AssetsData.logo, fit: BoxFit.fill)),
-                      const LoginItems(),
-                      SizedBox(height: MediaQuery.of(context).size.height *0.02),
+                      SizedBox.square(
+                        dimension: 350,
+                          child:Stack(
+                              children: [
+                              Positioned(
+                                child: Image.asset(
+                                    AssetsData.logo,
+                                    fit: BoxFit.fill),
+                              ),
+                                 Positioned(
+                                  left: MediaQuery.of(context).size.width *0.21,
+                                  top: MediaQuery.of(context).size.height *0.2,
+                                  child: const Text("LifeLine",style: TextStyle(
+                                      fontSize: 45,
+                                      fontWeight: FontWeight.bold,color: Color(
+                                      0xFFB70000)),),
+                                ),
+                                Positioned(
+                                  left: MediaQuery.of(context).size.width *0.2,
+                                  top: MediaQuery.of(context).size.height *0.27,
+                                  child: const Text("BLOOD BANK COMMUNITY",style: TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                                ),
+                              ])),
                       CustomTextField(
                           type: TextInputType.emailAddress,
                           controller: emailController,
@@ -130,7 +148,7 @@ class LogInView extends StatelessWidget {
                                 child: const Text("Login",
                                   style: TextStyle(fontSize: 20,
                                     fontWeight: FontWeight.bold,),)),
-                            fallback: (context)=>const CircularProgressIndicator(),
+                            fallback: (context)=> const CustomProgressIndecator()
                           ),
                         ),
 

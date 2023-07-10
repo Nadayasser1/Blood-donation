@@ -12,6 +12,7 @@ import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
+import '../../core/widgets/custom_progress_indecator.dart';
 import '../../core/widgets/custom_text.dart';
 import '../../core/widgets/date_picker.dart';
 import '../../domain/use_cases/register_use_case.dart';
@@ -239,7 +240,7 @@ class SignUpView extends StatelessWidget{
                               fontWeight: FontWeight.bold,),
                           ))
                       ),
-                      fallback: (context)=>const CircularProgressIndicator(),
+                      fallback: (context)=>const CustomProgressIndecator(),
 
                     ),
                   ),

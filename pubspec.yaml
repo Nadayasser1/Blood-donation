@@ -48,6 +48,7 @@ dependencies:
   date_time_picker: ^2.1.0
   percent_indicator: ^4.2.3
   loading_indicator: ^3.1.1
+  blurry_modal_progress_hud: ^1.0.0
 
 
 
@@ -84,6 +85,7 @@ flutter:
      - assets/images/logo2-removebg-preview.png
      - assets/images/images__3_-removebg-preview.png
      - assets/images/avatar-removebg-preview.png
+     - assets/images/photo_5944984046704639363_x.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

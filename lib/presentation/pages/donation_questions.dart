@@ -8,6 +8,7 @@ import 'package:graduation/domain/use_cases/send_questions_use_case.dart';
 import 'package:graduation/presentation/pages/donation_form.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_alert_dialog.dart';
+import '../../core/widgets/custom_progress_indecator.dart';
 import '../controller/send_questions_cubit.dart';
 import '../widgets/question_form.dart';
 import 'bottom_appbar.dart';
@@ -71,7 +72,7 @@ class DonationQuestions extends StatelessWidget {
                         .vertical * 0.1),
                     children: [
                       QuestionForm(
-                        question: '1. Are you under 18 years old?',
+                        question: '1. Are you taking any antibiotics?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
                             _question1 = "no";
@@ -83,7 +84,7 @@ class DonationQuestions extends StatelessWidget {
                       ),
                       const Divider(thickness: 1,),
                       QuestionForm(
-                        question: '2. Are you taking any antibiotics?',
+                        question: '2. Are you having any fever during \n the past 3 weeks?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
                             _question2 = "no";
@@ -95,7 +96,7 @@ class DonationQuestions extends StatelessWidget {
                       ),
                       const Divider(thickness: 1,),
                       QuestionForm(
-                        question: '3. Are you having any fever during \n the past 3 weeks?',
+                        question: '3. For the past 72 hours,have you \n taken any medication?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
                             _question3 = "no";
@@ -107,7 +108,7 @@ class DonationQuestions extends StatelessWidget {
                       ),
                       const Divider(thickness: 1,),
                       QuestionForm(
-                        question: '4. For the past 72 hours,have you \n taken anymedication?',
+                        question: '4. Have you ever received insulin/ \n diabetic medication?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
                             _question4 = "no";
@@ -119,7 +120,7 @@ class DonationQuestions extends StatelessWidget {
                       ),
                       const Divider(thickness: 1,),
                       QuestionForm(
-                        question: '5. Have you ever received insulin/ \n diabetic medication?',
+                        question: '5. Do you have any chronic \n diseases?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
                             _question5 = "no";
@@ -131,7 +132,7 @@ class DonationQuestions extends StatelessWidget {
                       ),
                       const Divider(thickness: 1,),
                       QuestionForm(
-                        question: '6. Do you have any chronic \n diseases?',
+                        question: '6. Have you donated blood during \n the past 3 months?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
                             _question6 = "no";
@@ -143,7 +144,7 @@ class DonationQuestions extends StatelessWidget {
                       ),
                       const Divider(thickness: 1,),
                       QuestionForm(
-                        question: '7. Have you donated blood during \n the past 3 months?',
+                        question: '7. Are you pregnant or breast \nfeeding? (for females only)',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
                             _question7 = "no";
@@ -155,7 +156,7 @@ class DonationQuestions extends StatelessWidget {
                       ),
                       const Divider(thickness: 1,),
                       QuestionForm(
-                        question: '8. Are you pregnant or breast \nfeeding? (for females only)',
+                        question: '8. Are you under 18 years old?',
                         onSelected: (value, index, isSelected) {
                           if (value == "No") {
                             _question8 = "no";
@@ -193,7 +194,7 @@ class DonationQuestions extends StatelessWidget {
                                       q8: _question8));
                               },
                               child: const Text("Submit"))),
-                          fallback: (context)=>const CircularProgressIndicator() ,
+                          fallback: (context)=>const CustomProgressIndecator() ,
                         ),
                       ),
                     ],

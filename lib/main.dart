@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:graduation/core/bloc_observer/bloc_observer.dart';
 import 'package:graduation/presentation/controller/add_donation_cubit.dart';
 import 'package:graduation/presentation/controller/add_request_cubit.dart';
+import 'package:graduation/presentation/controller/get_branches_cubit.dart';
+import 'package:graduation/presentation/controller/get_donations_cubit.dart';
 import 'package:graduation/presentation/controller/get_requests_cubit.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
 import 'package:graduation/presentation/controller/profile_cubit.dart';
@@ -42,7 +44,12 @@ class DonationApp extends StatelessWidget {
         BlocProvider(
             create: (context) => sl<SendQuestionsCubit>() ),
         BlocProvider(
-            create: (context) => sl<AddDonationCubit>() )
+            create: (context) => sl<AddDonationCubit>() ),
+        BlocProvider(
+            create: (context) => sl<GetDonationsCubit>() ),
+        BlocProvider(
+            create: (context) => sl<GetBranchesCubit>() ),
+
 
 
       ],
@@ -56,7 +63,7 @@ class DonationApp extends StatelessWidget {
               titleTextStyle: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black),
+                  color: kSecColor),
               iconTheme: IconThemeData(
                   color: Colors.black54,
                   size: 40),

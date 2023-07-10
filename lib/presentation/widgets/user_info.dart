@@ -8,18 +8,21 @@ class UserInfo extends StatelessWidget{
     this.label,
     this.text,
     this.labelSize,
-    this.textSize});
+    this.textSize, this.margin,
+    // this.textColor,
+    });
 
   final String? label;
   final String? text;
   final double? labelSize;
   final double? textSize;
-
+  final EdgeInsetsGeometry? margin;
+  // final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.all(10),
+        margin: margin,
         child:
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,7 +33,8 @@ class UserInfo extends StatelessWidget{
                 fontSize: labelSize
               ),),
               Text(text!,style:  TextStyle(
-                fontSize: textSize
+                fontSize: textSize,
+                // color: textColor!
               ),),
 
 

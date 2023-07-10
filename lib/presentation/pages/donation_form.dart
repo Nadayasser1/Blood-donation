@@ -13,6 +13,7 @@ import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
+import '../../core/widgets/custom_progress_indecator.dart';
 import '../../core/widgets/custom_text.dart';
 import 'bottom_appbar.dart';
 
@@ -265,7 +266,7 @@ class DonationForm extends StatelessWidget {
                             onPressed: () {
                               if(formState.currentState!.validate()){
                                 BlocProvider.of<AddDonationCubit>(context).addDonation(AddDonationParameters(
-                                    donationDateController.text,
+                                    donorNameController.text,
                                     id,
                                     phoneController.text,
                                     birthDateController.text,
@@ -281,7 +282,7 @@ class DonationForm extends StatelessWidget {
                               "Submit request",
                               style: TextStyle(fontSize: 20),
                             )),
-                    fallback: (context)=>const CircularProgressIndicator(),
+                    fallback: (context)=>const CustomProgressIndecator(),
                   ),
                 ),
               ],

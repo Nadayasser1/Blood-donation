@@ -16,10 +16,34 @@ class SlidingImage extends StatelessWidget {
         builder: (context, _) {
           return SlideTransition(
             position: slidingAnimation,
+              child: Image.asset(AssetsData.logo)
+          );
+        });
+  }
+}
+
+class SlidingText extends StatelessWidget{
+  const SlidingText({
+    Key? key,
+    required this.slidingTextAnimation,
+  }) : super(key: key);
+
+  final Animation<Offset> slidingTextAnimation;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+        animation: slidingTextAnimation,
+        builder: (context, _) {
+          return SlideTransition(
+            position: slidingTextAnimation,
+            transformHitTests: false,
             child:
-            Image.asset(AssetsData.logo),
+            const Text("BLOOD BANK COMMUNITY",style: TextStyle(
+                fontWeight: FontWeight.bold)),
 
           );
         });
   }
+
 }

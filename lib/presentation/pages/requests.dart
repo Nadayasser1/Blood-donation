@@ -6,6 +6,8 @@ import 'package:graduation/presentation/controller/get_requests_cubit.dart';
 import 'package:graduation/presentation/widgets/user_info.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
+import '../../core/utils/constants.dart';
+import '../../core/widgets/custom_progress_indecator.dart';
 import '../../domain/use_cases/get_request_use_case.dart';
 import 'bottom_appbar.dart';
 
@@ -22,8 +24,8 @@ class YourRequests extends StatelessWidget {
 
     return BlocConsumer<GetRequestsCubit, GetRequestsState>(
       listener: (context, state) {
-        if (state is GetRequestSuccessState) {
-        } else if (state is GetRequestErrorState) {
+        if (state is GetRequestSuccessState) {}
+        else if (state is GetRequestErrorState) {
           // ignore: avoid_print
           print(state.error);
         }
@@ -40,7 +42,7 @@ class YourRequests extends StatelessWidget {
                     icon:const Icon(Icons.arrow_circle_left_outlined)),
                 automaticallyImplyLeading:false,
               ),
-              body: const Center(child: CircularProgressIndicator()),);
+              body: const Center(child: CustomProgressIndecator()),);
         } else if (state is GetRequestSuccessState){
           return Scaffold(
             appBar: AppBar(
@@ -86,24 +88,26 @@ class YourRequests extends StatelessWidget {
 Widget buildItem(GetRequestsData data, context) {
   return Container(
     decoration:  BoxDecoration(
-      // color: Color(0x22B1B1B1),
+      color: containerColor,
       borderRadius: BorderRadius.circular(5)
     ) ,
     width: double.maxFinite,
     height: MediaQuery.of(context).size.height * 0.26,
-    margin: EdgeInsets.only(top: 10),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         UserInfo(
+          margin: const EdgeInsets.all(10),
           label: "Branch name:",
           text: data.branchName,
         ),
         UserInfo(
+          margin: const EdgeInsets.all(10),
           label: "Patient name:",
           text: data.patientName,
         ),
         UserInfo(
+          margin: const EdgeInsets.all(10),
           label: "Phone:",
           text: data.phoneNumber,
         ),
@@ -112,10 +116,14 @@ Widget buildItem(GetRequestsData data, context) {
           mainAxisSize: MainAxisSize.max,
           children: [
             UserInfo(
+              margin: const EdgeInsets.all(10),
               label: "Blood type:",
               text: data.bloodType,
             ),
-            UserInfo(label: "Units:", text: " ${data.unitNumber}"),
+            UserInfo(
+                margin: const EdgeInsets.all(10),
+                label: "Units:",
+                text: " ${data.unitNumber}"),
           ],
         ),
         StatusInfo(

@@ -17,8 +17,10 @@ class CustomAlertDialog extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title:  Text(title),
+      title:  Text(title,textAlign: TextAlign.center),
       backgroundColor: kSecColor,
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10 )),
       titleTextStyle: const TextStyle(
           fontSize: 18,
           color: kPrimaryColor,
