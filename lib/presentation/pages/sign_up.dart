@@ -35,6 +35,8 @@ class SignUpView extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    final AppPreferences appPreferences=sl<AppPreferences>();
+    final String token = appPreferences.getNotificationsToken();
     return BlocConsumer<RegisterCubit, RegisterState>(
      listener: (context, state) {
        if(state is RegisterSuccessState){
@@ -230,7 +232,8 @@ class SignUpView extends StatelessWidget{
                                       passwordController.text,
                                       phoneController.text,
                                       _gender,
-                                    dateController.text,
+                                      dateController.text,
+                                      token,
                                       ));
                             }
                           },

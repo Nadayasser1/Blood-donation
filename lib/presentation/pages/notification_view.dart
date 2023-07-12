@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../core/utils/assets.dart';
 import '../widgets/custom_list_tile.dart';
-import '../widgets/top_bar.dart';
 
 class NotificationView extends StatelessWidget{
   const NotificationView ({super.key});

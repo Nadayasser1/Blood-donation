@@ -32,8 +32,9 @@ class RegisterParameters extends Equatable{
   final String phone;
   final String gender;
   final String birthdate;
+  final String token ;
 
- const RegisterParameters(this.id, this.name, this.email, this.password, this.phone, this.gender , this.birthdate);
+ const RegisterParameters(this.id, this.name, this.email, this.password, this.phone, this.gender , this.birthdate, this.token);
 
   @override
 
@@ -45,6 +46,7 @@ class RegisterParameters extends Equatable{
     phone,
     gender,
     birthdate,
+    token,
   ];
 
 

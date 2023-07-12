@@ -1,7 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/bloc_observer/bloc_observer.dart';
+import 'package:graduation/core/fire_base/fire_base_notification.dart';
 import 'package:graduation/presentation/controller/add_donation_cubit.dart';
 import 'package:graduation/presentation/controller/add_request_cubit.dart';
 import 'package:graduation/presentation/controller/get_branches_cubit.dart';
@@ -16,10 +18,12 @@ import 'core/services/services_locator.dart';
 import 'core/utils/constants.dart';
 
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+   ServicesLocator().init();
+  await Firebase.initializeApp();
+  await FireBaseNotifications().initNotifications();
   Bloc.observer = MyBlocObserver();
-  ServicesLocator().init();
   runApp(const DonationApp());
 }
 

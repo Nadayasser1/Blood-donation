@@ -1,0 +1,47 @@
+ {
+  "project_info": {
+    "project_number": "119259082205",
+    "project_id": "notificationstograd-project",
+    "storage_bucket": "notificationstograd-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119259082205:android:fe7a2358af668e47a65a34",
+        "android_client_info": {
+          "package_name": "com.example.graduation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119259082205-m9are4rnquk4u63vra0fl09uqssta5au.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.graduation",
+            "certificate_hash": "512bb8d0c4249acd48d269b787c93af3360ceb6b"
+          }
+        },
+        {
+          "client_id": "119259082205-t4sfcqjskdh79nq5hek03ia6602l1e1q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDjpvhkJEuNcoHBnsxkKmG-mkxZs33luQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119259082205-t4sfcqjskdh79nq5hek03ia6602l1e1q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
