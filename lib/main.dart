@@ -61,7 +61,7 @@ class DonationApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light()
             .copyWith(
-            scaffoldBackgroundColor: kPrimaryColor,
+            scaffoldBackgroundColor: Colors.transparent,
             appBarTheme:  const AppBarTheme(
               centerTitle: true,
               titleTextStyle: TextStyle(

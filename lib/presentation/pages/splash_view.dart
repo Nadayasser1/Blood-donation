@@ -5,6 +5,7 @@ import 'package:graduation/presentation/pages/login_view.dart';
 import 'package:graduation/presentation/widgets/sliding_image.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
+import '../widgets/background.dart';
 import 'bottom_appbar.dart';
 import 'onBoarding_view.dart';
 
@@ -39,29 +40,31 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: Stack(
-          children: [
-            Positioned(
-              left: 0,
-              right: 0,
-              top: MediaQuery.of(context).size.height *0.3,
-                child: SlidingImage(slidingAnimation: slidingAnimation)),
+    return  Background(
+      child: Scaffold(
+        body: Stack(
+            children: [
               Positioned(
-               left: MediaQuery.of(context).size.width *0.26,
-               bottom: MediaQuery.of(context).size.height *0.4,
-               child: const Text("LifeLine",style: TextStyle(
-                fontSize: 45,
-                  fontWeight: FontWeight.bold,color: Color(
-                  0xFFB70000)),),
-             ),
-            Positioned(
-                left: MediaQuery.of(context).size.width *0.25,
-                bottom: MediaQuery.of(context).size.height *0.38
-                ,
-                child: SlidingText(slidingTextAnimation: slidingTextAnimation))
-          ],
-        ),
+                left: 0,
+                right: 0,
+                top: MediaQuery.of(context).size.height *0.3,
+                  child: SlidingImage(slidingAnimation: slidingAnimation)),
+                Positioned(
+                 left: MediaQuery.of(context).size.width *0.26,
+                 bottom: MediaQuery.of(context).size.height *0.4,
+                 child: const Text("LifeLine",style: TextStyle(
+                  fontSize: 45,
+                    fontWeight: FontWeight.bold,color: Color(
+                    0xFFB70000)),),
+               ),
+              Positioned(
+                  left: MediaQuery.of(context).size.width *0.25,
+                  bottom: MediaQuery.of(context).size.height *0.38
+                  ,
+                  child: SlidingText(slidingTextAnimation: slidingTextAnimation))
+            ],
+          ),
+      ),
     );
   }
   void initSlidingAnimation() {

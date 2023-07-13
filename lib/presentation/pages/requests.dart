@@ -9,6 +9,7 @@ import '../../core/services/shared_preferences.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_progress_indecator.dart';
 import '../../domain/use_cases/get_request_use_case.dart';
+import '../widgets/background.dart';
 import 'bottom_appbar.dart';
 
 class YourRequests extends StatelessWidget {
@@ -32,8 +33,25 @@ class YourRequests extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is GetRequestLoadingState) {
-          return Scaffold(
+          return Background(
+            child: Scaffold(
+                appBar: AppBar(
+                  backgroundColor: appbarColor,
+                  title: const Text("Your Requests"),
+                  leading: IconButton(
+                      onPressed: (){
+                        Get.to(() => const BottomNavbar() );
+                      },
+                      icon:const Icon(Icons.arrow_circle_left_outlined)),
+                  automaticallyImplyLeading:false,
+                ),
+                body: const Center(child: CustomProgressIndecator()),),
+          );
+        } else if (state is GetRequestSuccessState){
+          return Background(
+            child: Scaffold(
               appBar: AppBar(
+                backgroundColor: appbarColor,
                 title: const Text("Your Requests"),
                 leading: IconButton(
                     onPressed: (){
@@ -42,43 +60,35 @@ class YourRequests extends StatelessWidget {
                     icon:const Icon(Icons.arrow_circle_left_outlined)),
                 automaticallyImplyLeading:false,
               ),
-              body: const Center(child: CustomProgressIndecator()),);
-        } else if (state is GetRequestSuccessState){
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text("Your Requests"),
-              leading: IconButton(
-                  onPressed: (){
-                    Get.to(() => const BottomNavbar() );
-                  },
-                  icon:const Icon(Icons.arrow_circle_left_outlined)),
-              automaticallyImplyLeading:false,
-            ),
-            body:
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              child:  ListView.separated(
-                      padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).padding.vertical * 0.1),
-                      itemBuilder: (BuildContext context, int index)=>buildItem(state.getRequestData.requestData[index],context),
-                      separatorBuilder: (BuildContext context, int index)=>const Divider(
-                        thickness: 1,
+              body:
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                child:  ListView.separated(
+                        padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).padding.vertical * 0.1),
+                        itemBuilder: (BuildContext context, int index)=>buildItem(state.getRequestData.requestData[index],context),
+                        separatorBuilder: (BuildContext context, int index)=>const Divider(
+                          thickness: 1,
+                        ),
+                        itemCount: state.getRequestData.requestData.length,
                       ),
-                      itemCount: state.getRequestData.requestData.length,
-                    ),
+              ),
             ),
           );
         }else{
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text("Your Requests"),
-              leading: IconButton(
-                  onPressed: (){
-                    Get.to(() => const BottomNavbar() );
-                  },
-                  icon:const Icon(Icons.arrow_circle_left_outlined)),
-              automaticallyImplyLeading:false,
-            ),
-            body: const Center(child: Text("There is no requests..yet")));
+          return Background(
+            child: Scaffold(
+              appBar: AppBar(
+                backgroundColor: appbarColor,
+                title: const Text("Your Requests"),
+                leading: IconButton(
+                    onPressed: (){
+                      Get.to(() => const BottomNavbar() );
+                    },
+                    icon:const Icon(Icons.arrow_circle_left_outlined)),
+                automaticallyImplyLeading:false,
+              ),
+              body: const Center(child: Text("There is no requests..yet"))),
+          );
         }
       },
     );

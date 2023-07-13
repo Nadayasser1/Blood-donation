@@ -29,16 +29,24 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
 
   double _width1 = 140;
   double _height1 = 140;
+  Color  _color1 = cardsColor;
+
 
   double _width2 = 140;
   double _height2 = 140;
+  Color  _color2 = cardsColor;
+
 
 
   double _width3 = 140;
   double _height3 = 140;
+  Color  _color3 = cardsColor;
+
 
   double _width4 = 140;
   double _height4 = 140;
+  Color  _color4 = cardsColor;
+
 
 
   @override
@@ -93,6 +101,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                 setState(() {
                   _width4 = 150;
                   _height4 = 150;
+                  _color1 = Colors.blueGrey;
                 });
               },
               child: AnimatedContainer(
@@ -107,7 +116,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                 width: _width4,
                 height: _height4,
                 decoration:  BoxDecoration(
-                    color: cardsColor,
+                    color: _color1,
                     borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -136,6 +145,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                 setState(() {
                   _width = 150;
                   _height = 150;
+                  _color3 = Colors.blueGrey;
                 });
               },
               child: AnimatedContainer(
@@ -150,7 +160,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                 width: _width,
                 height: _height,
                 decoration:  BoxDecoration(
-                    color: cardsColor,
+                    color: _color3,
                     borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -173,6 +183,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                 setState(() {
                   _width3 = 150;
                   _height3 = 150;
+                  _color4 = Colors.blueGrey;
                 });
               },
               child: AnimatedContainer(
@@ -187,7 +198,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                 width: _width3,
                 height: _height3,
                 decoration:  BoxDecoration(
-                    color: cardsColor,
+                    color: _color4,
                     borderRadius: BorderRadius.circular(20)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -213,6 +224,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
             setState(() {
               _width2 = 150;
               _height2 = 150;
+              _color2 = Colors.blueGrey;
             });
           },
           child: AnimatedContainer(
@@ -227,7 +239,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
             width: _width2,
             height: _height2,
             decoration:  BoxDecoration(
-                color: cardsColor,
+                color: _color2,
                 borderRadius: BorderRadius.circular(20)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -245,6 +257,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                 )],
             ),),
         ),
+
 
       ],
     );

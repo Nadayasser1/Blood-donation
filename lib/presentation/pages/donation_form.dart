@@ -15,6 +15,7 @@ import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../../core/widgets/custom_progress_indecator.dart';
 import '../../core/widgets/custom_text.dart';
+import '../widgets/background.dart';
 import 'bottom_appbar.dart';
 
 class DonationForm extends StatelessWidget {
@@ -47,250 +48,253 @@ class DonationForm extends StatelessWidget {
        }
     },
      builder: (context, state) {
-      return Scaffold(
-      appBar: AppBar(
-        title: const Text("Donation Form"),
-        leading: IconButton(
-            onPressed: (){
-              Get.to(() => const BottomNavbar() );
-            },
-            icon:const Icon(Icons.arrow_circle_left_outlined)),
-        automaticallyImplyLeading:false,
-      ),
-       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Form(
-            key: formState,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                const TitleText(
-                  label: "Donor Name",
-                  size: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                CustomTextField(
-                  controller:donorNameController ,
-                  type: TextInputType.name,
-                  text: "Full name",
-                  prefix: Icons.person,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Please enter donor name";
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                const TitleText(
-                  label: "Phone",
-                  size: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                CustomTextField(
-                  controller: phoneController,
-                  text: "Enter your phone number",
-                  prefix: Icons.phone,
-                  type: TextInputType.number,
-                  validator: (value){
-                    final phoneCheck = RegExp(r'^[0-9]{11}$');
-                    if(value!.isEmpty){
-                      return "enter your phone number";
-                    }
-                    else if (!phoneCheck.hasMatch(value)){
-                      return "Please enter a valid phone number";
-                    }
-                    return null;},
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                const TitleText(
-                      label: "Date of Birth",
-                      size: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child:
-                     CustomDatePicker(
-                          controller: birthDateController,
-                        )
-                    ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                const TitleText(
-                  label: "Branch Name",
-                  fontWeight: FontWeight.bold,
-                  size: 18,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-              DropdownButtonFormField(
-              decoration: InputDecoration(
-                contentPadding: const EdgeInsets.all(0),
-                filled: true,
-                fillColor: kPrimaryColor,
-                prefixIcon: const Icon(
-                  MdiIcons.hospitalBuilding
-                ),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Colors.black54,
-                    )
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: kSecColor)),
-              ),
-              dropdownColor: kPrimaryColor,
-              value: selectedhospital,
-              onChanged: (String? value) {
-                selectedhospital = value;
+      return Background(
+        child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: appbarColor,
+          title: const Text("Donation Form"),
+          leading: IconButton(
+              onPressed: (){
+                Get.to(() => const BottomNavbar() );
               },
-              items: <String>[
-                'Central Blood Bank',
-                'Tanta Blood Bank',
-                'Mansora Blood Bank',
-                'Ibn Sina Hospital',
-                'Dar El Shefaa Hospital',
-                'Red Crescent Hospital'].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value,),
-                );
-              }).toList(),
-
-            ),
-
-            SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                const TitleText(
-                  label: "Donation Date",
-                  size: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child:
-                    CustomDatePicker(
-                      controller: donationDateController,
-                    )
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                const TitleText(
-                  label: "Blood Type",
-                  fontWeight: FontWeight.bold,
-                  size: 18,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height *0.01,
-                ),
-                Center(
-                  child: GroupButton(
-                      options: GroupButtonOptions(
-                          borderRadius: BorderRadius.circular(10),
-                          selectedColor: kSecColor,
-                          unselectedBorderColor: kSecColor),
-                      onSelected: (value, index, isSelected) {
-                        if (value=="O+"){
-                          _bloodType = "O%2B";}
-
-                        else if (value=="O-"){
-                          _bloodType ="O-";}
-
-                        else if (value=="A+"){
-                          _bloodType ="A%2B";}
-
-                        else if (value=="A-"){
-                          _bloodType="A-";}
-
-                        else if (value=="B+"){
-                          _bloodType="B%2B";}
-
-                        else if (value=="B-"){
-                          _bloodType ="B-";}
-
-                        else if (value=="AB+"){
-                          _bloodType ="AB%2B";}
-
-                        else if (value=="AB-"){
-                          _bloodType ="AB-";}
-                      },
-                      buttons: const [
-                        "O+", 
-                        "O-", 
-                        "A+", 
-                        "A-", 
-                        "B+", 
-                        "B-", 
-                        "AB+", 
-                        "AB-"
-                      ]),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-
-                Center(
-                  child: ConditionalBuilder(
-                    condition: state is! AddDonationLoadingState,
-                    builder: (context) => ElevatedButton(
-                            onPressed: () {
-                              if(formState.currentState!.validate()){
-                                BlocProvider.of<AddDonationCubit>(context).addDonation(AddDonationParameters(
-                                    donorNameController.text,
-                                    id,
-                                    phoneController.text,
-                                    birthDateController.text,
-                                    donationDateController.text,
-                                    selectedhospital!,
-                                    _bloodType));
-
-                              }
-                            },
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(kSecColor)),
-                            child: const Text(
-                              "Submit request",
-                              style: TextStyle(fontSize: 20),
-                            )),
-                    fallback: (context)=>const CustomProgressIndecator(),
+              icon:const Icon(Icons.arrow_circle_left_outlined)),
+          automaticallyImplyLeading:false,
+        ),
+         body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Form(
+              key: formState,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
                   ),
+                  const TitleText(
+                    label: "Donor Name",
+                    size: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  CustomTextField(
+                    controller:donorNameController ,
+                    type: TextInputType.name,
+                    text: "Full name",
+                    prefix: Icons.person,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please enter donor name";
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  const TitleText(
+                    label: "Phone",
+                    size: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  CustomTextField(
+                    controller: phoneController,
+                    text: "Enter your phone number",
+                    prefix: Icons.phone,
+                    type: TextInputType.number,
+                    validator: (value){
+                      final phoneCheck = RegExp(r'^[0-9]{11}$');
+                      if(value!.isEmpty){
+                        return "enter your phone number";
+                      }
+                      else if (!phoneCheck.hasMatch(value)){
+                        return "Please enter a valid phone number";
+                      }
+                      return null;},
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  const TitleText(
+                        label: "Date of Birth",
+                        size: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child:
+                       CustomDatePicker(
+                            controller: birthDateController,
+                          )
+                      ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  const TitleText(
+                    label: "Branch Name",
+                    fontWeight: FontWeight.bold,
+                    size: 18,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                DropdownButtonFormField(
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(0),
+                  filled: true,
+                  fillColor: kPrimaryColor,
+                  prefixIcon: const Icon(
+                    MdiIcons.hospitalBuilding
+                  ),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Colors.black54,
+                      )
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: kSecColor)),
                 ),
-              ],
+                dropdownColor: kPrimaryColor,
+                value: selectedhospital,
+                onChanged: (String? value) {
+                  selectedhospital = value;
+                },
+                items: <String>[
+                  'Central Blood Bank',
+                  'Tanta Blood Bank',
+                  'Mansora Blood Bank',
+                  'Ibn Sina Hospital',
+                  'Dar El Shefaa Hospital',
+                  'Red Crescent Hospital'].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value,),
+                  );
+                }).toList(),
+
+              ),
+
+              SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  const TitleText(
+                    label: "Donation Date",
+                    size: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child:
+                      CustomDatePicker(
+                        controller: donationDateController,
+                      )
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  const TitleText(
+                    label: "Blood Type",
+                    fontWeight: FontWeight.bold,
+                    size: 18,
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height *0.01,
+                  ),
+                  Center(
+                    child: GroupButton(
+                        options: GroupButtonOptions(
+                            borderRadius: BorderRadius.circular(10),
+                            selectedColor: kSecColor,
+                            unselectedBorderColor: kSecColor),
+                        onSelected: (value, index, isSelected) {
+                          if (value=="O+"){
+                            _bloodType = "O%2B";}
+
+                          else if (value=="O-"){
+                            _bloodType ="O-";}
+
+                          else if (value=="A+"){
+                            _bloodType ="A%2B";}
+
+                          else if (value=="A-"){
+                            _bloodType="A-";}
+
+                          else if (value=="B+"){
+                            _bloodType="B%2B";}
+
+                          else if (value=="B-"){
+                            _bloodType ="B-";}
+
+                          else if (value=="AB+"){
+                            _bloodType ="AB%2B";}
+
+                          else if (value=="AB-"){
+                            _bloodType ="AB-";}
+                        },
+                        buttons: const [
+                          "O+",
+                          "O-",
+                          "A+",
+                          "A-",
+                          "B+",
+                          "B-",
+                          "AB+",
+                          "AB-"
+                        ]),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+
+                  Center(
+                    child: ConditionalBuilder(
+                      condition: state is! AddDonationLoadingState,
+                      builder: (context) => ElevatedButton(
+                              onPressed: () {
+                                if(formState.currentState!.validate()){
+                                  BlocProvider.of<AddDonationCubit>(context).addDonation(AddDonationParameters(
+                                      donorNameController.text,
+                                      id,
+                                      phoneController.text,
+                                      birthDateController.text,
+                                      donationDateController.text,
+                                      selectedhospital!,
+                                      _bloodType));
+
+                                }
+                              },
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(kSecColor)),
+                              child: const Text(
+                                "Submit request",
+                                style: TextStyle(fontSize: 20),
+                              )),
+                      fallback: (context)=>const CustomProgressIndecator(),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+    ),
+      );
   },
 );
 
