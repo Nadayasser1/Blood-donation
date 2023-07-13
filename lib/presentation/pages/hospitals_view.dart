@@ -22,7 +22,6 @@ class HospitalsView extends StatelessWidget {
     return BlocConsumer<GetBranchesCubit, GetBranchesState>(
       listener: (context, state) {
         if(state is GetBranchesErrorState){
-          print(state.error);
         }
       },
       builder: (context, state) {
@@ -42,7 +41,7 @@ class HospitalsView extends StatelessWidget {
               child:
               ListView.separated(
                   itemBuilder: (context, index) =>
-                      hospitalsItem(state.addRequestMessage.branches[index], context),
+                      hospitalsItem(state.addRequestMessage.branches[index], context,stokes[index]),
                   separatorBuilder: (BuildContext context, int index) {
                     return const Divider(thickness: 1,);
                   },
@@ -71,7 +70,7 @@ class HospitalsView extends StatelessWidget {
 }
 
 
-Widget hospitalsItem(Branches branches,context){
+Widget hospitalsItem(Branches branches,context,String stoke){
 
   return HospitalInformation(
     branchName: branches.branchName,
@@ -99,3 +98,12 @@ Widget hospitalsItem(Branches branches,context){
   );
 
 }
+
+List<String> stokes =[
+  "A+",
+  "O-",
+  "B+",
+  "AB-",
+  "A-",
+
+];
