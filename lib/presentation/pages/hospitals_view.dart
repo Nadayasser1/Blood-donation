@@ -74,7 +74,7 @@ Widget hospitalsItem(Branches branches,context,String stoke){
 
   return HospitalInformation(
     branchName: branches.branchName,
-    state: 'A- is at healthy level.donation are still accepted',
+    state: '$stoke is at healthy level.donation are still accepted',
     phone: branches.branchPhone,
     city: branches.branchCity,
     address:
@@ -105,5 +105,6 @@ List<String> stokes =[
   "B+",
   "AB-",
   "A-",
+  "O+",
 
 ];
