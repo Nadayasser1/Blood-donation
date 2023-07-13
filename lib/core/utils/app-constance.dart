@@ -57,5 +57,7 @@ class AppConstance {
 
   static String getBranchesPath()=>"$baseUrl/getBranches";
 
+  static String getNotificationsPath({required String id })=>"$baseUrl/getNotifications?id=$id";
+
 
 }

@@ -3,6 +3,7 @@ import 'package:graduation/data/models/add_donation_model.dart';
 import 'package:graduation/data/models/add_request_model.dart';
 import 'package:graduation/data/models/get_branches_model.dart';
 import 'package:graduation/data/models/get_donations_model.dart';
+import 'package:graduation/data/models/get_notifications_model.dart';
 import 'package:graduation/data/models/get_requests_model.dart';
 import 'package:graduation/data/models/login_model.dart';
 import 'package:graduation/data/models/register_model.dart';
@@ -10,6 +11,7 @@ import 'package:graduation/data/models/send_questions_model.dart';
 import 'package:graduation/domain/use_cases/add_donation_use_case.dart';
 import 'package:graduation/domain/use_cases/add_request_use_case.dart';
 import 'package:graduation/domain/use_cases/get_donation_use_case.dart';
+import 'package:graduation/domain/use_cases/get_notifications_use_case.dart';
 import 'package:graduation/domain/use_cases/get_request_use_case.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/domain/use_cases/register_use_case.dart';
@@ -38,6 +40,8 @@ abstract class BaseRemoteDataSource {
   Future<GetDonationsModel> getDonations (GetDonationsParameters parameters);
 
   Future<GetBranchesModel> getBranches (NoParameters parameters);
+
+  Future<GetNotificationsModel> getNotifications (GetNotificationsParameters parameters);
 
 
 

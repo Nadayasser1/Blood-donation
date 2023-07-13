@@ -10,6 +10,7 @@ import 'package:graduation/domain/entities/add_donation.dart';
 import 'package:graduation/domain/entities/add_request.dart';
 import 'package:graduation/domain/entities/get-branches.dart';
 import 'package:graduation/domain/entities/get_donations.dart';
+import 'package:graduation/domain/entities/get_notifications.dart';
 import 'package:graduation/domain/entities/get_request.dart';
 import 'package:graduation/domain/entities/login.dart';
 import 'package:graduation/domain/entities/questions_form.dart';
@@ -18,6 +19,7 @@ import 'package:graduation/domain/entities/user_profile.dart';
 import 'package:graduation/domain/use_cases/add_donation_use_case.dart';
 import 'package:graduation/domain/use_cases/add_request_use_case.dart';
 import 'package:graduation/domain/use_cases/get_donation_use_case.dart';
+import 'package:graduation/domain/use_cases/get_notifications_use_case.dart';
 import 'package:graduation/domain/use_cases/get_request_use_case.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/domain/use_cases/register_use_case.dart';
@@ -128,8 +130,25 @@ class Repository extends BaseRepository{
 
   }
 
+  @override
+  Future<Either<Failure, GetNotifications>> getNotifications(GetNotificationsParameters parameters) async{
+    try{
+      final result =await baseRemoteDataSource.getNotifications(parameters);
+      return Right( result);
+    }on ErrorHandler catch (error){
+      return Left(error.failure);
+    }
+  }
+
+
+
 
 
 
   }
+
+
+
+
+
 

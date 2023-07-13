@@ -10,6 +10,7 @@ class GetRequestsDataModel extends GetRequestsData{
    required super.unitNumber,
    required super.bloodType,
    required super.accepted,
+   required super.transId,
  });
 
 
@@ -20,6 +21,7 @@ class GetRequestsDataModel extends GetRequestsData{
      unitNumber: json["UnitNumber"],
      bloodType: json["BloodType"],
      accepted: json["Accepted"],
+     transId: json["TransId"],
  );
 
 

@@ -10,14 +10,16 @@ class GetRequestsData extends Equatable{
   final int unitNumber;
   final String bloodType;
   final String accepted ;
+  final String transId;
 
- const GetRequestsData({
+ const GetRequestsData( {
     required  this.branchName,
     required  this.patientName,
     required  this.phoneNumber,
     required  this.unitNumber,
     required  this.bloodType,
     required this.accepted,
+    required this.transId,
   });
 
   @override
@@ -28,6 +30,7 @@ class GetRequestsData extends Equatable{
     unitNumber,
     bloodType,
     accepted,
+    transId,
   ];
 
   }
