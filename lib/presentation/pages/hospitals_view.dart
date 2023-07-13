@@ -42,7 +42,7 @@ class HospitalsView extends StatelessWidget {
               child:
               ListView.separated(
                   itemBuilder: (context, index) =>
-                      hospitalsItem(state.addRequestMessage.branches[index], context),
+                      hospitalsItem(state.addRequestMessage.branches[index], context,stokes[index]),
                   separatorBuilder: (BuildContext context, int index) {
                     return const Divider(thickness: 1,);
                   },
@@ -71,11 +71,11 @@ class HospitalsView extends StatelessWidget {
 }
 
 
-Widget hospitalsItem(Branches branches,context){
+Widget hospitalsItem(Branches branches,context,String stoke){
 
   return HospitalInformation(
     branchName: branches.branchName,
-    state: 'A- is at healthy level.donation are still accepted',
+    state: '$stoke is at healthy level.donation are still accepted',
     phone: branches.branchPhone,
     city: branches.branchCity,
     address:
@@ -99,3 +99,12 @@ Widget hospitalsItem(Branches branches,context){
   );
 
 }
+
+List<String> stokes =[
+  "A+",
+  "O-",
+  "AB+",
+  "A-",
+  "O+",
+  "AB-"
+];
