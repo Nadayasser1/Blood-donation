@@ -26,7 +26,6 @@ class YourDonations extends StatelessWidget {
     BlocProvider.of<GetDonationsCubit>(context)
         .getDonations((GetDonationsParameters(id: id)));
 
-
     return BlocConsumer<GetDonationsCubit, GetDonationsState>(
       listener: (context, state) {
         if(state is GetDonationsErrorState){
@@ -86,12 +85,9 @@ class YourDonations extends StatelessWidget {
                         itemCount: state.addRequestMessage.donations.length,
 
                       ),
-                    )
-
-
+                    ),
                   ],
                 ),
-
               ),
             ),
           );
@@ -109,13 +105,13 @@ class YourDonations extends StatelessWidget {
                           dimension: MediaQuery.of(context).size.height *0.12,
                           child: Image.asset(AssetsData.noReq)),
                       SizedBox(height: MediaQuery.of(context).size.height *0.01,),
-                      const Text("You have not donated before ..",
+                      const Text("There is no Requests yet ..",
                           style: TextStyle(
                               color: kSecColor,
                               fontWeight: FontWeight.bold)),
                     ],
                   ),
-                )
+                ),
             ),
           );
         }
@@ -123,6 +119,7 @@ class YourDonations extends StatelessWidget {
     );
   }
 }
+
 
 
 Widget getDonationItem(Donations donations, context) {
@@ -157,13 +154,11 @@ Widget getDonationItem(Donations donations, context) {
                     }
                   }
                   _launchURL(Uri.parse('https://mobileapp-7fcz.onrender.com/getFile?HumanID=${id}'));
-
                 },
                 icon: const Icon(
                   Icons.download_for_offline,
                   color: kSecColor,
                 )),
-
           ],
         ),
         UserInfo(

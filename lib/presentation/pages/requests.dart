@@ -43,16 +43,8 @@ class YourRequests extends StatelessWidget {
         } else if (state is GetRequestSuccessState){
           return Background(
             child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: appbarColor,
-                title: const Text("Your Requests"),
-                leading: IconButton(
-                    onPressed: (){
-                      Get.to(() => const BottomNavbar() );
-                    },
-                    icon:const Icon(Icons.arrow_circle_left_outlined)),
-                automaticallyImplyLeading:false,
-              ),
+              appBar: pageAppBar("Your requests")
+             ,
               body:
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -101,7 +93,7 @@ Widget buildItem(GetRequestsData data, context) {
       borderRadius: BorderRadius.circular(5)
     ) ,
     width: double.maxFinite,
-    height: MediaQuery.of(context).size.height * 0.3,
+    height: MediaQuery.of(context).size.height * 0.32,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

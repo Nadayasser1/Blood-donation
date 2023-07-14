@@ -9,6 +9,7 @@ import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
 import '../../core/utils/assets.dart';
 import '../../core/utils/constants.dart';
+import '../../core/widgets/custom_progress_indecator.dart';
 import '../../domain/entities/notifications_data.dart';
 import '../widgets/custom_list_tile.dart';
 
@@ -25,15 +26,18 @@ class NotificationView extends StatelessWidget {
       },
       builder: (context, state) {
         if( state is GetNotificationsLoadingState){
-          return Scaffold(
-            appBar: customAppBar("Notifications"),
-            body: const Center(child: CustomIndecator(),),
+          return Background(
+            child: Scaffold(
+              appBar: customAppBar("Notifications"),
+              body: const Center(child: CustomProgressIndecator(),),
+            ),
           );
         }
         else if( state is GetNotificationsSuccessState) {
           return Background(
           child: Scaffold(
             appBar: customAppBar("Notification"),
+            bottomNavigationBar: const BottomAppBar(),
             body: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10),
                 child: ListView.separated(
@@ -49,20 +53,22 @@ class NotificationView extends StatelessWidget {
         );
         }
         else {
-          return Scaffold(
-            appBar: customAppBar("Notifications"),
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox.square(
-                    dimension: MediaQuery.of(context).size.height *0.15,
-                      child: Image.asset(AssetsData.noNotifocations)),
-                  const Text("No notifications yet ..",
-                      style: TextStyle(
-                          color: kSecColor,
-                          fontWeight: FontWeight.bold)),
-                ],
+          return Background(
+            child: Scaffold(
+              appBar: customAppBar("Notifications"),
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox.square(
+                      dimension: MediaQuery.of(context).size.height *0.15,
+                        child: Image.asset(AssetsData.noNotifocations)),
+                    const Text("No notifications yet ..",
+                        style: TextStyle(
+                            color: kSecColor,
+                            fontWeight: FontWeight.bold)),
+                  ],
+                ),
               ),
             ),
           );

@@ -29,18 +29,20 @@ class HospitalsView extends StatelessWidget {
       },
       builder: (context, state) {
         if(state is GetBranchesSuccessState) {
-          return Scaffold(
-            appBar: pageAppBar("Hospitals"),
-            body: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              child:
-              ListView.separated(
-                  itemBuilder: (context, index) =>
-                      hospitalsItem(state.addRequestMessage.branches[index], context,stokes[index]),
-                  separatorBuilder: (BuildContext context, int index) {
-                    return const Divider(thickness: 1,);
-                  },
-                  itemCount: state.addRequestMessage.branches.length),
+          return Background(
+            child: Scaffold(
+              appBar: pageAppBar("Hospitals"),
+              body: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                child:
+                ListView.separated(
+                    itemBuilder: (context, index) =>
+                        hospitalsItem(state.addRequestMessage.branches[index], context,stokes[index]),
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const Divider(thickness: 1,);
+                    },
+                    itemCount: state.addRequestMessage.branches.length),
+              ),
             ),
           );
         }

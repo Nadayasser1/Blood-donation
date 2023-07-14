@@ -63,16 +63,15 @@ class DonationApp extends StatelessWidget {
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.light()
-            .copyWith(
+        theme: ThemeData(
             scaffoldBackgroundColor: Colors.transparent,
             appBarTheme:  const AppBarTheme(
               systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: kSecColor,
-                statusBarIconBrightness: Brightness.dark
-              ),
+                    statusBarColor: kSecColor,
+                    statusBarIconBrightness: Brightness.light
+                ),
               centerTitle: true,
-                backgroundColor: kPrimaryColor,
+                backgroundColor: kSecColor,
                 titleTextStyle: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -80,7 +79,7 @@ class DonationApp extends StatelessWidget {
               iconTheme: IconThemeData(
                   color: Colors.black54,
                   size: 40),
-              elevation: 0.5
+              elevation: 0
 
 
             )),
