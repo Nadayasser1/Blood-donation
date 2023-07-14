@@ -10,7 +10,7 @@ class GetRequestsData extends Equatable{
   final int unitNumber;
   final String bloodType;
   final String accepted ;
-  final String transId;
+  final int transId;
 
  const GetRequestsData( {
     required  this.branchName,

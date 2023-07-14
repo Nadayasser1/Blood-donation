@@ -131,6 +131,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
         throw Exception();
       }
     } catch (error) {
+      print(error);
       if (error is DioException) {
         throw ErrorHandler.handle(error);
       } else {

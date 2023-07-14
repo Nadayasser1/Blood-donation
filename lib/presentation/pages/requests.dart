@@ -108,7 +108,7 @@ Widget buildItem(GetRequestsData data, context) {
         UserInfo(
           margin: const EdgeInsets.all(10),
           label: "Trans ID:",
-          text: data.transId,
+          text: data.transId.toString(),
         ),
         UserInfo(
           margin: const EdgeInsets.all(10),
