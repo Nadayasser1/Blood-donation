@@ -49,7 +49,7 @@ class NotificationView extends StatelessWidget{
                       maxRadius: 20,
                       child: Image.asset(
 
-                          AssetsData.logoo,
+                          AssetsData.logo,
                           fit:BoxFit.fill),
 
                     ),

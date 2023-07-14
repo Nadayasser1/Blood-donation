@@ -57,7 +57,9 @@ class RemoteDataSource extends BaseRemoteDataSource {
           password: parameters.password,
           phone: parameters.phone,
           gender: parameters.gender,
-          birthdate: parameters.birthdate),);
+          birthdate: parameters.birthdate,
+          token: parameters.token,
+      ),);
 
       if (response.statusCode == 200) {
         return RegisterModel.fromJson(response.data);
