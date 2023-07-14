@@ -40,7 +40,6 @@ class RemoteDataSource extends BaseRemoteDataSource {
       }
     } catch (error) {
       if (error is DioException) {
-        print(error);
         throw ErrorHandler.handle(error);
       } else {
         throw Exception();
