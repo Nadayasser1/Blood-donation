@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/base_use_case/base_use_case.dart';
+import 'package:graduation/presentation/widgets/appBar.dart';
+import 'package:graduation/presentation/widgets/background.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/widgets/custom_progress_indecator.dart';
 import '../../domain/entities/branches.dart';
@@ -28,15 +30,7 @@ class HospitalsView extends StatelessWidget {
       builder: (context, state) {
         if(state is GetBranchesSuccessState) {
           return Scaffold(
-            appBar: AppBar(
-              title: const Text("Hospitals"),
-              leading: IconButton(
-                  onPressed: () {
-                    Get.to(() => const BottomNavbar());
-                  },
-                  icon: const Icon(Icons.arrow_circle_left_outlined)),
-              automaticallyImplyLeading: false,
-            ),
+            appBar: pageAppBar("Hospitals"),
             body: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
               child:
@@ -51,18 +45,12 @@ class HospitalsView extends StatelessWidget {
           );
         }
         else {
-            return Scaffold(
-              appBar: AppBar(
-                title: const Text("Hospitals"),
-                leading: IconButton(
-                    onPressed: () {
-                      Get.to(() => const BottomNavbar());
-                    },
-                    icon: const Icon(Icons.arrow_circle_left_outlined)),
-                automaticallyImplyLeading: false,
-              ),
-              body: const Center(child: CustomProgressIndecator()),
+            return Background(
+              child: Scaffold(
+                appBar: pageAppBar("Hospitals"),
+                body: const Center(child: CustomProgressIndecator()),
 
+              ),
             );
         }
         },

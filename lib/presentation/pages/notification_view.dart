@@ -85,7 +85,6 @@ Widget notificationItems (NotificationsData notifications , covariant){
       title: notifications.notifyTitle,
       subtitle: notifications.notifyBody,
       icon: const CircleAvatar(
-
         maxRadius: 20,
         child: CircleAvatar(
           backgroundImage: AssetImage(AssetsData.logoo),
