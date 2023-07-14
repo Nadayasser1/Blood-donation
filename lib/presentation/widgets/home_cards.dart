@@ -72,6 +72,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                   setState(() {
                     _height1 = 140;
                     _width1 = 140;
+                    _color = kSecColor;
                     Get.to(()=> RequestForm());
                   });
                 },
@@ -110,6 +111,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                   setState(() {
                     _height4 = 140;
                     _width4 = 140;
+                    _color1 = kSecColor;
                     Get.to(()=>const YourRequests());
                   });
                 },
@@ -154,6 +156,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                   setState(() {
                     _height = 140;
                     _width = 140;
+                    _color2 = kSecColor;
                     Get.to(() => DonationQuestions());
                   });
                 },
@@ -192,6 +195,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
                   setState(() {
                     _height3 = 140;
                     _width3 = 140;
+                    _color3 = kSecColor;
                     Get.to(()=>YourDonations());
                   });
                 },
@@ -233,6 +237,7 @@ class _AnimatedHomeContainerState extends State<AnimatedHomeContainer> {
               setState(() {
                 _height2 = 140;
                 _width2 = 140;
+                _color4 = kSecColor;
                 Get.to(()=>const HospitalsView());
               });
             },

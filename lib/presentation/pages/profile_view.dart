@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/utils/constants.dart';
@@ -45,6 +46,10 @@ class ProfileView extends StatelessWidget {
                 elevation: 0,
                 toolbarHeight: MediaQuery.of(context).size.height *0.1,
                 backgroundColor: kSecColor,
+                systemOverlayStyle: const SystemUiOverlayStyle(
+                  statusBarColor: kSecColor,
+                  statusBarIconBrightness: Brightness.light
+                ),
                 centerTitle: true,
                 title: const Text(
                   'Profile',

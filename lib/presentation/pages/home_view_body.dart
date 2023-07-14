@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/utils/assets.dart';
-import '../../core/utils/constants.dart';
+import '../widgets/appBar.dart';
 import '../widgets/background.dart';
 import '../widgets/home_cards.dart';
 
@@ -11,25 +11,7 @@ class HomeViewbody extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Background(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: appbarColor,
-          leading: Stack(
-            children: [Positioned(
-              top: 5,
-              right: 0,
-              left: 0,
-              child: SizedBox(
-                height: 60,
-                width: 20,
-                child: Image.asset(
-                  AssetsData.logo,
-                   ),
-              ),
-            )],
-          ),
-          title: const Text("LifeLine"),
-          automaticallyImplyLeading:false,
-        ),
+        appBar: customAppBar("LifeLine"),
         body: Padding(
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(

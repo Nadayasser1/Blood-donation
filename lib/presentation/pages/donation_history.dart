@@ -9,8 +9,10 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
+import '../../core/utils/assets.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_progress_indecator.dart';
+import '../widgets/appBar.dart';
 import '../widgets/background.dart';
 import '../widgets/user_cards.dart';
 import 'bottom_appbar.dart';
@@ -37,16 +39,7 @@ class YourDonations extends StatelessWidget {
         if(state is GetDonationsLoadingState){
           return Background(
             child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: appbarColor,
-                title: const Text("Your Donations"),
-                leading: IconButton(
-                    onPressed: () {
-                      Get.to(() => const BottomNavbar());
-                    },
-                    icon: const Icon(Icons.arrow_circle_left_outlined)),
-                automaticallyImplyLeading: false,
-              ),
+              appBar: pageAppBar("Your Donations"),
               body:  const Center(child: CustomProgressIndecator()),
 
             ),
@@ -55,16 +48,7 @@ class YourDonations extends StatelessWidget {
         else if(state is GetDonationsSuccessState) {
           return Background(
             child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: appbarColor,
-                title: const Text("Your Donations"),
-                leading: IconButton(
-                    onPressed: () {
-                      Get.to(() => const BottomNavbar());
-                    },
-                    icon: const Icon(Icons.arrow_circle_left_outlined)),
-                automaticallyImplyLeading: false,
-              ),
+              appBar: pageAppBar("Your Donations"),
               body: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
@@ -117,17 +101,23 @@ class YourDonations extends StatelessWidget {
         else{
           return Background(
             child: Scaffold(
-                appBar: AppBar(
-                  backgroundColor: appbarColor,
-                  title: const Text("Your Donations"),
-                  leading: IconButton(
-                      onPressed: () {
-                        Get.to(() => const BottomNavbar());
-                      },
-                      icon: const Icon(Icons.arrow_circle_left_outlined)),
-                  automaticallyImplyLeading: false,
-                ),
-                body: const Center(child: Text("You have not donated before!"))
+                appBar: pageAppBar("Your Donations"),
+                body:
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox.square(
+                          dimension: MediaQuery.of(context).size.height *0.12,
+                          child: Image.asset(AssetsData.noReq)),
+                      SizedBox(height: MediaQuery.of(context).size.height *0.01,),
+                      const Text("You have not donated before ..",
+                          style: TextStyle(
+                              color: kSecColor,
+                              fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                )
             ),
           );
         }

@@ -93,6 +93,10 @@ flutter:
      - assets/images/avatar-removebg-preview.png
      - assets/images/photo_5944984046704639363_x.jpg
      - assets/images/Untitled (2).png
+     - assets/images/logoo.jpg
+     - assets/images/notification.png
+     - assets/images/no-task.png
+     - assets/images/wallpaper.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -10,6 +10,7 @@ import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_alert_dialog.dart';
 import '../../core/widgets/custom_progress_indecator.dart';
 import '../controller/send_questions_cubit.dart';
+import '../widgets/appBar.dart';
 import '../widgets/background.dart';
 import '../widgets/question_form.dart';
 import 'bottom_appbar.dart';
@@ -51,16 +52,7 @@ class DonationQuestions extends StatelessWidget {
       builder: (context, state) {
         return Background(
           child: Scaffold(
-            appBar: AppBar(
-              backgroundColor: appbarColor,
-              title: const Text("Donate Now"),
-              leading: IconButton(
-                  onPressed: () {
-                    Get.to(() => const BottomNavbar());
-                  },
-                  icon: const Icon(Icons.arrow_circle_left_outlined)),
-              automaticallyImplyLeading: false,
-            ),
+            appBar: pageAppBar("Donate Now"),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(

@@ -1,73 +1,98 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation/domain/use_cases/get_notifications_use_case.dart';
+import 'package:graduation/presentation/controller/get_notifications_cubit.dart';
+import 'package:graduation/presentation/widgets/appBar.dart';
+import 'package:graduation/presentation/widgets/background.dart';
+import 'package:graduation/presentation/widgets/dot_indecator.dart';
+import '../../core/services/services_locator.dart';
+import '../../core/services/shared_preferences.dart';
 import '../../core/utils/assets.dart';
 import '../../core/utils/constants.dart';
+import '../../domain/entities/notifications_data.dart';
 import '../widgets/custom_list_tile.dart';
 
-class NotificationView extends StatelessWidget{
-  const NotificationView ({super.key});
+class NotificationView extends StatelessWidget {
+  const NotificationView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(
-        backgroundColor: appbarColor,
-        title: const Text("Notifications"),
-        leading: Stack(
-          children: [Positioned(
-            top: 5,
-            right: 0,
-            left: 0,
-            child: SizedBox(
-              height: 60,
-              width: 20,
-              child: Image.asset(
-                AssetsData.logo,
+    final AppPreferences appPreferences=sl<AppPreferences>();
+    final String id= appPreferences.getToken();
+    BlocProvider.of<GetNotificationsCubit>(context).getNotifications(GetNotificationsParameters(id: id));
+    return BlocConsumer<GetNotificationsCubit, GetNotificationsState>(
+      listener: (context, state) {
+      },
+      builder: (context, state) {
+        if( state is GetNotificationsLoadingState){
+          return Scaffold(
+            appBar: customAppBar("Notifications"),
+            body: const Center(child: CustomIndecator(),),
+          );
+        }
+        else if( state is GetNotificationsSuccessState) {
+          return Background(
+          child: Scaffold(
+            appBar: customAppBar("Notification"),
+            body: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                child: ListView.separated(
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (BuildContext context, int  i) => 
+                    notificationItems(state.notifications.notifications[i],context),
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const Divider(thickness: 0,);
+                    },
+                    itemCount: (state.notifications.notifications.length))
+            ),
+          ),
+        );
+        }
+        else {
+          return Scaffold(
+            appBar: customAppBar("Notifications"),
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox.square(
+                    dimension: MediaQuery.of(context).size.height *0.15,
+                      child: Image.asset(AssetsData.noNotifocations)),
+                  const Text("No notifications yet ..",
+                      style: TextStyle(
+                          color: kSecColor,
+                          fontWeight: FontWeight.bold)),
+                ],
               ),
             ),
-          )],
-        ),
-        automaticallyImplyLeading:false,
-      ),
-      body: Container(
-
-          margin : const EdgeInsets.symmetric(horizontal: 10),
-        child: ListView.separated(
-            scrollDirection: Axis.vertical,
-            itemBuilder: (context,i){
-              return
-                Container(
-                  decoration: const BoxDecoration(
-                      color:   Color(0x47B1B1B1),
-                      borderRadius: BorderRadius.all(Radius.circular(10))
-                  ),
-                  child:  CustomListTile(
-                    title:"Raslan Hospitals need A-" ,
-                    subtitle: "If you have a time you can help",
-                    icon: CircleAvatar(
-
-                      maxRadius: 20,
-                      child: Image.asset(
-
-                          AssetsData.logo,
-                          fit:BoxFit.fill),
-
-                    ),
-                  ),
-                );
-            },
-            separatorBuilder: (BuildContext context, int index){
-              return const Divider(thickness: 0,);
-            },
-            itemCount: 10)
-
-
-
-      ),
-
-
+          );
+        }
+      },
     );
   }
 
 }
 
+Widget notificationItems (NotificationsData notifications , covariant){
+  return  Container(
+    padding: const EdgeInsets.only(left: 10),
+    decoration: const BoxDecoration(
+        color: Color(0x47B1B1B1),
+        borderRadius: BorderRadius.all(Radius.circular(
+            10))
+    ),
+    child: CustomListTile(
+      title: notifications.notifyTitle,
+      subtitle: notifications.notifyBody,
+      icon: const CircleAvatar(
+
+        maxRadius: 20,
+        child: CircleAvatar(
+          backgroundImage: AssetImage(AssetsData.logoo),
+        ),
+
+      ),
+    ),
+  );
+
+}

@@ -14,6 +14,7 @@ import '../../core/widgets/custom_buttons.dart';
 import '../../core/widgets/custom_progress_indecator.dart';
 import '../../core/widgets/custom_text.dart';
 import '../controller/add_request_cubit.dart';
+import '../widgets/appBar.dart';
 import '../widgets/background.dart';
 import 'bottom_appbar.dart';
 
@@ -47,16 +48,7 @@ class RequestForm extends StatelessWidget {
       return
         Background(
           child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: appbarColor,
-            title: const Text("Request Form"),
-            leading: IconButton(
-                onPressed: (){
-                  Get.to(() => const BottomNavbar() );
-                },
-                icon:const Icon(Icons.arrow_circle_left_outlined)),
-            automaticallyImplyLeading:false,
-          ),
+          appBar: pageAppBar("Request Form"),
           body: SingleChildScrollView(
              child: Padding(
                padding: const EdgeInsets.symmetric(horizontal: 10),

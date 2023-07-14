@@ -15,6 +15,7 @@ import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_buttons.dart';
 import '../../core/widgets/custom_progress_indecator.dart';
 import '../../core/widgets/custom_text.dart';
+import '../widgets/appBar.dart';
 import '../widgets/background.dart';
 import 'bottom_appbar.dart';
 
@@ -50,16 +51,7 @@ class DonationForm extends StatelessWidget {
      builder: (context, state) {
       return Background(
         child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: appbarColor,
-          title: const Text("Donation Form"),
-          leading: IconButton(
-              onPressed: (){
-                Get.to(() => const BottomNavbar() );
-              },
-              icon:const Icon(Icons.arrow_circle_left_outlined)),
-          automaticallyImplyLeading:false,
-        ),
+        appBar: pageAppBar("Donation Form"),
          body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),

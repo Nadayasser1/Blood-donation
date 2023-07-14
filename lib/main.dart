@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/core/bloc_observer/bloc_observer.dart';
@@ -8,6 +9,7 @@ import 'package:graduation/presentation/controller/add_donation_cubit.dart';
 import 'package:graduation/presentation/controller/add_request_cubit.dart';
 import 'package:graduation/presentation/controller/get_branches_cubit.dart';
 import 'package:graduation/presentation/controller/get_donations_cubit.dart';
+import 'package:graduation/presentation/controller/get_notifications_cubit.dart';
 import 'package:graduation/presentation/controller/get_requests_cubit.dart';
 import 'package:graduation/presentation/controller/login_cubit.dart';
 import 'package:graduation/presentation/controller/profile_cubit.dart';
@@ -53,6 +55,8 @@ class DonationApp extends StatelessWidget {
             create: (context) => sl<GetDonationsCubit>() ),
         BlocProvider(
             create: (context) => sl<GetBranchesCubit>() ),
+        BlocProvider(
+            create: (context) => sl<GetNotificationsCubit>() ),
 
 
 
@@ -63,15 +67,19 @@ class DonationApp extends StatelessWidget {
             .copyWith(
             scaffoldBackgroundColor: Colors.transparent,
             appBarTheme:  const AppBarTheme(
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: kSecColor,
+                statusBarIconBrightness: Brightness.dark
+              ),
               centerTitle: true,
-              titleTextStyle: TextStyle(
+                backgroundColor: kPrimaryColor,
+                titleTextStyle: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                   color: kSecColor),
               iconTheme: IconThemeData(
                   color: Colors.black54,
                   size: 40),
-              backgroundColor: kPrimaryColor,
               elevation: 0.5
 
 

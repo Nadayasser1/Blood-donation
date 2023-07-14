@@ -8,6 +8,8 @@ import 'package:graduation/core/functions/toast_message.dart';
 import 'package:graduation/core/utils/assets.dart';
 import 'package:graduation/domain/use_cases/login_use_case.dart';
 import 'package:graduation/presentation/pages/sign_up.dart';
+import 'package:graduation/presentation/widgets/appBar.dart';
+import 'package:graduation/presentation/widgets/background.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
@@ -45,130 +47,137 @@ class LogInView extends StatelessWidget {
 
       },
       builder: (context, state) {
-        return Scaffold(
-          appBar: (AppBar(elevation: 0,automaticallyImplyLeading: false,)
-          ),
-            body:
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Form(
-                  key: formState,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox.square(
-                        dimension: 350,
-                          child:Stack(
-                              children: [
-                              Positioned(
-                                child: Image.asset(
-                                    AssetsData.logo,
-                                    fit: BoxFit.fill),
-                              ),
-                                 Positioned(
-                                  left: MediaQuery.of(context).size.width *0.21,
-                                  top: MediaQuery.of(context).size.height *0.2,
-                                  child: const Text("LifeLine",style: TextStyle(
-                                      fontSize: 45,
-                                      fontWeight: FontWeight.bold,color: Color(
-                                      0xFFB70000)),),
-                                ),
+        return Background(
+          child: Scaffold(
+            appBar: (
+            customAppBar("Log In")
+              
+            ),
+              body:
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Form(
+                    key: formState,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox.square(
+                          dimension: 350,
+                            child:Stack(
+                                children: [
                                 Positioned(
-                                  left: MediaQuery.of(context).size.width *0.2,
-                                  top: MediaQuery.of(context).size.height *0.27,
-                                  child: const Text("BLOOD BANK COMMUNITY",style: TextStyle(
-                                      fontWeight: FontWeight.bold)),
+                                  left: MediaQuery.of(context).size.width *0.05,
+                                  right: MediaQuery.of(context).size.width *0.05,
+                                  top: MediaQuery.of(context).size.height *0.1,
+                                  child: Image.asset(
+                                      AssetsData.logo,
+                                      fit: BoxFit.fill),
                                 ),
-                              ])),
-                      CustomTextField(
-                          type: TextInputType.emailAddress,
-                          controller: emailController,
-                          validator: (value){
-                            if(value!.isEmpty){
-                              return "please enter your email";
-                            }
-                            return null;
-                          },
-                          prefix: MdiIcons.email,
-                          label: "Email",
-                          text: "Enter your email",
-                           onSubmit:(value){
-                            if(formState.currentState!.validate()){
-                             LoginCubit.get(context).login(LoginParameters(email: emailController.text, password: passwordController.text));
-                          } }),
-                      SizedBox(height: MediaQuery.of(context).size.height *0.02),
-                      CustomTextField(
-                          type: TextInputType.visiblePassword,
-                          controller: passwordController,
-                          validator: (value){
-                            if(value!.isEmpty){
-                              return "please enter your password";
-                            }
-                            return null;
-                          },
-                          prefix:Icons.key,
-                          suffix: LoginCubit.get(context).suffixIcon,
-                          suffixPress: BlocProvider.of<LoginCubit>(context).loginPasswordShow,
-                          label: "Password",
-                          text: "Enter your password",
-                           isPassword: LoginCubit.get(context).isPassword,
-                          onSubmit:(value){
-                            if(formState.currentState!.validate()){
-                              LoginCubit.get(context).login(LoginParameters(email: emailController.text, password: passwordController.text));
-                          } }),
+                                   Positioned(
+                                    left: MediaQuery.of(context).size.width *0.21,
+                                    top: MediaQuery.of(context).size.height *0.28,
+                                    child: const Text("LifeLine",style: TextStyle(
+                                        fontSize: 45,
+                                        fontWeight: FontWeight.bold,color: Color(
+                                        0xFFB70000)),),
+                                  ),
+                                  Positioned(
+                                    left: MediaQuery.of(context).size.width *0.2,
+                                    top: MediaQuery.of(context).size.height *0.35,
+                                    child: const Text("BLOOD BANK COMMUNITY",style: TextStyle(
+                                        fontWeight: FontWeight.bold)),
+                                  ),
+                                ])),
+                        CustomTextField(
+                            type: TextInputType.emailAddress,
+                            controller: emailController,
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return "please enter your email";
+                              }
+                              return null;
+                            },
+                            prefix: MdiIcons.email,
+                            label: "Email",
+                            text: "Enter your email",
+                             onSubmit:(value){
+                              if(formState.currentState!.validate()){
+                               LoginCubit.get(context).login(LoginParameters(email: emailController.text, password: passwordController.text));
+                            } }),
+                        SizedBox(height: MediaQuery.of(context).size.height *0.02),
+                        CustomTextField(
+                            type: TextInputType.visiblePassword,
+                            controller: passwordController,
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return "please enter your password";
+                              }
+                              return null;
+                            },
+                            prefix:Icons.key,
+                            suffix: LoginCubit.get(context).suffixIcon,
+                            suffixPress: BlocProvider.of<LoginCubit>(context).loginPasswordShow,
+                            label: "Password",
+                            text: "Enter your password",
+                             isPassword: LoginCubit.get(context).isPassword,
+                            onSubmit:(value){
+                              if(formState.currentState!.validate()){
+                                LoginCubit.get(context).login(LoginParameters(email: emailController.text, password: passwordController.text));
+                            } }),
 
 
-                      TextButton(onPressed: () {
-                        Get.to(() => const ForgetPasswordView());
-                      },
-                          style: const ButtonStyle(
-                              alignment: Alignment.centerLeft),
-                          child: const Text("Forget your password ?",
-                            style:
-                            TextStyle(color: Colors.black26,),
-                            textAlign: TextAlign.left,)),
-
-                      Center(
-                          child:ConditionalBuilder(
-                            condition: state is! LoginLoadingState,
-                            builder: (context)=>ElevatedButton(
-                                onPressed: () {
-                                  if (formState.currentState!.validate()) {
-                                    BlocProvider.of<LoginCubit>(context).login(LoginParameters(
-                                        email: emailController.text.trim(),
-                                        password: passwordController.text))
-                                    ;
-                                  }
-                                },
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        kSecColor)),
-                                child: const Text("Login",
-                                  style: TextStyle(fontSize: 20,
-                                    fontWeight: FontWeight.bold,),)),
-                            fallback: (context)=> const CustomProgressIndecator()
-                          ),
-                        ),
-
-                      Center(
-                        child: TextButton(onPressed: () {
-                          Get.to(()=>  SignUpView(),);
+                        TextButton(onPressed: () {
+                          Get.to(() => const ForgetPasswordView());
                         },
                             style: const ButtonStyle(
                                 alignment: Alignment.centerLeft),
-                            child: const Text("Sign Up",
+                            child: const Text("Forget your password ?",
                               style:
                               TextStyle(color: Colors.black26,),
                               textAlign: TextAlign.left,)),
-                      ),
-                    ],
+
+                        Center(
+                            child:ConditionalBuilder(
+                              condition: state is! LoginLoadingState,
+                              builder: (context)=>ElevatedButton(
+                                  onPressed: () {
+                                    if (formState.currentState!.validate()) {
+                                      BlocProvider.of<LoginCubit>(context).login(LoginParameters(
+                                          email: emailController.text.trim(),
+                                          password: passwordController.text))
+                                      ;
+                                    }
+                                  },
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all(
+                                          kSecColor)),
+                                  child: const Text("Login",
+                                    style: TextStyle(fontSize: 20,
+                                      fontWeight: FontWeight.bold,),)),
+                              fallback: (context)=> const CustomProgressIndecator()
+                            ),
+                          ),
+
+                        Center(
+                          child: TextButton(onPressed: () {
+                            Get.to(()=>  SignUpView(),);
+                          },
+                              style: const ButtonStyle(
+                                  alignment: Alignment.centerLeft),
+                              child: const Text("Sign Up",
+                                style:
+                                TextStyle(color: Colors.black26,),
+                                textAlign: TextAlign.left,)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
 
-            ) );
+              ) ),
+        );
       },
     );
   }

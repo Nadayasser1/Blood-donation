@@ -39,7 +39,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
         throw Exception();
       }
     } catch (error) {
-      if (error is DioError) {
+      if (error is DioException) {
         print(error);
         throw ErrorHandler.handle(error);
       } else {
@@ -68,7 +68,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
         throw Exception();
       }
     } catch (error) {
-      if (error is DioError) {
+      if (error is DioException) {
         throw ErrorHandler.handle(error);
       } else {
         throw Exception();
@@ -88,7 +88,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
         throw Exception();
       }
     } catch (error) {
-      if (error is DioError) {
+      if (error is DioException) {
         throw ErrorHandler.handle(error);
       } else {
         throw Exception();
@@ -113,7 +113,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
         throw Exception();
       }
     } catch (error) {
-      if (error is DioError) {
+      if (error is DioException) {
         throw ErrorHandler.handle(error);
       } else {
         throw Exception();
@@ -132,7 +132,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
         throw Exception();
       }
     } catch (error) {
-      if (error is DioError) {
+      if (error is DioException) {
         throw ErrorHandler.handle(error);
       } else {
         throw Exception();
@@ -159,7 +159,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
         throw Exception();
       }
     } catch (error) {
-      if (error is DioError) {
+      if (error is DioException) {
         throw ErrorHandler.handle(error);
       } else {
         throw Exception();
@@ -184,7 +184,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
         throw Exception();
       }
     } catch (error) {
-      if (error is DioError) {
+      if (error is DioException) {
         throw ErrorHandler.handle(error);
       } else {
         throw Exception();
@@ -204,7 +204,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
         throw Exception();
       }
     } catch (error) {
-      if (error is DioError) {
+      if (error is DioException) {
         throw ErrorHandler.handle(error);
       } else {
         throw Exception();
@@ -223,7 +223,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
         throw Exception();
       }
     } catch (error) {
-      if (error is DioError) {
+      if (error is DioException) {
         throw ErrorHandler.handle(error);
       } else {
         throw Exception();
@@ -241,7 +241,7 @@ class RemoteDataSource extends BaseRemoteDataSource {
        throw Exception();
      }
     }catch (error){
-      if(error is DioError){
+      if(error is DioException){
         throw ErrorHandler.handle(error);
       }else{
         throw Exception();

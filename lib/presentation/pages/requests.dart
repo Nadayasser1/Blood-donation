@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:graduation/domain/entities/get_request_data.dart';
 import 'package:graduation/presentation/controller/get_requests_cubit.dart';
+import 'package:graduation/presentation/widgets/appBar.dart';
 import 'package:graduation/presentation/widgets/user_info.dart';
 import '../../core/services/services_locator.dart';
 import '../../core/services/shared_preferences.dart';
+import '../../core/utils/assets.dart';
 import '../../core/utils/constants.dart';
 import '../../core/widgets/custom_progress_indecator.dart';
 import '../../domain/use_cases/get_request_use_case.dart';
@@ -35,16 +37,7 @@ class YourRequests extends StatelessWidget {
         if (state is GetRequestLoadingState) {
           return Background(
             child: Scaffold(
-                appBar: AppBar(
-                  backgroundColor: appbarColor,
-                  title: const Text("Your Requests"),
-                  leading: IconButton(
-                      onPressed: (){
-                        Get.to(() => const BottomNavbar() );
-                      },
-                      icon:const Icon(Icons.arrow_circle_left_outlined)),
-                  automaticallyImplyLeading:false,
-                ),
+                appBar:pageAppBar("Your Requests"),
                 body: const Center(child: CustomProgressIndecator()),),
           );
         } else if (state is GetRequestSuccessState){
@@ -77,18 +70,24 @@ class YourRequests extends StatelessWidget {
         }else{
           return Background(
             child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: appbarColor,
-                title: const Text("Your Requests"),
-                leading: IconButton(
-                    onPressed: (){
-                      Get.to(() => const BottomNavbar() );
-                    },
-                    icon:const Icon(Icons.arrow_circle_left_outlined)),
-                automaticallyImplyLeading:false,
-              ),
-              body: const Center(child: Text("There is no requests..yet"))),
-          );
+              appBar: pageAppBar("Your Requests") ,
+              body:
+              Center(
+              child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                   SizedBox.square(
+                    dimension: MediaQuery.of(context).size.height *0.12,
+                    child: Image.asset(AssetsData.noReq)),
+                    SizedBox(height: MediaQuery.of(context).size.height *0.01,),
+                    const Text("There is no Requests yet ..",
+                       style: TextStyle(
+                           color: kSecColor,
+                            fontWeight: FontWeight.bold)),
+                   ],
+                 ),
+                  ),
+            ));
         }
       },
     );
@@ -102,10 +101,15 @@ Widget buildItem(GetRequestsData data, context) {
       borderRadius: BorderRadius.circular(5)
     ) ,
     width: double.maxFinite,
-    height: MediaQuery.of(context).size.height * 0.26,
+    height: MediaQuery.of(context).size.height * 0.3,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        UserInfo(
+          margin: const EdgeInsets.all(10),
+          label: "Trans ID:",
+          text: data.transId,
+        ),
         UserInfo(
           margin: const EdgeInsets.all(10),
           label: "Branch name:",
