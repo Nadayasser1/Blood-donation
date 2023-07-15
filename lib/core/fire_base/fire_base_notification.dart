@@ -9,18 +9,11 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:graduation/core/services/services_locator.dart';
 import 'package:graduation/core/services/shared_preferences.dart';
 
-import '../../presentation/pages/notification_view.dart';
-List<dynamic> notifications =[];
+import '../../presentation/pages/bottom_appbar.dart';
   final AppPreferences appPreferences=sl<AppPreferences>();
 Future<void> handleBackgroundMessage (RemoteMessage message)async{
-  Map<String,dynamic> notification ={
-    "title":message.notification?.title,
-     "body":message.notification?.body,
-  };
-  notifications.add(notification);
-  print(notification);
-  print(notifications);
-  Get.to(()=> const NotificationView());
+
+  Get.to(()=> const BottomNavbar());
 
 }
 
@@ -39,20 +32,12 @@ class FireBaseNotifications {
 
   void handleMessage (RemoteMessage? message){
     if(message==null) return;
-    Map<String,dynamic> notification ={
-      "title":message.notification?.title,
-      "body":message.notification?.body,
-    };
-    notifications.add(notification);
-    print(notification);
-    print(notifications);
-
-    Get.to(()=> const NotificationView());
+    Get.to(()=> const BottomNavbar());
   }
 
   Future initLocationNotifications()async{
     const iOS =IOSInitializationSettings();
-    const android = AndroidInitializationSettings('@drawable/ic_launcher');
+    const android = AndroidInitializationSettings('@drawable/logo2_removebg_preview');
     const setting = InitializationSettings(android:android,iOS: iOS);
 
     await _localNotifications.initialize(
@@ -88,7 +73,7 @@ class FireBaseNotifications {
               _androidChannel.id,
               _androidChannel.name,
               channelDescription: _androidChannel.description,
-              icon: '@drawable/ic_launcher'
+              icon: '@drawable/logo2_removebg_preview',
             ),
           ),
         payload: jsonEncode(message.toMap()),
