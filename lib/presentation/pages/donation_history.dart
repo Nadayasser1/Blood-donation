@@ -85,7 +85,7 @@ class YourDonations extends StatelessWidget {
                                   throw 'Could not launch $url';
                                 }
                               }
-                              _launchURL(Uri.parse('https://mobileapp-7fcz.onrender.com/getFile?HumanID=$id'));
+                              _launchURL(Uri.parse('https://app.box.com/s/equq3hf4tqlaz86j4gjje78t14hhyjok'));
                             },
                             icon: const Icon(
                               Icons.download_for_offline,

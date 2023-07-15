@@ -33,7 +33,7 @@ class HospitalsView extends StatelessWidget {
             child: Scaffold(
               appBar: pageAppBar("Hospitals"),
               body: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
                 child:
                 ListView.separated(
                     itemBuilder: (BuildContext context, int index) =>

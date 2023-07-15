@@ -39,7 +39,7 @@ class NotificationView extends StatelessWidget {
             appBar: customAppBar("Notification"),
             bottomNavigationBar: const BottomAppBar(),
             body: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10),
+                margin: const EdgeInsets.symmetric(vertical:10 ,horizontal: 10),
                 child: ListView.separated(
                     scrollDirection: Axis.vertical,
                     itemBuilder: (BuildContext context, int  i) => 
