@@ -70,6 +70,29 @@ class YourDonations extends StatelessWidget {
 
                       ],
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Click to get your report",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        IconButton(
+                            onPressed: () {
+                              // ignore: no_leading_underscores_for_local_identifiers
+                              _launchURL(Uri url) async {
+                                if (await canLaunchUrl(url)) {
+                                  await launchUrl(url);
+                                } else {
+                                  throw 'Could not launch $url';
+                                }
+                              }
+                              _launchURL(Uri.parse('https://mobileapp-7fcz.onrender.com/getFile?HumanID=$id'));
+                            },
+                            icon: const Icon(
+                              Icons.download_for_offline,
+                              color: kSecColor,
+                            )),
+                      ],
+                    ),
                     SizedBox(
                       height: MediaQuery
                           .of(context)
@@ -97,9 +120,10 @@ class YourDonations extends StatelessWidget {
             child: Scaffold(
                 appBar: pageAppBar("Your Donations"),
                 body:
-                Center(
+                Container(
+                  margin: const EdgeInsets.all(10),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start ,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -119,14 +143,24 @@ class YourDonations extends StatelessWidget {
 
                         ],
                       ),
-                      SizedBox.square(
-                          dimension: MediaQuery.of(context).size.height *0.12,
-                          child: Image.asset(AssetsData.noReq)),
-                      SizedBox(height: MediaQuery.of(context).size.height *0.01,),
-                      const Text("There is no Requests yet ..",
-                          style: TextStyle(
-                              color: kSecColor,
-                              fontWeight: FontWeight.bold)),
+                      SizedBox(height: MediaQuery.of(context).size.height *0.25,),
+                      Center(
+                        child:
+                        Column(
+                          children: [
+                            SizedBox.square(
+                                dimension: MediaQuery.of(context).size.height *0.12,
+                                child: Image.asset(AssetsData.noReq)),
+                            SizedBox(height: MediaQuery.of(context).size.height *0.01,),
+                            const Text("There is no Requests yet ..",
+                                style: TextStyle(
+                                    color: kSecColor,
+                                    fontWeight: FontWeight.bold)),
+                          ],
+
+                        ),
+                      ),
+
                     ],
                   ),
                 ),
@@ -157,51 +191,28 @@ Widget getDonationItem(Donations donations, context) {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
       children:  [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Click to get your report",
-                style: TextStyle(fontWeight: FontWeight.bold)),
-            IconButton(
-                onPressed: () {
-                  // ignore: no_leading_underscores_for_local_identifiers
-                  _launchURL(Uri url) async {
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  }
-                  _launchURL(Uri.parse('https://mobileapp-7fcz.onrender.com/getFile?HumanID=$id'));
-                },
-                icon: const Icon(
-                  Icons.download_for_offline,
-                  color: kSecColor,
-                )),
-          ],
-        ),
         UserInfo(
-          margin: const EdgeInsets.only(top: 0,bottom: 5,right: 5,left: 5),
+          margin: const EdgeInsets.all(10),
           label: "Donor Name:",
           text: donations.donorName,
         ),
         UserInfo(
-          margin: const EdgeInsets.all(5),
+          margin: const EdgeInsets.all(10),
           label: "Birth Date:",
           text: donations.birthData,
         ),
         UserInfo(
-          margin: const EdgeInsets.all(5),
+          margin: const EdgeInsets.all(10),
           label: "Phone:",
           text: donations.phone,
         ),
         UserInfo(
-          margin: const EdgeInsets.all(5),
+          margin: const EdgeInsets.all(10),
           label: "Branch Name:",
           text: donations.branchName,
         ),
         UserInfo(
-          margin: const EdgeInsets.all(5),
+          margin: const EdgeInsets.all(10),
           label: "Donation Date:",
           text: donations.donationDate,
         ),

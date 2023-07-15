@@ -36,7 +36,7 @@ class HospitalsView extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 10),
                 child:
                 ListView.separated(
-                    itemBuilder: (context, index) =>
+                    itemBuilder: (BuildContext context, int index) =>
                         hospitalsItem(state.addRequestMessage.branches[index], context,stokes[index]),
                     separatorBuilder: (BuildContext context, int index) {
                       return const Divider(thickness: 1,);
