@@ -43,6 +43,7 @@ class YourDonations extends StatelessWidget {
           );
         }
         else if(state is GetDonationsSuccessState) {
+          print(state.addRequestMessage);
           return Background(
             child: Scaffold(
               appBar: pageAppBar("Your Donations"),
@@ -91,8 +92,7 @@ class YourDonations extends StatelessWidget {
               ),
             ),
           );
-        }
-        else{
+        } else{
           return Background(
             child: Scaffold(
                 appBar: pageAppBar("Your Donations"),
@@ -101,6 +101,24 @@ class YourDonations extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children:  const [
+                          Cards(
+                              cardIcon: MdiIcons.bloodBag,
+                              text: "Live saved",
+                              date: "0"),
+                          Cards(
+                              cardIcon: Icons.bloodtype,
+                              text: "Blood type",
+                              date: "_"),
+                          Cards(
+                              cardIcon: Icons.calendar_month_outlined,
+                              text: "Last Donation",
+                              date: "_"),
+
+                        ],
+                      ),
                       SizedBox.square(
                           dimension: MediaQuery.of(context).size.height *0.12,
                           child: Image.asset(AssetsData.noReq)),
@@ -146,6 +164,7 @@ Widget getDonationItem(Donations donations, context) {
                 style: TextStyle(fontWeight: FontWeight.bold)),
             IconButton(
                 onPressed: () {
+                  // ignore: no_leading_underscores_for_local_identifiers
                   _launchURL(Uri url) async {
                     if (await canLaunchUrl(url)) {
                       await launchUrl(url);
@@ -153,7 +172,7 @@ Widget getDonationItem(Donations donations, context) {
                       throw 'Could not launch $url';
                     }
                   }
-                  _launchURL(Uri.parse('https://mobileapp-7fcz.onrender.com/getFile?HumanID=${id}'));
+                  _launchURL(Uri.parse('https://mobileapp-7fcz.onrender.com/getFile?HumanID=$id'));
                 },
                 icon: const Icon(
                   Icons.download_for_offline,
