@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:graduation/domain/entities/donations.dart';
 import 'package:graduation/domain/use_cases/get_donation_use_case.dart';
 import 'package:graduation/presentation/controller/get_donations_cubit.dart';
@@ -15,7 +14,6 @@ import '../../core/widgets/custom_progress_indecator.dart';
 import '../widgets/appBar.dart';
 import '../widgets/background.dart';
 import '../widgets/user_cards.dart';
-import 'bottom_appbar.dart';
 
 
 class YourDonations extends StatelessWidget {
@@ -64,11 +62,11 @@ class YourDonations extends StatelessWidget {
                         Cards(
                             cardIcon: Icons.bloodtype,
                             text: "Blood type",
-                            date: state.addRequestMessage.bloodType),
+                            date: state.addRequestMessage.bloodType??"_"),
                         Cards(
                             cardIcon: Icons.calendar_month_outlined,
                             text: "Last Donation",
-                            date: state.addRequestMessage.lastDonation),
+                            date: state.addRequestMessage.lastDonation??"_"),
 
                       ],
                     ),

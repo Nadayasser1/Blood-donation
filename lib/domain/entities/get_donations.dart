@@ -7,14 +7,14 @@ class GetDonations extends Equatable{
 
   final String message ;
   final int count ;
-  final String bloodType;
-  final String lastDonation;
+  final String? bloodType;
+  final String? lastDonation;
   final List<Donations> donations;
 
  const GetDonations({
     required this.count,
-    required  this.bloodType,
-    required  this.lastDonation,
+      this.bloodType,
+      this.lastDonation,
     required this.message,
     required this.donations,
   });
@@ -23,5 +23,7 @@ class GetDonations extends Equatable{
   List<Object?> get props => [
     message,
     donations,
+    bloodType,
+    lastDonation,
   ];
   }
